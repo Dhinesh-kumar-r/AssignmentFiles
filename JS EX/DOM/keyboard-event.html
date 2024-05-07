@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="userinput">username</label>
+    <input type="text" id="username">
+
+    <p id="types">type something to see the input event in action</p>
+    <label for="color">favourite color</label>
+    <input type="color" id="color">
+    <p id="b">type something and tab out to see the change event in action</p>
+    <p id="element2">value focus</p>
+    <div id="div">
+
+    </div>
+
+<script>
+    document.addEventListener('keydown',function(event){
+        console.log('key down event triggered. keycode' + event.keyCode);
+    })
+
+    document.addEventListener('keyup',function(event){
+        console.log('keyup event triggered.keycode:'+ event.keyCode);
+    })
+
+    document.addEventListener('keypress',function(event){
+        console.log('key press event triggered.character:'+ String.fromCharCode(event.charCode))
+    });
+
+
+
+        var name = document.getElementById('username');
+        var type = document.getElementById('types')
+
+            name.addEventListener('input',function(){
+            type.textContent='input event triggere.current value:' + name.value;
+        });
+
+
+
+
+
+        var colorInput = document.getElementById('color');
+        var Element1=document.getElementById('b');
+
+       colorInput.addEventListener('change',function(){
+           Element1.textContent='change event triggered.color pattern:' + colorInput.value;
+       });
+
+
+       var Element2 = document.getElementById('element2');
+       usernameInput.addEventListener('focus',function(){
+        Element2.textContent='Focus event triggered.you focused on the input field'
+       });
+
+
+
+    
+    
+
+</script>
+</body>
+</html>

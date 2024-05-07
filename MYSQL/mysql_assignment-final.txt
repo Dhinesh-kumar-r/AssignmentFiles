@@ -1,0 +1,152 @@
+mysql> use my_assignment;
+Database changed
+mysql> show tables;
++-------------------------+
+| Tables_in_my_assignment |
++-------------------------+
+| air_credit_card_details |
+| air_flight              |
+| air_flight_details      |
+| air_passenger_profile   |
+| air_ticket_info         |
+| animals                 |
+| city                    |
+| customer                |
+| distribution_company    |
+| employees               |
+| movie_distribution      |
+| movies                  |
++-------------------------+
+12 rows in set (0.14 sec)
+
+mysql> select * from employees;
++--------+---------------+---------------+----------+------------+------------+----------------------+--------+---------+
+| emp_id | emp_name      | date_of_birth | salary   | commission | hire_date  | job                  | job_id | dept_id |
++--------+---------------+---------------+----------+------------+------------+----------------------+--------+---------+
+|    101 | dhinesh kumar | 2001-08-11    | 55000.00 |    2000.00 | 2023-11-21 | full stack developer |   1001 |     501 |
+|    102 | arun          | 2003-10-05    | 30000.00 |    1000.00 | 2022-08-01 | web developer        |   1002 |     502 |
+|    103 | sasi          | 2000-01-22    | 45000.00 |    2000.00 | 2022-10-08 | java developer       |   1003 |     503 |
+|    104 | akash         | 1995-07-16    | 85000.00 |   10000.00 | 2016-12-06 | database admin       |   1004 |     504 |
+|    105 | siva          | 1998-07-06    | 95000.00 |   12000.00 | 2018-10-23 | database admin       |   1005 |     504 |
+|    106 | john          | 2000-09-05    |  6000.00 |    2000.00 | 2020-11-04 | python developer     |   1006 |     505 |
+|    107 | jai           | 1999-06-11    | 65000.00 |    6000.00 | 2017-07-02 | web developer        |   1007 |     502 |
+|    108 | joshep        | 1999-11-06    | 15000.00 |    2000.00 | 2022-05-12 | full stack developer |   1008 |     501 |
+|    109 | sathish       | 2000-12-06    | 18000.00 |    1500.00 | 2022-01-19 | java developer       |   1009 |     503 |
+|    110 | raj           | 2001-09-11    | 18000.00 |    1500.00 | 2021-04-11 | web developer        |   1010 |     502 |
++--------+---------------+---------------+----------+------------+------------+----------------------+--------+---------+
+10 rows in set (0.07 sec)
+
+mysql> select name,job,salary,dept_id from employees;
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+mysql> select emp_name,job,salary,dept_id from employees;
++---------------+----------------------+----------+---------+
+| emp_name      | job                  | salary   | dept_id |
++---------------+----------------------+----------+---------+
+| dhinesh kumar | full stack developer | 55000.00 |     501 |
+| arun          | web developer        | 30000.00 |     502 |
+| sasi          | java developer       | 45000.00 |     503 |
+| akash         | database admin       | 85000.00 |     504 |
+| siva          | database admin       | 95000.00 |     504 |
+| john          | python developer     |  6000.00 |     505 |
+| jai           | web developer        | 65000.00 |     502 |
+| joshep        | full stack developer | 15000.00 |     501 |
+| sathish       | java developer       | 18000.00 |     503 |
+| raj           | web developer        | 18000.00 |     502 |
++---------------+----------------------+----------+---------+
+10 rows in set (0.00 sec)
+
+mysql> select job from employees;
++----------------------+
+| job                  |
++----------------------+
+| full stack developer |
+| web developer        |
+| java developer       |
+| database admin       |
+| database admin       |
+| python developer     |
+| web developer        |
+| full stack developer |
+| java developer       |
+| web developer        |
++----------------------+
+10 rows in set (0.00 sec)
+
+mysql> select distinct job from employees;
++----------------------+
+| job                  |
++----------------------+
+| full stack developer |
+| web developer        |
+| java developer       |
+| database admin       |
+| python developer     |
++----------------------+
+5 rows in set (0.09 sec)
+
+mysql> select emp_name,salary case salary
+    -> when >75000 then 'a'
+    -> when >50000 then 'b'
+    -> when >35000 then 'c'
+    -> when >20000 then 'd'
+    -> else 'e'
+    -> end as grade from employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'case salary
+when >75000 then 'a'
+when >50000 then 'b'
+when >35000 then 'c'
+when ' at line 1
+mysql> select emp_name,salary case salary
+    -> when (>75000) then 'a'
+    -> when (>50000) then 'b'
+    -> when (>35000) then 'c'
+    -> when (>20000) then 'd'
+    -> else 'e'
+    -> end as grade from employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'case salary
+when (>75000) then 'a'
+when (>50000) then 'b'
+when (>35000) then 'c'' at line 1
+mysql> select emp_name,salary,case salary
+    -> when (>75000) then 'a'
+    -> when (>50000) then 'b'
+    -> when (>35000) then 'c'
+    -> when (>20000) then 'd'
+    -> else 'e'
+    -> end as grade from employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '>75000) then 'a'
+when (>50000) then 'b'
+when (>35000) then 'c'
+when (>20000) the' at line 2
+mysql>  select emp_name,salary case salary
+    ->     -> when >75000 then 'a'
+    ->     -> when >50000 then 'b'
+    ->     -> when >35000 then 'c'
+    ->     -> when >20000 then 'd'
+    ->     -> else 'e'
+    ->     -> end as grade from employees
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'case salary
+    -> when >75000 then 'a'
+    -> when >50000 then 'b'
+    -> when ' at line 1
+mysql> select emp_name,salary,case salary
+    ->     -> when >75000 then 'a'
+    ->     -> when >50000 then 'b'
+    ->     -> when >35000 then 'c'
+    ->     -> when >20000 then 'd'
+    ->     -> else 'e'
+    ->     -> end as grade from employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'when >75000 then 'a'
+    -> when >50000 then 'b'
+    -> when >35000 then 'c'
+   ' at line 2
+mysql> commmit;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'commmit' at line 1
+mysql> commit
+    -> commit;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'commit' at line 2
+mysql> commit;
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> Terminal close -- exit!

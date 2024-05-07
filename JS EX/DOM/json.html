@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json</title>
+</head>
+<body>
+    <form id="myform">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required pattern="[A-Za-z\s]{3,}">
+        <br>
+
+        <label for="Email">Email :</label>
+        <input type="email" id="email" name="email" required pattern="[a-z0-9]{5,16}@gmail\.com">
+        <br>
+
+        <label for="number">Number :</label>
+        <input type="number" id="number" name="number" required pattern="[0-9]{10}">
+        <br>
+
+        <button type="button" onclick="validate()">Submit</button>
+        <button type="button" onclick="display()">display</button>
+    </form>
+
+
+    <div id="formDataContainer">
+
+
+    <script>
+        function display(){
+                   var name=document.getElementById('name').value
+                    var email=document.getElementById('email').value
+                    var number=document.getElementById('number').value
+                    console.log("Name :"+ name +"Email:" +email + "number"+number)
+                 }
+        function validate(){
+            var form = document.getElementById('myform');
+            
+            if (form.checkValidity()){
+                //retrieve existing data from local storage
+                var existingData = localStorage.getItem('formData');
+
+                //parse existing data as json or initialize an empty array
+                var formDataArray = existingData ? JSON.parse(existingData):[];
+
+                //create a new form data object
+                var formData={
+                    
+                    name:document.getElementById('name').value,
+                    email:document.getsElementById('email').value,
+                    number:document.getElementById('number').value,
+                };
+
+                
+
+             
+
+                //add the new form data to the array
+                formDataArray.push(formData);
+
+                //save the updated array back to local storage
+                localStorage.setItem('formData',JSON.stringify(formDataArray));
+
+                //clear the form fields
+                form.reset();
+                displayFormData();
+                alert('form submitted successfully')
+              
+
+            }else{
+                //form is invalid,display error message
+                form.reportValidity();
+            }
+
+            
+            
+
+        }
+
+        function displayFormData(){
+
+        }
+
+
+
+        </script>
+
+</body>
+</html>

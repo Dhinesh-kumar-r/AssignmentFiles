@@ -1,0 +1,19 @@
+H2{
+    background-color:skyblue;
+    text-align: center;
+
+
+}
+
+.f1{
+    text-align: center;
+    word-spacing: 50px;
+    background-color:skyblue;
+}
+body{
+    background: skyblue  url('https://www.tajhotels.com/content/dam/holidays/homemain.jpg/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg');
+    background-size :cover; 
+    
+}
+
+

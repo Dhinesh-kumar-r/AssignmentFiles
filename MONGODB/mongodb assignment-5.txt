@@ -1,0 +1,994 @@
+test> use my_assignment;
+switched to db my_assignment
+my_assignment> db.my_student.updateOne({name:"bala"},{$set:{course:"BE-ECE",m1:55,m2:45,m3:74,subjects:['mongodb','css','html'],personal:{age:22,dob:Date('2004-02-10'),father_name:'ravi',mobile_number:'9564565524',email_id:'dhia@gmail.com',address:"chennai"}}},{upsert:trude});
+ReferenceError: trude is not defined
+my_assignment> db.my_student.updateOne({name:"bala"},{$set:{course:"BE-ECE",m1:55,m2:45,m3:74,subjects:['mongodb','css','html'],personal:{age:22,dob:Date('2004-02-10'),father_name:'ravi',mobile_number:'9564565524',email_id:'dhia@gmail.com',address:"chennai"}}},{upsert:true});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_assignment> db.my_student.find();
+[
+  {
+    _id: 1,
+    name: 'kishore',
+    course: 'BE-EEE',
+    m1: 76,
+    m2: 85,
+    m3: 76,
+    subjects: [ 'Mongo', 'HTML', 'CSS' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'baskar',
+      mobile_number: '97865783257',
+      email_id: 'kishore@gmail.com',
+      address: 'covai'
+    }
+  },
+  {
+    _id: 2,
+    name: 'manoj',
+    course: 'BE-CSE',
+    m1: 87,
+    m2: 75,
+    m3: 65,
+    subjects: [ 'html', 'css', 'java' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'vinoth',
+      mobile_number: '98677653257',
+      email_id: 'manoj@gmail.com',
+      address: 'velore'
+    }
+  },
+  {
+    _id: 3,
+    name: 'yuvaraj',
+    course: 'BE-cse',
+    m1: 76,
+    m2: 87,
+    m3: 67,
+    subjects: [ 'java', 'css', 'python' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ravi',
+      mobile_number: 97656553257,
+      email_id: 'yuvaraj@gmail.com',
+      address: 'thirupur'
+    }
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    course: 'BE-civil',
+    m1: 77,
+    m2: 98,
+    m3: 30,
+    subjects: [ 'html', 'css', 'mysql' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'kishore',
+      mobile_number: '965593257',
+      email_id: 'kumar@gmail.com',
+      address: 'trichy'
+    }
+  },
+  {
+    _id: 5,
+    name: 'ram',
+    course: 'BE-cse',
+    m1: 69,
+    m2: 45,
+    m3: 77,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ashok',
+      mobile_number: 6786553257,
+      email_id: 'ram@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: 6,
+    name: 'dhinesh',
+    course: 'BE-ECE',
+    m1: 96,
+    m2: 95,
+    m3: 96,
+    subjects: [ 'HTML', 'CSS', 'JS' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ravi',
+      mobile_number: '7695856553',
+      email_id: 'dhinesh@gmail.com',
+      address: 'trichy'
+    }
+  },
+  {
+    _id: 7,
+    name: 'hari',
+    course: 'BE-CSE',
+    m1: 77,
+    m2: 65,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'PYTHON' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'jayaraj',
+      mobile_number: 7656553257,
+      email_id: 'jayaraj@gmail.com',
+      address: 'thanjavur'
+    }
+  },
+  {
+    _id: 8,
+    name: 'krishna',
+    course: 'BE-civil',
+    m1: 87,
+    m2: 76,
+    m3: 80,
+    subjects: [ 'html', 'css', 'mysql' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'karthi',
+      mobile_number: '655593257',
+      email_id: 'krishna@gmail.com',
+      address: 'namakkal'
+    }
+  },
+  {
+    _id: 9,
+    name: 'vijay',
+    course: 'BE-EEE',
+    m1: 98,
+    m2: 85,
+    m3: 71,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 20,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'raja',
+      mobile_number: 9866553257,
+      email_id: 'vijay@gmail.com',
+      address: 'covai'
+    }
+  },
+  {
+    _id: 10,
+    name: 'surya',
+    course: 'BE-ECE',
+    m1: 81,
+    m2: 51,
+    m3: 81,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'sankar',
+      mobile_number: 9666553257,
+      email_id: 'surya@gmail.com',
+      address: 'madurai'
+    }
+  },
+  {
+    _id: ObjectId("659941588ed0b9e6b658602f"),
+    name: 'bala',
+    course: 'BE-ECE',
+    m1: 55,
+    m2: 45,
+    m3: 74,
+    personal: {
+      age: 22,
+      dob: 'Sat Jan 06 2024 18:50:10 GMT+0530 (India Standard Time)',
+      father_name: 'ravi',
+      mobile_number: '9564565524',
+      email_id: 'dhia@gmail.com',
+      address: 'chennai'
+    },
+    subjects: [ 'mongodb', 'css', 'html' ]
+  }
+]
+my_assignment> db.createCollection('products');
+{ ok: 1 }
+my_assignment> db.products.insertMany([
+... {id:101,name:"keyboard",price:1000},
+... {id:102,name:"mouse",price:500},
+... {id:103,name:"speaker",price:1520},
+... {id:104,name:"charger",price:2500},
+... {id:105,name:"bt keyboard",price:1540},
+... {id:106,name:"bt mouse",price:1020},
+... {id:107,name:"speaker",price:5251},
+... {id:108,name:"mouse",price:525},
+... {id:109,name:"laptop",price:45000},
+... {id:110,name:"home theatre",price:10250}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("659953ed8a2609d47822483e"),
+    '1': ObjectId("659953ed8a2609d47822483f"),
+    '2': ObjectId("659953ed8a2609d478224840"),
+    '3': ObjectId("659953ed8a2609d478224841"),
+    '4': ObjectId("659953ed8a2609d478224842"),
+    '5': ObjectId("659953ed8a2609d478224843"),
+    '6': ObjectId("659953ed8a2609d478224844"),
+    '7': ObjectId("659953ed8a2609d478224845"),
+    '8': ObjectId("659953ed8a2609d478224846"),
+    '9': ObjectId("659953ed8a2609d478224847")
+  }
+}
+my_assignment> db.products.find();
+[
+  {
+    _id: ObjectId("659953ed8a2609d47822483e"),
+    id: 101,
+    name: 'keyboard',
+    price: 1000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d47822483f"),
+    id: 102,
+    name: 'mouse',
+    price: 500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224840"),
+    id: 103,
+    name: 'speaker',
+    price: 1520
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224841"),
+    id: 104,
+    name: 'charger',
+    price: 2500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224842"),
+    id: 105,
+    name: 'bt keyboard',
+    price: 1540
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224843"),
+    id: 106,
+    name: 'bt mouse',
+    price: 1020
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224844"),
+    id: 107,
+    name: 'speaker',
+    price: 5251
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224845"),
+    id: 108,
+    name: 'mouse',
+    price: 525
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224846"),
+    id: 109,
+    name: 'laptop',
+    price: 45000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224847"),
+    id: 110,
+    name: 'home theatre',
+    price: 10250
+  }
+]
+my_assignment> db.products.find();
+[
+  {cknowledged: true,
+    _id: ObjectId("659953ed8a2609d47822483e"),
+    id: 101,nt: 1,
+    name: 'keyboard',
+    price: 1000: 0
+  },
+  {
+    _id: ObjectId("659953ed8a2609d47822483f"),
+    id: 102,
+    name: 'mouse',
+    price: 500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224840"),
+    id: 103,
+    name: 'speaker',
+    price: 32999.99
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224841"),
+    id: 104,
+    name: 'charger',
+    price: 2500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224842"),
+    id: 105,
+    name: 'bt keyboard',
+    price: 1540
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224843"),
+    id: 106,
+    name: 'bt mouse',
+    price: 1020
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224844"),
+    id: 107,
+    name: 'speaker',
+    price: 5251
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224845"),
+    id: 108,
+    name: 'mouse',
+    price: 525
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224846"),
+    id: 109,
+    name: 'laptop',
+    price: 45000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224847"),
+    id: 110,
+    name: 'home theatre',
+    price: 10250
+  }
+]
+my_assignment> db.products.updateMany({},{$inc:{price:1500}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 10,
+  modifiedCount: 10,
+  upsertedCount: 0
+}
+my_assignment> db.products.find();
+[
+  {
+    _id: ObjectId("659953ed8a2609d47822483e"),
+    id: 101,
+    name: 'keyboard',
+    price: 2500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d47822483f"),
+    id: 102,
+    name: 'mouse',
+    price: 2000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224840"),
+    id: 103,
+    name: 'speaker',
+    price: 34499.99
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224841"),
+    id: 104,
+    name: 'charger',
+    price: 4000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224842"),
+    id: 105,
+    name: 'bt keyboard',
+    price: 3040
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224843"),
+    id: 106,
+    name: 'bt mouse',
+    price: 2520
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224844"),
+    id: 107,
+    name: 'speaker',
+    price: 6751
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224845"),
+    id: 108,
+    name: 'mouse',
+    price: 2025
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224846"),
+    id: 109,
+    name: 'laptop',
+    price: 46500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224847"),
+    id: 110,
+    name: 'home theatre',
+    price: 11750
+  }
+]
+my_assignment>
+{
+my_assignment>
+  insertedId: null,
+my_assignment>
+  modifiedCount: 1,
+my_assignment> db.products.updateOne({id:105},{$min:{price:150}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+my_assignment> db.products.find();
+[
+  {
+    _id: ObjectId("659953ed8a2609d47822483e"),
+    id: 101,
+    name: 'keyboard',
+    price: 2500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d47822483f"),
+    id: 102,
+    name: 'mouse',
+    price: 2000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224840"),
+    id: 103,
+    name: 'speaker',
+    price: 34499.99
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224841"),
+    id: 104,
+    name: 'charger',
+    price: 4000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224842"),
+    id: 105,
+    name: 'bt keyboard',
+    price: 150
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224843"),
+    id: 106,
+    name: 'bt mouse',
+    price: 2520
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224844"),
+    id: 107,
+    name: 'speaker',
+    price: 6751
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224845"),
+    id: 108,
+    name: 'mouse',
+    price: 2025
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224846"),
+    id: 109,
+    name: 'laptop',
+    price: 46500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224847"),
+    id: 110,
+    name: 'home theatre',
+    price: 11750
+  }
+]
+my_assignment> vvvv
+ReferenceError: vvvv is not defined
+my_assignment>
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+my_assignment> db.products.updateOne({id:107},{$max:{price:10000}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+my_assignment> db.products.find();
+[
+  {
+    _id: ObjectId("659953ed8a2609d47822483e"),
+    id: 101,
+    name: 'keyboard',
+    price: 2500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d47822483f"),
+    id: 102,
+    name: 'mouse',
+    price: 2000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224840"),
+    id: 103,
+    name: 'speaker',
+    price: 34499.99
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224841"),
+    id: 104,
+    name: 'charger',
+    price: 4000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224842"),
+    id: 105,
+    name: 'bt keyboard',
+    price: 150
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224843"),
+    id: 106,
+    name: 'bt mouse',
+    price: 2520
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224844"),
+    id: 107,
+    name: 'speaker',
+    price: 10000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224845"),
+    id: 108,
+    name: 'mouse',
+    price: 2025
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224846"),
+    id: 109,
+    name: 'laptop',
+    price: 46500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224847"),
+    id: 110,
+    name: 'home theatre',
+    price: 11750
+  }
+]
+my_assignment> db.products.updateMany({},{$multiply:{price:3}});
+MongoServerError: Unknown modifier: $multiply. Expected a valid update modifier or pipeline-style update specified as an array
+my_assignment> db.products.updateMany({},{$mul:{price:3}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 10,
+  modifiedCount: 10,
+  upsertedCount: 0
+}
+my_assignment> db.products.find();
+[
+  {
+    _id: ObjectId("659953ed8a2609d47822483e"),
+    id: 101,
+    name: 'keyboard',
+    price: 7500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d47822483f"),
+    id: 102,
+    name: 'mouse',
+    price: 6000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224840"),
+    id: 103,
+    name: 'speaker',
+    price: 103499.97
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224841"),
+    id: 104,
+    name: 'charger',
+    price: 12000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224842"),
+    id: 105,
+    name: 'bt keyboard',
+    price: 450
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224843"),
+    id: 106,
+    name: 'bt mouse',
+    price: 7560
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224844"),
+    id: 107,
+    name: 'speaker',
+    price: 30000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224845"),
+    id: 108,
+    name: 'mouse',
+    price: 6075
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224846"),
+    id: 109,
+    name: 'laptop',
+    price: 139500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224847"),
+    id: 110,
+    name: 'home theatre',
+    price: 35250
+  }
+]
+my_assignment> db.products.updateOne({id:105},{unset:{price:1}});
+MongoInvalidArgumentError: Update document requires atomic operators
+my_assignment> db.products.updateOne({id:105},{$unset:{price:1}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_assignment> db.products.find();
+[
+  {
+    _id: ObjectId("659953ed8a2609d47822483e"),
+    id: 101,
+    name: 'keyboard',
+    price: 7500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d47822483f"),
+    id: 102,
+    name: 'mouse',
+    price: 6000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224840"),
+    id: 103,
+    name: 'speaker',
+    price: 103499.97
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224841"),
+    id: 104,
+    name: 'charger',
+    price: 12000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224842"),
+    id: 105,
+    name: 'bt keyboard'
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224843"),
+    id: 106,
+    name: 'bt mouse',
+    price: 7560
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224844"),
+    id: 107,
+    name: 'speaker',
+    price: 30000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224845"),
+    id: 108,
+    name: 'mouse',
+    price: 6075
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224846"),
+    id: 109,
+    name: 'laptop',
+    price: 139500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224847"),
+    id: 110,
+    name: 'home theatre',
+    price: 35250
+  }
+]
+my_assignment> db.products.updateOne({id:105},{$set:{price:25789.60}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_assignment> db.products.find();
+[
+  {
+    _id: ObjectId("659953ed8a2609d47822483e"),
+    id: 101,
+    name: 'keyboard',
+    price: 7500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d47822483f"),
+    id: 102,
+    name: 'mouse',
+    price: 6000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224840"),
+    id: 103,
+    name: 'speaker',
+    price: 103499.97
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224841"),
+    id: 104,
+    name: 'charger',
+    price: 12000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224842"),
+    id: 105,
+    name: 'bt keyboard',
+    price: 25789.6
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224843"),
+    id: 106,
+    name: 'bt mouse',
+    price: 7560
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224844"),
+    id: 107,
+    name: 'speaker',
+    price: 30000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224845"),
+    id: 108,
+    name: 'mouse',
+    price: 6075
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224846"),
+    id: 109,
+    name: 'laptop',
+    price: 139500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224847"),
+    id: 110,
+    name: 'home theatre',
+    price: 35250
+  }
+]
+my_assignment> db.products.updateOne({id:107},{$set:{price:78000.23},{upsert:true});
+Uncaught:
+SyntaxError: Unexpected token (1:54)
+
+> 1 | db.products.updateOne({id:107},{$set:{price:78000.23},{upsert:true});
+    |                                                       ^
+  2 |
+
+my_assignment> db.products.updateOne({id:107},{$set:{price:78000.23},{upsert:true}});
+Uncaught:
+SyntaxError: Unexpected token (1:54)
+
+> 1 | db.products.updateOne({id:107},{$set:{price:78000.23},{upsert:true}});
+    |                                                       ^
+  2 |
+
+my_assignment> db.products.updateOne({id:107},{$set:{price:78000.23}},{upsert:true})
+{ncaught:
+  acknowledged: true,ed token (1:54)
+  insertedId: null,
+  matchedCount: 1,updateOne({id:107},{$set:{price:78000.23},{upsert:true}})
+  modifiedCount: 1,                                         ^
+  upsertedCount: 0
+}
+my_assignment> db.products.find();
+[
+  {
+    _id: ObjectId("659953ed8a2609d47822483e"),
+    id: 101,
+    name: 'keyboard',
+    price: 7500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d47822483f"),
+    id: 102,
+    name: 'mouse',
+    price: 6000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224840"),
+    id: 103,
+    name: 'speaker',
+    price: 103499.97
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224841"),
+    id: 104,
+    name: 'charger',
+    price: 12000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224842"),
+    id: 105,
+    name: 'bt keyboard',
+    price: 25789.6
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224843"),
+    id: 106,
+    name: 'bt mouse',
+    price: 7560
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224844"),
+    id: 107,
+    name: 'speaker',
+    price: 78000.23
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224845"),
+    id: 108,
+    name: 'mouse',
+    price: 6075
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224846"),
+    id: 109,
+    name: 'laptop',
+    price: 139500
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224847"),
+    id: 110,
+    name: 'home theatre',
+    price: 35250
+  }
+]
+my_assignment> db.products.update({},{$rename:{"id":"pid"}});
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_assignment> db.products.find();
+[
+  {
+    _id: ObjectId("659953ed8a2609d47822483e"),
+    name: 'keyboard',
+    price: 7500,
+    pid: 101
+  },
+  {
+    _id: ObjectId("659953ed8a2609d47822483f"),
+    id: 102,
+    name: 'mouse',
+    price: 6000
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224840"),
+    id: 103,
+    name: 'speaker',
+    price: 103499.97
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224841"),
+    id: 104,
+    name: 'charger',
+    price: 12000
+  },
+  {
+my_assignment> db.products.updateMany({},{$rename:{"id":"pid"}});ggggg
+ReferenceError: ggggg is not defined
+my_assignment> db.products.updateMany({},{$rename:{"id":"pid"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 10,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+my_assignment> db.products.find();
+[
+  {
+    _id: ObjectId("659953ed8a2609d47822483e"),
+    name: 'keyboard',
+    price: 7500,
+    pid: 101
+  },
+  {
+    _id: ObjectId("659953ed8a2609d47822483f"),
+    name: 'mouse',
+    price: 6000,
+    pid: 102
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224840"),
+    name: 'speaker',
+    price: 103499.97,
+    pid: 103
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224841"),
+    name: 'charger',
+    price: 12000,
+    pid: 104
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224842"),
+    name: 'bt keyboard',
+    price: 25789.6,
+    pid: 105
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224843"),
+    name: 'bt mouse',
+    price: 7560,
+    pid: 106
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224844"),
+    name: 'speaker',
+    price: 78000.23,
+    pid: 107
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224845"),
+    name: 'mouse',
+    price: 6075,
+    pid: 108
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224846"),
+    name: 'laptop',
+    price: 139500,
+    pid: 109
+  },
+  {
+    _id: ObjectId("659953ed8a2609d478224847"),
+    name: 'home theatre',
+    price: 35250,
+    pid: 110
+  }
+]

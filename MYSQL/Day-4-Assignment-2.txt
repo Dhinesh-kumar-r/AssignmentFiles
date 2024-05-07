@@ -1,0 +1,166 @@
+mysql> use my_assignment;
+Database changed
+mysql> create table air_ticket_info
+    -> (ticket_id varchar(20) not null,
+    -> profile_id int primary key,
+    -> flight_id varchar(20) not null,
+    -> flight_depature_date date not null,
+    -> status varchar(10) not null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 6
+mysql> create table air_ticket_info
+    -> (ticket_id varchar(20) not null,
+    -> profile_id int primary key,
+    -> flight_id varchar(20) not null,
+    -> flight_depature_date date not null,
+    -> status varchar(10) not null);
+Query OK, 0 rows affected (3.59 sec)
+
+mysql> create table air_passenger_profile
+    -> (profile_id int,foriegn key(profile_id) references air_ticket_info(profile_id) on delete cascade,
+    -> password varchar(20)not null,
+    -> first_name varchar(10) not null,
+    -> last_name varchar(10) not null,
+    -> address varchar(40) not null,
+    -> mobile_number bigint(10),
+    -> email_id varchar(30) not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(profile_id) references air_ticket_info(profile_id) on delete cascade,
+passwo' at line 2
+mysql> create table air_passenger_profile
+    -> (profile_id int,foriegn key(profile_id) references air_ticket_info(profile_id) on delete cascade,
+    -> password varchar(20) not null,
+    -> first_name varchar(10) not null,
+    -> last_name varchar(10) not null,
+    -> address varchar(40) not null,
+    -> mobile_number bigint(10) not null,
+    -> email_id varchar(30) not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(profile_id) references air_ticket_info(profile_id) on delete cascade,
+passwo' at line 2
+mysql> create table air_passenger_profile
+    -> (profile_id int,foreign key(profile_id) references air_ticket_info(profile_id) on delete cascade,
+    -> password varchar(20) not null,
+    -> first_name varchar(10) not null,
+    -> last_name varchar(10) not null,
+    -> address varchar(40) not null,
+    -> mobile_number bigint(10) not null,
+    -> email_id varchar(30) not null);
+Query OK, 0 rows affected, 1 warning (3.17 sec)
+
+mysql> create table air_flight_details
+    -> (flight_id int primary key,
+    -> flight_depature_date date not null,
+    -> price decimal(8,2),
+    -> available_seat int(15));
+Query OK, 0 rows affected, 1 warning (2.47 sec)
+
+mysql> reate table air_flight(
+    -> flight_id int,foreign key(flight_id) references air_flight_details(flight_id) on delete cascade,
+    -> air_line_id varchar(20) not null,
+    -> air_line_name varchar(20) not_null,
+    -> from_location varchar(30) not null,
+    -> to_location varchar(30) not null,
+    -> depature_time time not null,
+    -> arrival_time time not null,
+    -> duration time not null,
+    -> total_seats int not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'reate table air_flight(
+flight_id int,foreign key(flight_id) references air_flig' at line 1
+mysql> create table air_flight(
+    -> flight_id int,foreign key(flight_id) references air_flight_details(flight_id) on delete cascade,
+    -> air_line_id varchar(20) not null,
+    -> air_line_name varchar(20) not_null,
+    -> from_location varchar(30) not null,
+    -> to_location varchar(30) not null,
+    -> depature_time time not null,
+    -> arrival_time time not null,
+    -> duration time not null,
+    -> total_seats int not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not_null,
+from_location varchar(30) not null,
+to_location varchar(30) not null,
+' at line 4
+mysql> create table air_flight(
+    -> flight_id int,foreign key(flight_id) references air_flight_details(flight_id) on delete cascade,
+    -> air_line_id varchar(20) not null,
+    -> air_line_name varchar(20) not null,
+    -> from_location varchar(30) not null,
+    -> to_location varchar(30) not null,
+    -> depature_time time not null,
+    -> arrival_time time not null,
+    -> duration time not null,
+    -> total_seats int not null);
+Query OK, 0 rows affected (1.78 sec)
+
+mysql> create table air_credit_card_details(
+    -> profile_id int,foreign key(profile_id) references air_ticket_info (profile_id) on delete cascade,
+    -> card_number bigint not null,
+    -> card_type varchar(10) not null,
+    -> expiering_month int not null,
+    -> expiering_year int not null);
+Query OK, 0 rows affected (1.96 sec)
+
+mysql> 
+mysql> desc air_ticket_info;
++----------------------+-------------+------+-----+---------+-------+
+| Field                | Type        | Null | Key | Default | Extra |
++----------------------+-------------+------+-----+---------+-------+
+| ticket_id            | varchar(20) | NO   |     | NULL    |       |
+| profile_id           | int         | NO   | PRI | NULL    |       |
+| flight_id            | varchar(20) | NO   |     | NULL    |       |
+| flight_depature_date | date        | NO   |     | NULL    |       |
+| status               | varchar(10) | NO   |     | NULL    |       |
++----------------------+-------------+------+-----+---------+-------+
+5 rows in set (0.39 sec)
+
+mysql> desc air_passenger_profile;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| profile_id    | int         | YES  | MUL | NULL    |       |
+| password      | varchar(20) | NO   |     | NULL    |       |
+| first_name    | varchar(10) | NO   |     | NULL    |       |
+| last_name     | varchar(10) | NO   |     | NULL    |       |
+| address       | varchar(40) | NO   |     | NULL    |       |
+| mobile_number | bigint      | NO   |     | NULL    |       |
+| email_id      | varchar(30) | NO   |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+7 rows in set (0.06 sec)
+
+mysql> desc air_flight_details;
++----------------------+--------------+------+-----+---------+-------+
+| Field                | Type         | Null | Key | Default | Extra |
++----------------------+--------------+------+-----+---------+-------+
+| flight_id            | int          | NO   | PRI | NULL    |       |
+| flight_depature_date | date         | NO   |     | NULL    |       |
+| price                | decimal(8,2) | YES  |     | NULL    |       |
+| available_seat       | int          | YES  |     | NULL    |       |
++----------------------+--------------+------+-----+---------+-------+
+4 rows in set (0.13 sec)
+
+mysql> desc air_flight;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| flight_id     | int         | YES  | MUL | NULL    |       |
+| air_line_id   | varchar(20) | NO   |     | NULL    |       |
+| air_line_name | varchar(20) | NO   |     | NULL    |       |
+| from_location | varchar(30) | NO   |     | NULL    |       |
+| to_location   | varchar(30) | NO   |     | NULL    |       |
+| depature_time | time        | NO   |     | NULL    |       |
+| arrival_time  | time        | NO   |     | NULL    |       |
+| duration      | time        | NO   |     | NULL    |       |
+| total_seats   | int         | NO   |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+9 rows in set (0.06 sec)
+
+mysql> desc air_credit_card_details;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| profile_id      | int         | YES  | MUL | NULL    |       |
+| card_number     | bigint      | NO   |     | NULL    |       |
+| card_type       | varchar(10) | NO   |     | NULL    |       |
+| expiering_month | int         | NO   |     | NULL    |       |
+| expiering_year  | int         | NO   |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.03 sec)
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        p{
+            width: 200px;
+            height: 100px;
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+
+
+            <button id="myButton">Click me</button>
+
+            <p id="click">CLICK</p>
+
+            <p id="dblclick">double click</p>
+
+            <p id="mousedown">Mouse down</p>
+
+            <p id="mouseup">mouse up</p>
+
+            <p id="mousemove">Mouse move</p>
+
+            <p id="mouseenter">mouse enter</p>
+
+            <p id="mouseleave">mouse leave</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <script>
+                //click
+
+                var click=document.getElementById('click');
+
+                click.addEventListener('click',function(){
+                    console.log("You clicked on CLICK");
+                })
+                //add event lister is listen the event
+                //what happend to call so if click call the fn
+
+                var dblclick=document.getElementById('dblclick')
+                dblclick.addEventListener('dblclick',function(){
+                            console.log("doubleclick")
+                })
+
+                var md = document.getElementById('mousedown');
+                md.addEventListener("mousedown",function(){
+                    console.log('mose down')
+                })
+
+                //mouse up
+                var mu = document.getElementById('mouseup');
+                mu.addEventListener("mouseup",function(){
+                    console.log('mouse up')
+                })
+
+                //mouse move
+
+                var mm = document.getElementById('mousemove');
+                mm.addEventListener("mousemove",function(){
+                    console.log('mouse move ')
+                })
+
+                //mouse enter
+                var me = document.getElementById('mouseenter');
+                me.addEventListener("mouseenter",function(){
+                    console.log('mouse enter')
+                })
+
+                //mouse leave
+
+                var ml = document.getElementById('mouseleave');
+                ml.addEventListener("mouseleave",function(){
+                    console.log('mouse leave')
+                })
+
+            </script>
+        
+
+</body>
+
+
+
+</html>

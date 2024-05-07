@@ -1,0 +1,402 @@
+mysql> create database my_hotel;
+Query OK, 1 row affected (0.72 sec)
+
+mysql> use my_hotel;
+Database changed
+mysql> create table hotel(hotel_id int primary key,hotel_name varchar(20)not null,location varchar(50)not null);
+Query OK, 0 rows affected (2.92 sec)
+
+mysql> create table rooms(
+    -> room_id int primary key,
+    -> hotel_id int,foreign key(hotel_id) references hotel(hotel_id) on delete cascade,
+    -> room_type varchar(30) not null);
+Query OK, 0 rows affected (2.66 sec)
+
+mysql> create table guest(
+    -> guest_id int primary key,
+    -> guest_name not null varchar(30),
+    -> city varchar not null(30);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not null varchar(30),
+city varchar not null(30)' at line 3
+mysql> create table guest(
+    -> guest_id int primary key,
+    -> guest_name not null varchar(30),
+    -> city varchar (30) not null
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not null varchar(30),
+city varchar (30) not null
+)' at line 3
+mysql> create table guest(
+    -> guest_id int primary key,
+    -> guest_name not null varchar(30),
+    -> city varchar(30) not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not null varchar(30),
+city varchar(30) not null)' at line 3
+mysql> create table guest(
+    -> guest_id int primary key,
+    -> guest_name varchar(30)not null,
+    -> city varchar(30)not null);
+Query OK, 0 rows affected (1.27 sec)
+
+mysql> create table reservations (
+    -> room_id int,foriegn key(room_id) references rooms(room_id) on delete cascade,
+    -> guest_id int,foriegn key(guest_id) references guest(guest_id) on delete casecade,
+    -> date_checkin date,
+    -> date_checkout)
+    -> ';
+    '> ;
+    '> create;
+    '> '
+    -> ';
+    '> ;
+    '> ';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(room_id) references rooms(room_id) on delete cascade,
+guest_id int,foriegn k' at line 2
+mysql> create table reservations (
+    -> room_id int,foriegn key(room_id) references rooms(room_id) on delete cascade,
+    -> guest_id int,foriegn key(guest_id) references guest(guest_id) on delete casecade,
+    -> date_checkin date,
+    -> date_checkout);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(room_id) references rooms(room_id) on delete cascade,
+guest_id int,foriegn k' at line 2
+mysql> 
+mysql> create table reservations (
+    -> room_id int,foriegn key(room_id) references rooms(room_id) on delete cascade,
+    -> guest_id int,foriegn key(guest_id) references guest(guest_id) on delete casecade,
+    -> date_checkin date,
+    -> date_checkout date);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(room_id) references rooms(room_id) on delete cascade,
+guest_id int,foriegn k' at line 2
+mysql> 
+mysql> create table reservations (
+    -> room_id int,
+    -> foreign key(room_id) references rooms(room_id) on delete cascade,
+    -> guest_id int,foreign key(guest_id) references guest(guest_id) on delete casecade,
+    -> date_checkin date,
+    -> date_checkout date);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'casecade,
+date_checkin date,
+date_checkout date)' at line 4
+mysql> create table reservations(
+    -> room_id int,foreign key(room_id) references rooms(room_id) on delete cascade,
+    -> guest_id int,foreign key(guest_id) references guest(guest_id) on delete casecade,
+    -> date_checkin date,
+    -> date_checkout date);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'casecade,
+date_checkin date,
+date_checkout date)' at line 3
+mysql> create table reservations(
+    -> room_id int,foreign key(room_id) references rooms(room_id) on delete cascade,
+    -> guest_id int,foreign key(guest_id) references guest(guest_id) on delete cascade,
+    -> date_checkin date,
+    -> date_checkout date);
+Query OK, 0 rows affected (2.25 sec)
+
+mysql> 
+mysql> showt tables;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'showt tables' at line 1
+mysql> show tables;
++--------------------+
+| Tables_in_my_hotel |
++--------------------+
+| guest              |
+| hotel              |
+| reservations       |
+| rooms              |
++--------------------+
+4 rows in set (1.97 sec)
+
+mysql> desc guest;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| guest_id   | int         | NO   | PRI | NULL    |       |
+| guest_name | varchar(30) | NO   |     | NULL    |       |
+| city       | varchar(30) | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.32 sec)
+
+mysql> desc hotel;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| hotel_id   | int         | NO   | PRI | NULL    |       |
+| hotel_name | varchar(20) | NO   |     | NULL    |       |
+| location   | varchar(50) | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.09 sec)
+
+mysql> desc reservations;
++---------------+------+------+-----+---------+-------+
+| Field         | Type | Null | Key | Default | Extra |
++---------------+------+------+-----+---------+-------+
+| room_id       | int  | YES  | MUL | NULL    |       |
+| guest_id      | int  | YES  | MUL | NULL    |       |
+| date_checkin  | date | YES  |     | NULL    |       |
+| date_checkout | date | YES  |     | NULL    |       |
++---------------+------+------+-----+---------+-------+
+4 rows in set (0.08 sec)
+
+mysql> desc rooms;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| room_id   | int         | NO   | PRI | NULL    |       |
+| hotel_id  | int         | YES  | MUL | NULL    |       |
+| room_type | varchar(30) | NO   |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.08 sec)
+
+mysql> insert into hotel values
+    -> (01,'taj','trichy'),
+    -> (02,'paradise','chennai'),
+    -> (03,'Queen','bangalore'),
+    -> (04,'plaza','mumbai'),
+    -> (05,'iconic','kerala');
+Query OK, 5 rows affected (0.81 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> 
+mysql> insert into rooms values
+    -> (1001,01,'single_room'),
+    -> (1002,02,'double_room'),
+    -> (1003,03,'single_room'),
+    -> (1004,04,'family_suit'),
+    -> (1005,05,'double_room');
+Query OK, 5 rows affected (0.64 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> insert into guest values(
+    -> (101,'Dhinesh','trichy'),
+    -> (102,'hari','chennai'),
+    -> (103,'priya','salem'),
+    -> (104,'sathish','bangalore'),
+    -> (105,'jackson','kerala');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 6
+mysql> insert into guest values
+    -> (101,'Dhinesh','trichy'),
+    -> (102,'hari','chennai'),
+    -> (103,'priya','salem'),
+    -> (104,'sathish','bangalore'),
+    -> (105,'jackson','kerala');
+Query OK, 5 rows affected (0.38 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> insert into reservations values
+    -> (1001,101,'2023-11-08','2023-11-15'),
+    -> (1002,102,'2023-01-10','2023-01-12'),
+    -> (1003,103,'2023-06-05','2023-06-10'),
+    -> (1004,104,'2023-06-25','2023-06-30'),
+    -> (1005,105,'2023-12-01','2023-12-05');
+Query OK, 5 rows affected (0.47 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from hotel;
++----------+------------+-----------+
+| hotel_id | hotel_name | location  |
++----------+------------+-----------+
+|        1 | taj        | trichy    |
+|        2 | paradise   | chennai   |
+|        3 | Queen      | bangalore |
+|        4 | plaza      | mumbai    |
+|        5 | iconic     | kerala    |
++----------+------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from rooms;
++---------+----------+-------------+
+| room_id | hotel_id | room_type   |
++---------+----------+-------------+
+|    1001 |        1 | single_room |
+|    1002 |        2 | double_room |
+|    1003 |        3 | single_room |
+|    1004 |        4 | family_suit |
+|    1005 |        5 | double_room |
++---------+----------+-------------+
+5 rows in set (0.07 sec)
+
+mysql> select * from guest;
++----------+------------+-----------+
+| guest_id | guest_name | city      |
++----------+------------+-----------+
+|      101 | Dhinesh    | trichy    |
+|      102 | hari       | chennai   |
+|      103 | priya      | salem     |
+|      104 | sathish    | bangalore |
+|      105 | jackson    | kerala    |
++----------+------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select * reservations;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'reservations' at line 1
+mysql> select * from reservations;
++---------+----------+--------------+---------------+
+| room_id | guest_id | date_checkin | date_checkout |
++---------+----------+--------------+---------------+
+|    1001 |      101 | 2023-11-08   | 2023-11-15    |
+|    1002 |      102 | 2023-01-10   | 2023-01-12    |
+|    1003 |      103 | 2023-06-05   | 2023-06-10    |
+|    1004 |      104 | 2023-06-25   | 2023-06-30    |
+|    1005 |      105 | 2023-12-01   | 2023-12-05    |
++---------+----------+--------------+---------------+
+5 rows in set (0.06 sec)
+
+mysql> alter table guest add mobile_number bigint not null;
+Query OK, 0 rows affected (2.32 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select 
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select * from guest;
++----------+------------+-----------+---------------+
+| guest_id | guest_name | city      | mobile_number |
++----------+------------+-----------+---------------+
+|      101 | Dhinesh    | trichy    |             0 |
+|      102 | hari       | chennai   |             0 |
+|      103 | priya      | salem     |             0 |
+|      104 | sathish    | bangalore |             0 |
+|      105 | jackson    | kerala    |             0 |
++----------+------------+-----------+---------------+
+5 rows in set (0.00 sec)
+
+mysql> desc guest;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| guest_id      | int         | NO   | PRI | NULL    |       |
+| guest_name    | varchar(30) | NO   |     | NULL    |       |
+| city          | varchar(30) | NO   |     | NULL    |       |
+| mobile_number | bigint      | NO   |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.08 sec)
+
+mysql> alter table hotel modify location varchar(50);
+Query OK, 0 rows affected (3.45 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table reservations rename column date_checkin to check_in_date;
+Query OK, 0 rows affected (1.19 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from reservations;
++---------+----------+---------------+---------------+
+| room_id | guest_id | check_in_date | date_checkout |
++---------+----------+---------------+---------------+
+|    1001 |      101 | 2023-11-08    | 2023-11-15    |
+|    1002 |      102 | 2023-01-10    | 2023-01-12    |
+|    1003 |      103 | 2023-06-05    | 2023-06-10    |
+|    1004 |      104 | 2023-06-25    | 2023-06-30    |
+|    1005 |      105 | 2023-12-01    | 2023-12-05    |
++---------+----------+---------------+---------------+
+5 rows in set (0.00 sec)
+
+mysql> alter table rooms add price decimal(8,2)not null ;
+Query OK, 0 rows affected (0.55 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from rooms;
++---------+----------+-------------+-------+
+| room_id | hotel_id | room_type   | price |
++---------+----------+-------------+-------+
+|    1001 |        1 | single_room |  0.00 |
+|    1002 |        2 | double_room |  0.00 |
+|    1003 |        3 | single_room |  0.00 |
+|    1004 |        4 | family_suit |  0.00 |
+|    1005 |        5 | double_room |  0.00 |
++---------+----------+-------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> update rooms set price = 1500 where = single_room;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= single_room' at line 1
+mysql> update rooms set price  1500 where = single_room;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1500 where = single_room' at line 1
+mysql> update rooms set price = 1500 where room_type = single_room;
+ERROR 1054 (42S22): Unknown column 'single_room' in 'where clause'
+mysql> update rooms set price = 1500 where room_type =single_room;
+ERROR 1054 (42S22): Unknown column 'single_room' in 'where clause'
+mysql> update rooms set price = 1500 where ='single_room is null';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '='single_room is null'' at line 1
+mysql> update rooms set price = 1500 where =single_room is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=single_room is null' at line 1
+mysql> update rooms set price = 1500 where room_type ='single_room';
+Query OK, 2 rows affected (0.20 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update rooms set price = 3000 where room_type ='double_room';
+Query OK, 2 rows affected (0.18 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update rooms set price = 10000 where room_type ='family_suit';
+Query OK, 1 row affected (0.14 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from rooms;
++---------+----------+-------------+----------+
+| room_id | hotel_id | room_type   | price    |
++---------+----------+-------------+----------+
+|    1001 |        1 | single_room |  1500.00 |
+|    1002 |        2 | double_room |  3000.00 |
+|    1003 |        3 | single_room |  1500.00 |
+|    1004 |        4 | family_suit | 10000.00 |
+|    1005 |        5 | double_room |  3000.00 |
++---------+----------+-------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> delete from reservations where date_checkout = '2023-06-10';
+Query OK, 1 row affected (0.19 sec)
+
+mysql> select * from reservations;
++---------+----------+---------------+---------------+
+| room_id | guest_id | check_in_date | date_checkout |
++---------+----------+---------------+---------------+
+|    1001 |      101 | 2023-11-08    | 2023-11-15    |
+|    1002 |      102 | 2023-01-10    | 2023-01-12    |
+|    1004 |      104 | 2023-06-25    | 2023-06-30    |
+|    1005 |      105 | 2023-12-01    | 2023-12-05    |
++---------+----------+---------------+---------------+
+4 rows in set (0.00 sec)
+
+mysql> desc hotel;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| hotel_id   | int         | NO   | PRI | NULL    |       |
+| hotel_name | varchar(20) | NO   |     | NULL    |       |
+| location   | varchar(50) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> desc rooms;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| room_id   | int          | NO   | PRI | NULL    |       |
+| hotel_id  | int          | YES  | MUL | NULL    |       |
+| room_type | varchar(30)  | NO   |     | NULL    |       |
+| price     | decimal(8,2) | NO   |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.06 sec)
+
+mysql> desc guest;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| guest_id      | int         | NO   | PRI | NULL    |       |
+| guest_name    | varchar(30) | NO   |     | NULL    |       |
+| city          | varchar(30) | NO   |     | NULL    |       |
+| mobile_number | bigint      | NO   |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc reservations;
++---------------+------+------+-----+---------+-------+
+| Field         | Type | Null | Key | Default | Extra |
++---------------+------+------+-----+---------+-------+
+| room_id       | int  | YES  | MUL | NULL    |       |
+| guest_id      | int  | YES  | MUL | NULL    |       |
+| check_in_date | date | YES  |     | NULL    |       |
+| date_checkout | date | YES  |     | NULL    |       |
++---------------+------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+

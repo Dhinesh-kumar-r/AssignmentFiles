@@ -1,0 +1,112 @@
+* {
+    padding: 0%;
+    margin: 0%;
+}
+
+.head {
+    text-align: center;
+    color: yellow;
+}
+
+/* .container{
+    width: 900px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-left: 380px;
+} */
+
+.dish {
+    width: 450px;
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: start; */
+    padding: 15px;
+
+}
+.content{
+    text-align: start;
+    margin-top: 30px;
+    
+}
+
+
+.dish img {
+    margin-right: 10px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+
+}
+
+.dish h4 {
+    background-color: yellow;
+    padding: 5px;
+    width: 100px;
+    border-radius: 5px;
+    margin: 15px;
+}
+
+.title {
+    border-top: 2px black solid;
+    border-bottom: 2px solid black;
+    margin-top: 30px;
+    margin: 30px;
+    display: inline;
+    color: black;
+
+}
+
+.name {
+    margin: 30px;
+}
+
+.desc {
+    margin-top: 30px;
+    color: black;
+}
+
+.count {
+    color: blue;
+    margin-left: 5px;
+    margin-right: 1px;
+}
+
+.footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.footer button {
+    background-color: yellow;
+    padding: 10px;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+
+}
+
+.app {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    text-align: center;
+
+    justify-content: space-around;
+    margin-left: 100px;
+    margin: 30px;
+
+}
+
+.container h3,
+h4 {
+    text-align: center;
+
+}
+
+body{
+     background-color: rgb(242, 173, 45);
+     
+}

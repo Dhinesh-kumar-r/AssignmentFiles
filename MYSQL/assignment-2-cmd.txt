@@ -1,0 +1,56 @@
+create table animals
+(id int primary key,
+name varchar(20)not null,
+specifies varchar(20)not null,
+life_span varchar(20)not null);
+
+insert into animals values
+(1,'cat','animal',20),
+(2,'dog','animal',25),
+(3,'monkey','animal',26),
+(4,'elephant','animal',65),
+(5,'canary','bird',20),
+(6,'swift','bird',5),
+(7,'dove','bird',12),
+(8,'rabbit','animal',10),
+(9,'cow','animal',25);
+
+
+----change a size of a tables---
+
+
+  alter table animals modify life_span tinyint(3);
+
+----add a new column--------
+
+alter table animals add  habitat varchar(20)not null;
+
+------addd a specific value
+update  animals set habitat='domestic' where id=1;
+update animals set habitat='domestic' where name='dog' ;
+update animals set habitat='wild' where life_span=26
+update animals set habitat='wild' where id=4;
+update animals set habitat='domestic' where id=5;
+update animals set habitat='domestic' where id=6;
+update animals set habitat='domestic' where id=7;
+update animals set habitat='domestic' where id=8;
+update animals set habitat='domestic' where id=9;
+
+add  a record;
+
+insert into animals(id,name,species,life_span)values(10,'horse','animal',25','domestic');
+
+
+update a column specific record and assignmet
+
+ update animals set life_span = life_span+5 where habitat='domestic';
+
+delete  A record using condition
+
+delete from animals where habitat='wild'and life_span<8;
+
+
+
+
+
+

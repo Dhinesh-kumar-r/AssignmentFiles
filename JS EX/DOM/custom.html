@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <img src="lightbulb-png-819.png" height="300px" width="300px" style="padding-top: 150px;" id="bulb">
+    
+        
+        </center>
+
+    <button id='btn1'>TurnOn</button>
+    <button id='btn2'>TurnOf</button>
+    <script>
+        const CustomEvent= new Event('CustomEvent');
+
+        const CustomEvent1 = new Event('CustomEvent1');
+
+        const bulb =document.getElementById('bulb');
+
+        const btn1 = document.getElementById('btn1');
+
+        const btn2 = document.getElementById('btn2');
+        
+       
+
+        
+        btn1.addEventListener('click',function(){
+            document.dispatchEvent(CustomEvent);
+        });
+
+        document.addEventListener('CustomEvent',function(){
+            bulb.style.background="yellow";
+        })
+
+        btn2.addEventListener('click',function(){
+            document.dispatchEvent(CustomEvent1);
+        })
+
+        document.addEventListener('CustomEvent1',function(){
+            bulb.style.background='black';
+        })
+        
+
+       
+      
+    </script>
+</body>
+</html>

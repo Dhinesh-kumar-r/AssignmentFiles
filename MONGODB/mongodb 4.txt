@@ -1,0 +1,635 @@
+my_assignment> db.d_mobiles.insertMany([{p_id:101,p_name:"iphone 11",price:85000,qty:15,company:{name:"apple",purchase_date:Date('2023-12-29')}}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("6597ef292aacc1d72c304818") }
+}
+my_assignment> db.d_mobiles.find();
+[
+  {
+    _id: ObjectId("6597ef292aacc1d72c304818"),
+    p_id: 101,
+    p_name: 'iphone 11',
+    price: 85000,
+    qty: 15,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:29:37 GMT+0530 (India Standard Time)'
+    }
+  }
+]
+... {p_id:102,p_name:"iphone 12",price:105000,qty:25,company:{name:"apple",purchase_date:Date("2024-01-02")}},
+... {p_id:103,p_name:"iphone 12",price:505000,qty:5,company:{name:"apple",purchase_date:Date("2024-01-05")}},
+... {p_id:104,p_name:"galaxy a03",price:15000,qty:01,company:{name:"samasung",purchase_date:Date("2023-11-25")}},
+... {p_id:105,p_name:"galaxy s23",price:95000,qty:02,company:{name:"samsung",purchase_date:Date("2023-09-17")}},
+... {p_id:106,p_name:"iphone 11",price:110000,qty:07,company:{name:"apple",purchase_date:Date("2023-07-22")}},
+... {p_id:107,p_name:"note 12 pro",price:50000,qty:05,company:{name:"redmi",purchase_date:Date("2023-10-02")}},
+... {p_id:102,p_name:"iphone 12",price:105000,qty:25,company:{name:"apple",purchase_date:Date("2024-01-02")}},
+... {p_id:108,p_name:"vivo 12pro",price:104500,qty:15,company:{name:"vivo",purchase_date:Date("2022-07-22")}},
+... {p_id:109,p_name:"iphone 15",price:305000,qty:03,company:{name:"apple",purchase_date:Date("2018-11-29")}},
+... {p_id:110,p_name:"iphone 14",price:905000,qty:08,company:{name:"apple",purchase_date:Date("2019-05-22")}},
+... {p_id:111,p_name:"oppo f22",price:55000,qty:6,company:{name:"oppo",purchase_date:Date("2019-04-10")}},
+... {p_id:112,p_name:"s22",price:344050,qty:02,company:{name:"samsung",purchase_date:Date("2024-01-04")}}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6597f3922aacc1d72c304819"),
+    '1': ObjectId("6597f3922aacc1d72c30481a"),
+    '2': ObjectId("6597f3922aacc1d72c30481b"),
+    '3': ObjectId("6597f3922aacc1d72c30481c"),
+    '4': ObjectId("6597f3922aacc1d72c30481d"),
+    '5': ObjectId("6597f3922aacc1d72c30481e"),
+    '6': ObjectId("6597f3922aacc1d72c30481f"),
+    '7': ObjectId("6597f3922aacc1d72c304820"),
+    '8': ObjectId("6597f3922aacc1d72c304821"),
+    '9': ObjectId("6597f3922aacc1d72c304822"),
+    '10': ObjectId("6597f3922aacc1d72c304823"),
+    '11': ObjectId("6597f3922aacc1d72c304824")
+  }
+}
+my_assignment>
+
+my_assignment>
+
+my_assignment>
+
+my_assignment> db.d_mobiles.find();
+[
+  {
+    _id: ObjectId("6597ef292aacc1d72c304818"),
+    p_id: 101,
+    p_name: 'iphone 11',
+    price: 85000,
+    qty: 15,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:29:37 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    _id: ObjectId("6597f3922aacc1d72c304819"),
+    p_id: 102,
+    p_name: 'iphone 12',
+    price: 105000,
+    qty: 25,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    _id: ObjectId("6597f3922aacc1d72c30481a"),
+    p_id: 103,
+    p_name: 'iphone 12',
+    price: 505000,
+    qty: 5,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    _id: ObjectId("6597f3922aacc1d72c30481b"),
+    p_id: 104,
+    p_name: 'galaxy a03',
+    price: 15000,
+    qty: 1,
+    company: {
+      name: 'samasung',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    _id: ObjectId("6597f3922aacc1d72c30481c"),
+    p_id: 105,
+    p_name: 'galaxy s23',
+    price: 95000,
+    qty: 2,
+    company: {
+      name: 'samsung',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    _id: ObjectId("6597f3922aacc1d72c30481d"),
+    p_id: 106,
+    p_name: 'iphone 11',
+    price: 110000,
+    qty: 7,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    _id: ObjectId("6597f3922aacc1d72c30481e"),
+    p_id: 107,
+    p_name: 'note 12 pro',
+    price: 50000,
+    qty: 5,
+    company: {
+      name: 'redmi',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    _id: ObjectId("6597f3922aacc1d72c30481f"),
+    p_id: 102,
+    p_name: 'iphone 12',
+    price: 105000,
+    qty: 25,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    _id: ObjectId("6597f3922aacc1d72c304820"),
+    p_id: 108,
+    p_name: 'vivo 12pro',
+    price: 104500,
+    qty: 15,
+    company: {
+      name: 'vivo',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    _id: ObjectId("6597f3922aacc1d72c304821"),
+    p_id: 109,
+    p_name: 'iphone 15',
+    price: 305000,
+    qty: 3,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    _id: ObjectId("6597f3922aacc1d72c304822"),
+    p_id: 110,
+    p_name: 'iphone 14',
+    price: 905000,
+    qty: 8,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    _id: ObjectId("6597f3922aacc1d72c304823"),
+    p_id: 111,
+    p_name: 'oppo f22',
+    price: 55000,
+    qty: 6,
+    company: {
+      name: 'oppo',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    _id: ObjectId("6597f3922aacc1d72c304824"),
+    p_id: 112,
+    p_name: 's22',
+    price: 344050,
+    qty: 2,
+    company: {
+      name: 'samsung',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  }
+]
+my_assignment> db.d_mobiles.find({p_name:{$eq:'iphone 12'}},{_id:0})
+[
+  {
+    p_id: 102,
+    p_name: 'iphone 12',
+    price: 105000,
+    qty: 25,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    p_id: 103,
+    p_name: 'iphone 12',
+    price: 505000,
+    qty: 5,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    p_id: 102,
+    p_name: 'iphone 12',
+    price: 105000,
+    qty: 25,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  }
+]
+my_assignment> db.d_mobiles.find({company:{name:{$eq:'apple'}}},{_id:0}):
+
+my_assignment> db.d_mobiles.find({company:{name:{$eq:'apple'}}},{_id:0})
+
+my_assignment> db.d_mobiles.find({company:{name:{$eq:'apple'}}},{_id:0});
+
+my_assignment> db.d_mobiles.find({company:{name:{$eq:"apple"}}},{_id:0});
+
+my_assignment>
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:31)
+
+> 1 | db.d_mobiles.aggregate({company.name:{$match:"apple"}},{_id:0})
+    |                                ^
+my_assignment> db.d_mobiles.aggregate({'company.name':{$match:"apple"}},{_id:0})
+MongoServerError: Unrecognized pipeline stage name: 'company.name'
+my_assignment> db.d_mobiles.find({'company.name':{$match:"apple"}},{_id:0})
+MongoServerError: unknown operator: $match
+my_assignment> db.d_mobiles.find({'company.name':{$eq:"apple"}},{_id:0})
+[
+  {
+    p_id: 101,
+    p_name: 'iphone 11',
+    price: 85000,
+    qty: 15,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:29:37 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    p_id: 102,
+    p_name: 'iphone 12',
+    price: 105000,
+    qty: 25,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    p_id: 103,
+    p_name: 'iphone 12',
+    price: 505000,
+    qty: 5,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    p_id: 106,
+    p_name: 'iphone 11',
+    price: 110000,
+    qty: 7,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    p_id: 102,
+    p_name: 'iphone 12',
+    price: 105000,
+    qty: 25,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    p_id: 109,
+    p_name: 'iphone 15',
+    price: 305000,
+    qty: 3,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  },
+  {
+    p_id: 110,
+    p_name: 'iphone 14',
+    price: 905000,
+    qty: 8,
+    company: {
+      name: 'apple',
+      purchase_date: 'Fri Jan 05 2024 17:48:26 GMT+0530 (India Standard Time)'
+    }
+  }
+]
+my_assignment> db.d_store.aggregate([{$group:{_id:,"totalSumPrice":{$sum:{$multiply:['$qty','$price]}}}}]);
+Uncaught:
+SyntaxError: Unexpected token (1:35)
+
+> 1 | db.d_store.aggregate([{$group:{_id:,"totalSumPrice":{$sum:{$multiply:['$qty','$price]}}}}]);
+    |                                    ^
+  2 |
+
+my_assignment> db.d_store.aggregate([{$group:{_id:"totalSumPrice":{$sum:{$multiply:['$qty','$price]}}}}]);
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:50)
+
+> 1 | db.d_store.aggregate([{$group:{_id:"totalSumPrice":{$sum:{$multiply:['$qty','$price]}}}}]);
+    |                                                   ^
+  2 |
+
+my_assignment> db.d_store.aggregate([{$group:{_id:"totalSumPrice":{$sum:{$multiply:['$qty','$price]}}}}]);
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:50)
+
+> 1 | db.d_store.aggregate([{$group:{_id:"totalSumPrice":{$sum:{$multiply:['$qty','$price]}}}}]);
+    |                                                   ^
+  2 |
+
+my_assignment> db.d_store.aggregate([{$group:{_id:"totalSumPrice"{$sum:{$multiply:['$qty','$price]}}}}]);
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:50)
+
+> 1 | db.d_store.aggregate([{$group:{_id:"totalSumPrice"{$sum:{$multiply:['$qty','$price]}}}}]);
+    |                                                   ^
+  2 |
+
+my_assignment> db.d_store.aggregate([{$group:{_id:"totalSumPrice":{$sum:{$multiply:['$qty','$price]}}}}]);
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:50)
+
+> 1 | db.d_store.aggregate([{$group:{_id:"totalSumPrice":{$sum:{$multiply:['$qty','$price]}}}}]);
+    |                                                   ^
+  2 |
+
+my_assignment> db.d_mobiles.aggregate([{$group:{_id:{p_name:"$p_name",qty:"$qty",price:"$price"},"total price":{$sum:"$qty"}}}])
+[
+  {
+    _id: { p_name: 'galaxy a03', qty: 1, price: 15000 },
+    'total price': 1
+  },
+  {
+    _id: { p_name: 'iphone 11', qty: 7, price: 110000 },
+    'total price': 7
+  },
+  {
+    _id: { p_name: 'vivo 12pro', qty: 15, price: 104500 },
+    'total price': 15
+  },
+  {
+    _id: { p_name: 'iphone 14', qty: 8, price: 905000 },
+    'total price': 8
+  },
+  {
+    _id: { p_name: 'note 12 pro', qty: 5, price: 50000 },
+    'total price': 5
+  },
+  { _id: { p_name: 's22', qty: 2, price: 344050 }, 'total price': 2 },
+  {
+    _id: { p_name: 'iphone 15', qty: 3, price: 305000 },
+    'total price': 3
+  },
+  {
+    _id: { p_name: 'iphone 12', qty: 25, price: 105000 },
+    'total price': 50
+  },
+  {
+    _id: { p_name: 'oppo f22', qty: 6, price: 55000 },
+    'total price': 6
+  },
+  {
+    _id: { p_name: 'galaxy s23', qty: 2, price: 95000 },
+    'total price': 2
+  },
+  {
+    _id: { p_name: 'iphone 11', qty: 15, price: 85000 },
+    'total price': 15
+  },
+  {
+    _id: { p_name: 'iphone 12', qty: 5, price: 505000 },
+    'total price': 5
+  }
+]
+my_assignment> db.d_mobiles.aggregate([{$group:{_id:{p_name:"$p_name",qty:"$qty",price:"$price"},"total price":{$multiply:["$qty"]}}}])
+MongoServerError: The $multiply accumulator is a unary operator
+my_assignment> db.d_mobiles.aggregate([{$group:{_id:{p_name:"$p_name",qty:"$qty",price:"$price"},"total price":{$multiply:["$qty"]}}}]
+... ;
+my_assignment>
+SyntaxError: Unexpected token, expected "," (2:0)
+my_assignment>
+TypeError: db.d_mobiles.aggreagte is not a function"$p_name",qty:"$qty",price:"$price"},"total price":{$multiply:["$qty"]}}}]
+my_assignment> db.d_mobiles.aggreagte([{project:{_id:0,"total price":{$multiply:["$qty","$price"]}}}])
+TypeError: db.d_mobiles.aggreagte is not a function
+my_assignment> db.d_mobiles.aggreagte([{$group:{project:{_id:0,"total price":{$multiply:["$qty","$price"]}}}}])
+TypeError: db.d_mobiles.aggreagte is not a function
+my_assignment>
+MongoServerError: The $multiply accumulator is a unary operator
+my_assignment> db.d_mobiles.aggreagte([{$multiply:["$qty","$price"]}])
+TypeError: db.d_mobiles.aggreagte is not a function
+my_assignment> db.d_mobiles.aggreagte([{"total_price":{$multiply:["$qty","$price"]}}])
+TypeError: db.d_mobiles.aggreagte is not a function
+my_assignment> db.d_mobiles.aggreagte([{$group:{"total_price":{$multiply:["$qty","$price"]}}}])
+TypeError: db.d_mobiles.aggreagte is not a function
+my_assignment> db.d_mobiles.find([{"total_price":{$multiply:["$qty","$price"]}}])
+MongoInvalidArgumentError: Query filter must be a plain object or ObjectId
+my_assignment> db.d_mobiles.find([{project:{_id:0,{"total_price":{$multiply:["$qty","$price"]}}}])
+Uncaught:
+SyntaxError: Unexpected token (1:35)
+
+> 1 | db.d_mobiles.find([{project:{_id:0,{"total_price":{$multiply:["$qty","$price"]}}}])
+    |                                    ^
+  2 |
+
+my_assignment> db.d_mobiles.find([{project:{_id:0,"total_price":{$multiply:["$qty","$price"]}}])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:79)
+
+> 1 | db.d_mobiles.find([{project:{_id:0,"total_price":{$multiply:["$qty","$price"]}}])
+    |                                                                                ^
+  2 |
+
+my_assignment> db.d_mobiles.find([{project:{_id:0,"total_price":{$multiply:["$qty","$price"]}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:79)
+
+> 1 | db.d_mobiles.find([{project:{_id:0,"total_price":{$multiply:["$qty","$price"]}})
+    |                                                                                ^
+  2 |
+
+my_assignment> db.d_mobiles.find([{project:{_id:0,"total_price":{$multiply:["$qty","$price"]}}
+... db.d_mobiles.find([{project:{_id:0,"total_price":{$multiply:["$qty","$price"]}}
+Uncaught:
+SyntaxError: Unexpected token, expected "," (2:0)
+
+  1 | db.d_mobiles.find([{project:{_id:0,"total_price":{$multiply:["$qty","$price"]}}
+> 2 | db.d_mobiles.find([{project:{_id:0,"total_price":{$multiply:["$qty","$price"]}}
+    | ^
+  3 |
+
+my_assignment> db.d_mobiles.aggregate([{$group:{_id:{company:'$company.name',p_name:'$p_name',price:'$price',qty:'$qty'}}}])
+[
+  {
+    _id: { company: 'samsung', p_name: 'galaxy s23', price: 95000, qty: 2 }
+  },
+  {
+    _id: { company: 'vivo', p_name: 'vivo 12pro', price: 104500, qty: 15 }
+  },
+  {
+    _id: { company: 'apple', p_name: 'iphone 14', price: 905000, qty: 8 }
+  },
+  {
+    _id: { company: 'redmi', p_name: 'note 12 pro', price: 50000, qty: 5 }
+  },
+  {
+    _id: { company: 'apple', p_name: 'iphone 11', price: 85000, qty: 15 }
+  },
+  {
+    _id: { company: 'apple', p_name: 'iphone 12', price: 505000, qty: 5 }
+  },
+  {
+    _id: { company: 'samasung', p_name: 'galaxy a03', price: 15000, qty: 1 }
+  },
+  { _id: { company: 'samsung', p_name: 's22', price: 344050, qty: 2 } },
+  {
+    _id: { company: 'apple', p_name: 'iphone 15', price: 305000, qty: 3 }
+  },
+  {
+    _id: { company: 'apple', p_name: 'iphone 12', price: 105000, qty: 25 }
+  },
+  {
+    _id: { company: 'apple', p_name: 'iphone 11', price: 110000, qty: 7 }
+  },
+  {
+    _id: { company: 'oppo', p_name: 'oppo f22', price: 55000, qty: 6 }
+  }
+]
+my_assignment> db.d_mobiles.aggregate([{$group:{_id:'$p_name','total_quantity':{$sum:'$qty'}}}])
+[
+  { _id: 'iphone 11', total_quantity: 22 },
+  { _id: 'galaxy a03', total_quantity: 1 },
+  { _id: 'galaxy s23', total_quantity: 2 },
+  { _id: 'iphone 14', total_quantity: 8 },
+  { _id: 'oppo f22', total_quantity: 6 },
+  { _id: 'vivo 12pro', total_quantity: 15 },
+  { _id: 'iphone 15', total_quantity: 3 },
+  { _id: 's22', total_quantity: 2 },
+  { _id: 'iphone 12', total_quantity: 55 },
+  { _id: 'note 12 pro', total_quantity: 5 }
+]
+my_assignment>  db.d_mobiles.aggregate([{$group:{_id:'$pname','total_price':{$sum:'$price'},'average':{$avg:'$price'}}}])
+[ { _id: null, total_price: 2783550, average: 214119.23076923078 } ]
+my_assignment>  db.d_mobiles.aggregate([{$group:{_id:'$p_name','total_price':{$sum:'$price'},'average':{$avg:'$price'}}}])
+[
+  { _id: 'iphone 11', total_price: 195000, average: 97500 },
+  { _id: 'galaxy a03', total_price: 15000, average: 15000 },
+  { _id: 'galaxy s23', total_price: 95000, average: 95000 },
+  { _id: 'iphone 14', total_price: 905000, average: 905000 },
+  { _id: 'oppo f22', total_price: 55000, average: 55000 },
+  { _id: 'vivo 12pro', total_price: 104500, average: 104500 },
+  { _id: 'iphone 15', total_price: 305000, average: 305000 },
+  { _id: 's22', total_price: 344050, average: 344050 },
+  {
+    _id: 'iphone 12',
+    total_price: 715000,
+    average: 238333.33333333334
+  },
+  { _id: 'note 12 pro', total_price: 50000, average: 50000 }
+]
+my_assignment> db.d_mobiles.aggregate([{$project:{_id:0,'company.name':1,pname:1,price:1,quantity:1}},{$sort:{'company.name':1}}])
+[
+  { price: 85000, company: { name: 'apple' } },
+  { price: 105000, company: { name: 'apple' } },
+  { price: 505000, company: { name: 'apple' } },
+  { price: 110000, company: { name: 'apple' } },
+  { price: 105000, company: { name: 'apple' } },
+  { price: 305000, company: { name: 'apple' } },
+  { price: 905000, company: { name: 'apple' } },
+  { price: 55000, company: { name: 'oppo' } },
+  { price: 50000, company: { name: 'redmi' } },
+  { price: 15000, company: { name: 'samasung' } },
+  { price: 95000, company: { name: 'samsung' } },
+  { price: 344050, company: { name: 'samsung' } },
+  { price: 104500, company: { name: 'vivo' } }
+]
+my_assignment> db.d_mobiles.aggregate([{$project:{_id:0,'company.name':1,p_name:1,price:1,qty:1}},{$sort:{'company.name':1}}])
+[
+  {
+    p_name: 'iphone 11',
+    price: 85000,
+    qty: 15,
+    company: { name: 'apple' }
+  },
+  {
+    p_name: 'iphone 12',
+    price: 105000,
+    qty: 25,
+    company: { name: 'apple' }
+  },
+  {
+    p_name: 'iphone 12',
+    price: 505000,
+    qty: 5,
+    company: { name: 'apple' }
+  },
+  {
+    p_name: 'iphone 11',
+    price: 110000,
+    qty: 7,
+    company: { name: 'apple' }
+  },
+  {
+    p_name: 'iphone 12',
+    price: 105000,
+    qty: 25,
+    company: { name: 'apple' }
+  },
+  {
+    p_name: 'iphone 15',
+    price: 305000,
+    qty: 3,
+    company: { name: 'apple' }
+  },
+  {
+    p_name: 'iphone 14',
+    price: 905000,
+    qty: 8,
+    company: { name: 'apple' }
+  },
+  {
+    p_name: 'oppo f22',
+    price: 55000,
+    qty: 6,
+    company: { name: 'oppo' }
+  },
+  {
+    p_name: 'note 12 pro',
+    price: 50000,
+    qty: 5,
+    company: { name: 'redmi' }
+  },
+  {
+    p_name: 'galaxy a03',
+    price: 15000,
+    qty: 1,
+    company: { name: 'samasung' }
+  },
+  {
+    p_name: 'galaxy s23',
+    price: 95000,
+    qty: 2,
+    company: { name: 'samsung' }
+  },
+  {
+    p_name: 's22',
+    price: 344050,
+    qty: 2,
+    company: { name: 'samsung' }
+  },
+  {
+    p_name: 'vivo 12pro',
+    price: 104500,
+    qty: 15,
+    company: { name: 'vivo' }
+  }
+]
+my_assignment>

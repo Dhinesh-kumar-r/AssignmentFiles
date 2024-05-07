@@ -1,0 +1,51 @@
+create table distribution_company
+(cid int primary key,
+company_name varchar(30) unique,
+head_office varchar(20) not null);
+
+create table movies
+(mid int primary key,
+movie_title varchar(30) not null,
+imdb_rating decimal(6,2),
+year_released year check (year_released<2023)); 
+
+create table movie_distribution(
+did int primary key,
+movie_id int,foreign key(movie_id) references movies(mid) on delete cascade,
+company_id int,foreign key(company_id) references distribution_company(cid) on delete cascade);
+
+ alter table movie_distribution add primary key(did);
+ 
+
+
+alter table movies add imdb_rating DECIMAL(3,1) CHECK (imdb_rating >= 1 AND imdb_rating <= 10),
+
+
+ALTER TABLE movies
+ALTER COLUMN imdb_rating DECIMAL(3,1) CHECK (imdb_rating >= 1 AND imdb_rating <= 10)
+
+
+add a new column
+
+alter table distribution_company add mobile_number bigint;
+
+insert into distribution_company values
+(101,'dhi_productions','trichy',7695856553),
+(102,'rd_studios','chennai',9944293257),
+(103,'dhinesh_pictures','delhi',9544200525),
+(104,'sun_pictures','chennai',9644522667),
+(105,'disney','covai',76554223365);
+
+insert into movies values
+(1001,'leo',9.5,2019),
+(1002,'varisu',8.5,2005),
+(1003,'jailer',9.7,2022),
+(1004,'beast',9.0,2021),
+(1005,'vikram',10.0,2020);
+
+insert into movie_distribution values
+(2001,1001,101),
+(2002,1002,102),
+(2003,1003,103),
+(2004,1004,104),
+(2005,1005,105);

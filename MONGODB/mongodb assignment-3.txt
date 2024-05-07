@@ -1,0 +1,1119 @@
+
+test> use my_assignment
+switched to db my_assignment
+my_assignment> db.my_student.find({$and:[{m1:{$gt:40}},{m2:{$gt:40}},{m3:{$gt:40}}]})
+[
+  {
+    _id: 1,
+    name: 'kishore',
+    course: 'BE-EEE',
+    m1: 76,
+    m2: 85,
+    m3: 76,
+    subjects: [ 'Mongo', 'HTML', 'CSS' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'baskar',
+      mobile_number: '97865783257',
+      email_id: 'kishore@gmail.com',
+      address: 'covai'
+    }
+  },
+  {
+    _id: 2,
+    name: 'manoj',
+    course: 'BE-CSE',
+    m1: 87,
+    m2: 75,
+    m3: 65,
+    subjects: [ 'html', 'css', 'java' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'vinoth',
+      mobile_number: '98677653257',
+      email_id: 'manoj@gmail.com',
+      address: 'velore'
+    }
+  },
+  {
+    _id: 3,
+    name: 'yuvaraj',
+    course: 'BE-cse',
+    m1: 76,
+    m2: 87,
+    m3: 67,
+    subjects: [ 'java', 'css', 'python' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ravi',
+      mobile_number: 97656553257,
+      email_id: 'yuvaraj@gmail.com',
+      address: 'thirupur'
+    }
+  },
+  {
+    _id: 5,
+    name: 'ram',
+    course: 'BE-cse',
+    m1: 69,
+    m2: 45,
+    m3: 77,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ashok',
+      mobile_number: 6786553257,
+      email_id: 'ram@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: 6,
+    name: 'dhinesh',
+    course: 'BE-ECE',
+    m1: 96,
+    m2: 95,
+    m3: 96,
+    subjects: [ 'HTML', 'CSS', 'JS' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ravi',
+      mobile_number: '7695856553',
+      email_id: 'dhinesh@gmail.com',
+      address: 'trichy'
+    }
+  },
+  {
+    _id: 7,
+    name: 'hari',
+    course: 'BE-CSE',
+    m1: 77,
+    m2: 65,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'PYTHON' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'jayaraj',
+      mobile_number: 7656553257,
+      email_id: 'jayaraj@gmail.com',
+      address: 'thanjavur'
+    }
+  },
+  {
+    _id: 8,
+    name: 'krishna',
+    course: 'BE-civil',
+    m1: 87,
+    m2: 76,
+    m3: 80,
+    subjects: [ 'html', 'css', 'mysql' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'karthi',
+      mobile_number: '655593257',
+      email_id: 'krishna@gmail.com',
+      address: 'namakkal'
+    }
+  },
+  {
+    _id: 9,
+    name: 'vijay',
+    course: 'BE-EEE',
+    m1: 98,
+    m2: 85,
+    m3: 71,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 20,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'raja',
+      mobile_number: 9866553257,
+      email_id: 'vijay@gmail.com',
+      address: 'covai'
+    }
+  },
+  {
+    _id: 10,
+    name: 'surya',
+    course: 'BE-ECE',
+    m1: 81,
+    m2: 51,
+    m3: 81,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'sankar',
+      mobile_number: 9666553257,
+      email_id: 'surya@gmail.com',
+      address: 'madurai'
+    }
+  }
+]
+my_assignment> db.my_student.find({$and:[{m1:{$lt:50}},{m2:{$lt:50}},{m3:{$lt:50}}]},{_id:0,name:1,course:1})
+
+my_assignment> db.my_student.find({$or:[{m1:{$lt:50}},{m2:{$lt:50}},{m3:{$lt:50}}]},{_id:0,name:1,course:1})
+[
+  { name: 'kumar', course: 'BE-civil' },
+  { name: 'ram', course: 'BE-cse' }
+]
+my_assignment> db.my_student.find({$or:[{subjects:{$eq:['HTML','CSS','JAVA']}}]})
+
+my_assignment> db.my_student.find({$or:[{subjects:{$eq:['HTML','CSS','JAVA']}}]})
+
+my_assignment> db.my_student.find({$or:[{subjects:{$eq:['HTML','CSS','PYTHON']}}]})
+[
+  {
+    _id: 7,
+    name: 'hari',
+    course: 'BE-CSE',
+    m1: 77,
+    m2: 65,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'PYTHON' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'jayaraj',
+      mobile_number: 7656553257,
+      email_id: 'jayaraj@gmail.com',
+      address: 'thanjavur'
+    }
+  }
+]
+my_assignment> db.my_student.find({age:{$lt:21}})
+
+my_assignment> db.my_student.find({age:{$lt:25}})
+
+my_assignment> db.my_student.find({'personal.age':{$lt:25}})
+[
+  {
+    _id: 1,
+    name: 'kishore',
+    course: 'BE-EEE',
+    m1: 76,
+    m2: 85,
+    m3: 76,
+    subjects: [ 'Mongo', 'HTML', 'CSS' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'baskar',
+      mobile_number: '97865783257',
+      email_id: 'kishore@gmail.com',
+      address: 'covai'
+    }
+  },
+  {
+    _id: 2,
+    name: 'manoj',
+    course: 'BE-CSE',
+    m1: 87,
+    m2: 75,
+    m3: 65,
+    subjects: [ 'html', 'css', 'java' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'vinoth',
+      mobile_number: '98677653257',
+      email_id: 'manoj@gmail.com',
+      address: 'velore'
+    }
+  },
+  {
+    _id: 3,
+    name: 'yuvaraj',
+    course: 'BE-cse',
+    m1: 76,
+    m2: 87,
+    m3: 67,
+    subjects: [ 'java', 'css', 'python' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ravi',
+      mobile_number: 97656553257,
+      email_id: 'yuvaraj@gmail.com',
+      address: 'thirupur'
+    }
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    course: 'BE-civil',
+    m1: 77,
+    m2: 98,
+    m3: 30,
+    subjects: [ 'html', 'css', 'mysql' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'kishore',
+      mobile_number: '965593257',
+      email_id: 'kumar@gmail.com',
+      address: 'trichy'
+    }
+  },
+  {
+    _id: 5,
+    name: 'ram',
+    course: 'BE-cse',
+    m1: 69,
+    m2: 45,
+    m3: 77,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ashok',
+      mobile_number: 6786553257,
+      email_id: 'ram@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: 6,
+    name: 'dhinesh',
+    course: 'BE-ECE',
+    m1: 96,
+    m2: 95,
+    m3: 96,
+    subjects: [ 'HTML', 'CSS', 'JS' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ravi',
+      mobile_number: '7695856553',
+      email_id: 'dhinesh@gmail.com',
+      address: 'trichy'
+    }
+  },
+  {
+    _id: 7,
+    name: 'hari',
+    course: 'BE-CSE',
+    m1: 77,
+    m2: 65,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'PYTHON' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'jayaraj',
+      mobile_number: 7656553257,
+      email_id: 'jayaraj@gmail.com',
+      address: 'thanjavur'
+    }
+  },
+  {
+    _id: 8,
+    name: 'krishna',
+    course: 'BE-civil',
+    m1: 87,
+    m2: 76,
+    m3: 80,
+    subjects: [ 'html', 'css', 'mysql' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'karthi',
+      mobile_number: '655593257',
+      email_id: 'krishna@gmail.com',
+      address: 'namakkal'
+    }
+  },
+  {
+    _id: 9,
+    name: 'vijay',
+    course: 'BE-EEE',
+    m1: 98,
+    m2: 85,
+    m3: 71,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 20,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'raja',
+      mobile_number: 9866553257,
+      email_id: 'vijay@gmail.com',
+      address: 'covai'
+    }
+  },
+  {
+    _id: 10,
+    name: 'surya',
+    course: 'BE-ECE',
+    m1: 81,
+    m2: 51,
+    m3: 81,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'sankar',
+      mobile_number: 9666553257,
+      email_id: 'surya@gmail.com',
+      address: 'madurai'
+    }
+  }
+]
+my_assignment> db.my_student.find().limit(2)
+[
+  {
+    _id: 1,
+    name: 'kishore',
+    course: 'BE-EEE',
+    m1: 76,
+    m2: 85,
+    m3: 76,
+    subjects: [ 'Mongo', 'HTML', 'CSS' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'baskar',
+      mobile_number: '97865783257',
+      email_id: 'kishore@gmail.com',
+      address: 'covai'
+    }
+  },
+  {
+    _id: 2,
+    name: 'manoj',
+    course: 'BE-CSE',
+    m1: 87,
+    m2: 75,
+    m3: 65,
+    subjects: [ 'html', 'css', 'java' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'vinoth',
+      mobile_number: '98677653257',
+      email_id: 'manoj@gmail.com',
+      address: 'velore'
+    }
+  }
+]
+my_assignment> db.my_student.find().skip(2)
+[
+  {
+    _id: 3,
+    name: 'yuvaraj',
+    course: 'BE-cse',
+    m1: 76,
+    m2: 87,
+    m3: 67,
+    subjects: [ 'java', 'css', 'python' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ravi',
+      mobile_number: 97656553257,
+      email_id: 'yuvaraj@gmail.com',
+      address: 'thirupur'
+    }
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    course: 'BE-civil',
+    m1: 77,
+    m2: 98,
+    m3: 30,
+    subjects: [ 'html', 'css', 'mysql' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'kishore',
+      mobile_number: '965593257',
+      email_id: 'kumar@gmail.com',
+      address: 'trichy'
+    }
+  },
+  {
+    _id: 5,
+    name: 'ram',
+    course: 'BE-cse',
+    m1: 69,
+    m2: 45,
+    m3: 77,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ashok',
+      mobile_number: 6786553257,
+      email_id: 'ram@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: 6,
+    name: 'dhinesh',
+    course: 'BE-ECE',
+    m1: 96,
+    m2: 95,
+    m3: 96,
+    subjects: [ 'HTML', 'CSS', 'JS' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ravi',
+      mobile_number: '7695856553',
+      email_id: 'dhinesh@gmail.com',
+      address: 'trichy'
+    }
+  },
+  {
+    _id: 7,
+    name: 'hari',
+    course: 'BE-CSE',
+    m1: 77,
+    m2: 65,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'PYTHON' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'jayaraj',
+      mobile_number: 7656553257,
+      email_id: 'jayaraj@gmail.com',
+      address: 'thanjavur'
+    }
+  },
+  {
+    _id: 8,
+    name: 'krishna',
+    course: 'BE-civil',
+    m1: 87,
+    m2: 76,
+    m3: 80,
+    subjects: [ 'html', 'css', 'mysql' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'karthi',
+      mobile_number: '655593257',
+      email_id: 'krishna@gmail.com',
+      address: 'namakkal'
+    }
+  },
+  {
+    _id: 9,
+    name: 'vijay',
+    course: 'BE-EEE',
+    m1: 98,
+    m2: 85,
+    m3: 71,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 20,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'raja',
+      mobile_number: 9866553257,
+      email_id: 'vijay@gmail.com',
+      address: 'covai'
+    }
+  },
+  {
+    _id: 10,
+    name: 'surya',
+    course: 'BE-ECE',
+    m1: 81,
+    m2: 51,
+    m3: 81,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'sankar',
+      mobile_number: 9666553257,
+      email_id: 'surya@gmail.com',
+      address: 'madurai'
+    }
+  }
+]
+my_assignment> db.my_student.find().skip(5)
+[
+  {
+    _id: 6,
+my_assignment>
+    course: 'BE-ECE',
+    m1: 96,
+    m2: 95,
+    m3: 96,
+    subjects: [ 'HTML', 'CSS', 'JS' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ravi',
+      mobile_number: '7695856553',
+      email_id: 'dhinesh@gmail.com',
+      address: 'trichy'
+    }
+  },
+  {
+    _id: 7,
+    name: 'hari',
+    course: 'BE-CSE',
+    m1: 77,
+    m2: 65,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'PYTHON' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'jayaraj',
+      mobile_number: 7656553257,
+      email_id: 'jayaraj@gmail.com',
+      address: 'thanjavur'
+    }
+  },
+  {
+    _id: 8,
+    name: 'krishna',
+    course: 'BE-civil',
+    m1: 87,
+    m2: 76,
+    m3: 80,
+    subjects: [ 'html', 'css', 'mysql' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'karthi',
+      mobile_number: '655593257',
+      email_id: 'krishna@gmail.com',
+      address: 'namakkal'
+    }
+  },
+  {
+    _id: 9,
+    name: 'vijay',
+    course: 'BE-EEE',
+    m1: 98,
+    m2: 85,
+    m3: 71,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 20,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'raja',
+      mobile_number: 9866553257,
+      email_id: 'vijay@gmail.com',
+      address: 'covai'
+    }
+  },
+  {
+    _id: 10,
+    name: 'surya',
+    course: 'BE-ECE',
+    m1: 81,
+    m2: 51,
+    m3: 81,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'sankar',
+      mobile_number: 9666553257,
+      email_id: 'surya@gmail.com',
+      address: 'madurai'
+    }
+  }
+]
+my_assignment> db.my_student.find({sort({name:1}),{id:0,name:1})
+Uncaught:
+SyntaxError: Unexpected token (1:31)
+
+> 1 | db.my_student.find({sort({name:1}),{id:0,name:1})
+    |                                ^
+  2 |
+
+my_assignment> db.my_student.find({id:0,name:1},{sort({name:1})})
+Uncaught:
+SyntaxError: Unexpected token (1:45)
+
+> 1 | db.my_student.find({id:0,name:1},{sort({name:1})})
+    |                                              ^
+  2 |
+
+my_assignment> db.my_student.find({},{_id:0,name:1}).sort({name:1})
+[
+  { name: 'dhinesh' },
+  { name: 'hari' },
+  { name: 'kishore' },
+  { name: 'krishna' },
+  { name: 'kumar' },
+  { name: 'manoj' },
+  { name: 'ram' },
+  { name: 'surya' },
+  { name: 'vijay' },
+  { name: 'yuvaraj' }
+]
+my_assignment> db.my_student.find({},{_id:0,name:1}).sort({name:-1})
+[
+  { name: 'yuvaraj' },
+  { name: 'vijay' },
+  { name: 'surya' },
+  { name: 'ram' },
+  { name: 'manoj' },
+  { name: 'kumar' },
+  { name: 'krishna' },
+  { name: 'kishore' },
+  { name: 'hari' },
+  { name: 'dhinesh' }
+]
+my_assignment>
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:44)
+
+> 1 | db.my_student.find({},{_id:0,name:1,personal.age:1}).sort({personal.age:1})
+    |                                             ^
+my_assignment> db.my_student.find({},{_id:0,name:1,personal.age:1}).sort({personal:{age:1}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:44)
+
+> 1 | db.my_student.find({},{_id:0,name:1,personal.age:1}).sort({personal:{age:1}})
+    |                                             ^
+  2 |
+
+my_assignment> db.my_student.find({},{_id:0,name:1,age:1}).sort({personal:{age:1}})
+MongoInvalidArgumentError: Invalid sort direction: {"age":1}
+my_assignment> db.my_student.find({},{_id:0,name:1,age:1}).sort({age:1})
+[
+  { name: 'kishore' },
+  { name: 'manoj' },
+  { name: 'yuvaraj' },
+  { name: 'kumar' },
+  { name: 'ram' },
+  { name: 'dhinesh' },
+  { name: 'hari' },
+  { name: 'krishna' },
+  { name: 'vijay' },
+  { name: 'surya' }
+]
+my_assignment> db.my_student.find({},{_id:0,name:1,personal.age:1}).sort({age:1})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:44)
+
+> 1 | db.my_student.find({},{_id:0,name:1,personal.age:1}).sort({age:1})
+    |                                             ^
+  2 |
+
+my_assignment> db.my_student.find({},{_id:0,name:1,personal:age:1}).sort({age:1})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:48)
+
+> 1 | db.my_student.find({},{_id:0,name:1,personal:age:1}).sort({age:1})
+    |                                                 ^
+  2 |
+
+my_assignment> db.my_student.find({},{_id:0}).sort({age:1})
+[
+  {
+    name: 'kishore',
+    course: 'BE-EEE',
+    m1: 76,
+    m2: 85,
+    m3: 76,
+    subjects: [ 'Mongo', 'HTML', 'CSS' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'baskar',
+      mobile_number: '97865783257',
+      email_id: 'kishore@gmail.com',
+      address: 'covai'
+    }
+  },
+  {
+    name: 'manoj',
+    course: 'BE-CSE',
+    m1: 87,
+    m2: 75,
+    m3: 65,
+    subjects: [ 'html', 'css', 'java' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'vinoth',
+      mobile_number: '98677653257',
+      email_id: 'manoj@gmail.com',
+      address: 'velore'
+    }
+  },
+  {
+    name: 'yuvaraj',
+    course: 'BE-cse',
+    m1: 76,
+    m2: 87,
+    m3: 67,
+    subjects: [ 'java', 'css', 'python' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ravi',
+      mobile_number: 97656553257,
+      email_id: 'yuvaraj@gmail.com',
+      address: 'thirupur'
+    }
+  },
+  {
+    name: 'kumar',
+    course: 'BE-civil',
+    m1: 77,
+    m2: 98,
+    m3: 30,
+    subjects: [ 'html', 'css', 'mysql' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'kishore',
+      mobile_number: '965593257',
+      email_id: 'kumar@gmail.com',
+      address: 'trichy'
+    }
+  },
+  {
+    name: 'ram',
+    course: 'BE-cse',
+    m1: 69,
+    m2: 45,
+    m3: 77,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ashok',
+      mobile_number: 6786553257,
+      email_id: 'ram@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    name: 'dhinesh',
+    course: 'BE-ECE',
+    m1: 96,
+    m2: 95,
+    m3: 96,
+    subjects: [ 'HTML', 'CSS', 'JS' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ravi',
+      mobile_number: '7695856553',
+      email_id: 'dhinesh@gmail.com',
+      address: 'trichy'
+    }
+  },
+  {
+    name: 'hari',
+    course: 'BE-CSE',
+    m1: 77,
+    m2: 65,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'PYTHON' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'jayaraj',
+      mobile_number: 7656553257,
+      email_id: 'jayaraj@gmail.com',
+      address: 'thanjavur'
+    }
+  },
+  {
+    name: 'krishna',
+    course: 'BE-civil',
+    m1: 87,
+    m2: 76,
+    m3: 80,
+    subjects: [ 'html', 'css', 'mysql' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'karthi',
+      mobile_number: '655593257',
+      email_id: 'krishna@gmail.com',
+      address: 'namakkal'
+    }
+  },
+  {
+    name: 'vijay',
+    course: 'BE-EEE',
+    m1: 98,
+    m2: 85,
+    m3: 71,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 20,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'raja',
+      mobile_number: 9866553257,
+      email_id: 'vijay@gmail.com',
+      address: 'covai'
+    }
+  },
+  {
+    name: 'surya',
+    course: 'BE-ECE',
+    m1: 81,
+    m2: 51,
+    m3: 81,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'sankar',
+      mobile_number: 9666553257,
+      email_id: 'surya@gmail.com',
+      address: 'madurai'
+    }
+  }
+]
+my_assignment> db.my_student.find(),{_id:0}.sort({age:-1})
+TypeError: {(intermediate value)}.sort is not a function
+my_assignment> db.my_student.find(){_id:0}.sort({age:-1})
+Uncaught:
+SyntaxError: Missing semicolon. (1:20)
+
+> 1 | db.my_student.find(){_id:0}.sort({age:-1})
+    |                     ^
+  2 |
+
+my_assignment> db.my_student.find().sort({age:-1})
+[
+  {
+    _id: 1,
+    name: 'kishore',
+    course: 'BE-EEE',
+    m1: 76,
+    m2: 85,
+    m3: 76,
+    subjects: [ 'Mongo', 'HTML', 'CSS' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'baskar',
+      mobile_number: '97865783257',
+      email_id: 'kishore@gmail.com',
+      address: 'covai'
+    }
+  },
+  {
+    _id: 2,
+    name: 'manoj',
+    course: 'BE-CSE',
+    m1: 87,
+    m2: 75,
+    m3: 65,
+    subjects: [ 'html', 'css', 'java' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'vinoth',
+      mobile_number: '98677653257',
+      email_id: 'manoj@gmail.com',
+      address: 'velore'
+    }
+  },
+  {
+    _id: 3,
+    name: 'yuvaraj',
+    course: 'BE-cse',
+    m1: 76,
+    m2: 87,
+    m3: 67,
+    subjects: [ 'java', 'css', 'python' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ravi',
+      mobile_number: 97656553257,
+      email_id: 'yuvaraj@gmail.com',
+      address: 'thirupur'
+    }
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    course: 'BE-civil',
+    m1: 77,
+    m2: 98,
+    m3: 30,
+    subjects: [ 'html', 'css', 'mysql' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'kishore',
+      mobile_number: '965593257',
+      email_id: 'kumar@gmail.com',
+      address: 'trichy'
+    }
+  },
+  {
+    _id: 5,
+    name: 'ram',
+    course: 'BE-cse',
+    m1: 69,
+    m2: 45,
+    m3: 77,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ashok',
+      mobile_number: 6786553257,
+      email_id: 'ram@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: 6,
+    name: 'dhinesh',
+    course: 'BE-ECE',
+    m1: 96,
+    m2: 95,
+    m3: 96,
+    subjects: [ 'HTML', 'CSS', 'JS' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ravi',
+      mobile_number: '7695856553',
+      email_id: 'dhinesh@gmail.com',
+      address: 'trichy'
+    }
+  },
+  {
+    _id: 7,
+    name: 'hari',
+    course: 'BE-CSE',
+    m1: 77,
+    m2: 65,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'PYTHON' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'jayaraj',
+      mobile_number: 7656553257,
+      email_id: 'jayaraj@gmail.com',
+      address: 'thanjavur'
+    }
+  },
+  {
+    _id: 8,
+    name: 'krishna',
+    course: 'BE-civil',
+    m1: 87,
+    m2: 76,
+    m3: 80,
+    subjects: [ 'html', 'css', 'mysql' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'karthi',
+      mobile_number: '655593257',
+      email_id: 'krishna@gmail.com',
+      address: 'namakkal'
+    }
+  },
+  {
+    _id: 9,
+    name: 'vijay',
+    course: 'BE-EEE',
+    m1: 98,
+    m2: 85,
+    m3: 71,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 20,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'raja',
+      mobile_number: 9866553257,
+      email_id: 'vijay@gmail.com',
+      address: 'covai'
+    }
+  },
+  {
+    _id: 10,
+    name: 'surya',
+    course: 'BE-ECE',
+    m1: 81,
+    m2: 51,
+    m3: 81,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'sankar',
+      mobile_number: 9666553257,
+      email_id: 'surya@gmail.com',
+      address: 'madurai'
+    }
+  }
+]
+my_assignment> db.my_student.find().limit(3).skip(2)
+[
+  {
+    _id: 3,
+    name: 'yuvaraj',
+    course: 'BE-cse',
+    m1: 76,
+    m2: 87,
+    m3: 67,
+    subjects: [ 'java', 'css', 'python' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ravi',
+      mobile_number: 97656553257,
+      email_id: 'yuvaraj@gmail.com',
+      address: 'thirupur'
+    }
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    course: 'BE-civil',
+    m1: 77,
+    m2: 98,
+    m3: 30,
+    subjects: [ 'html', 'css', 'mysql' ],
+    personal: {
+      age: 22,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'kishore',
+      mobile_number: '965593257',
+      email_id: 'kumar@gmail.com',
+      address: 'trichy'
+    }
+  },
+  {
+    _id: 5,
+    name: 'ram',
+    course: 'BE-cse',
+    m1: 69,
+    m2: 45,
+    m3: 77,
+    subjects: [ 'Msql', 'HTML', 'CSS' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'ashok',
+      mobile_number: 6786553257,
+      email_id: 'ram@gmail.com',
+      address: 'erode'
+    }
+  }
+]
+my_assignment>

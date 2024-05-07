@@ -1,0 +1,349 @@
+mysql> use my_assignment;
+Database changed
+mysql> create table animals
+    -> (id int primary key,
+    -> name varchar(20)not null,
+    -> specifies varchar(20)not null,
+    -> life_span varchar(20)not null);
+Query OK, 0 rows affected (0.98 sec)
+
+mysql> insert into animals values
+    -> (1,'cat','animal',20),
+    -> (2,'dog','animal',25),
+    -> (3,'monkey','animal',26),
+    -> (4,'elephant','animal',65),
+    -> (5,'canary','bird',20),
+    -> (6,'swift','bird',5),
+    -> (7,'dove','bird',12),
+    -> (8,'rabbit','animal',10),
+    -> (9,'cow','animal',25);
+Query OK, 9 rows affected (0.34 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+mysql> alter table animals modify life_span check(life_span <= 999));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'check(life_span <= 999))' at line 1
+mysql> show tables;
++-------------------------+
+| Tables_in_my_assignment |
++-------------------------+
+| animals                 |
++-------------------------+
+1 row in set (1.21 sec)
+
+mysql> select * from animals;
++----+----------+-----------+-----------+
+| id | name     | specifies | life_span |
++----+----------+-----------+-----------+
+|  1 | cat      | animal    | 20        |
+|  2 | dog      | animal    | 25        |
+|  3 | monkey   | animal    | 26        |
+|  4 | elephant | animal    | 65        |
+|  5 | canary   | bird      | 20        |
+|  6 | swift    | bird      | 5         |
+|  7 | dove     | bird      | 12        |
+|  8 | rabbit   | animal    | 10        |
+|  9 | cow      | animal    | 25        |
++----+----------+-----------+-----------+
+9 rows in set (0.20 sec)
+
+mysql> alter table animals modify life_span <= 999);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<= 999)' at line 1
+mysql> alter table animals modify column life_span check(length(life_span)<3));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'check(length(life_span)<3))' at line 1
+mysql> alter table animals modify column life_span int  check(length(life_span)<3));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> alter table animals modify column life_span int check(length(life_span)<3));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> alter table animals modify column life_span int check(length(life_span)<3)));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '))' at line 1
+mysql> ALTER TABLE your_table_name
+    -> MODIFY COLUMN life_expectancy INT(3);
+ERROR 1146 (42S02): Table 'my_assignment.your_table_name' doesn't exist
+mysql> ALTER TABLE animals
+    -> MODIFY COLUMN life_span INT(3);
+Query OK, 9 rows affected, 1 warning (4.88 sec)
+Records: 9  Duplicates: 0  Warnings: 1
+
+mysql> desc life_Span;
+ERROR 1146 (42S02): Table 'my_assignment.life_span' doesn't exist
+mysql> desc animals;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int         | NO   | PRI | NULL    |       |
+| name      | varchar(20) | NO   |     | NULL    |       |
+| specifies | varchar(20) | NO   |     | NULL    |       |
+| life_span | int         | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.10 sec)
+
+mysql> ALTER TABLE animals
+    -> MODIFY COLUMN life_span INT(<3);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<3)' at line 2
+mysql> 
+mysql> MODIFY COLUMN life_span INT(<=999);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'MODIFY COLUMN life_span INT(<=999)' at line 1
+mysql> ALTER TABLE animals
+    -> alter table animals modify life_span <= 999);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table animals modify life_span <= 999)' at line 2
+mysql> rollback;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select * from animals;
++----+----------+-----------+-----------+
+| id | name     | specifies | life_span |
++----+----------+-----------+-----------+
+|  1 | cat      | animal    |        20 |
+|  2 | dog      | animal    |        25 |
+|  3 | monkey   | animal    |        26 |
+|  4 | elephant | animal    |        65 |
+|  5 | canary   | bird      |        20 |
+|  6 | swift    | bird      |         5 |
+|  7 | dove     | bird      |        12 |
+|  8 | rabbit   | animal    |        10 |
+|  9 | cow      | animal    |        25 |
++----+----------+-----------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> desc animals;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int         | NO   | PRI | NULL    |       |
+| name      | varchar(20) | NO   |     | NULL    |       |
+| specifies | varchar(20) | NO   |     | NULL    |       |
+| life_span | int         | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table animals
+    -> modify life_span smallint;
+Query OK, 9 rows affected (2.40 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+mysql> 
+mysql> desc animals;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int         | NO   | PRI | NULL    |       |
+| name      | varchar(20) | NO   |     | NULL    |       |
+| specifies | varchar(20) | NO   |     | NULL    |       |
+| life_span | smallint    | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table animals modify life_span tinyint(3);
+Query OK, 9 rows affected, 1 warning (5.18 sec)
+Records: 9  Duplicates: 0  Warnings: 1
+
+mysql> desc animals;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int         | NO   | PRI | NULL    |       |
+| name      | varchar(20) | NO   |     | NULL    |       |
+| specifies | varchar(20) | NO   |     | NULL    |       |
+| life_span | tinyint     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.23 sec)
+
+mysql> alter table animals add  habitat varchar(20)not null;
+Query OK, 0 rows affected (1.00 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from animals;
++----+----------+-----------+-----------+---------+
+| id | name     | specifies | life_span | habitat |
++----+----------+-----------+-----------+---------+
+|  1 | cat      | animal    |        20 |         |
+|  2 | dog      | animal    |        25 |         |
+|  3 | monkey   | animal    |        26 |         |
+|  4 | elephant | animal    |        65 |         |
+|  5 | canary   | bird      |        20 |         |
+|  6 | swift    | bird      |         5 |         |
+|  7 | dove     | bird      |        12 |         |
+|  8 | rabbit   | animal    |        10 |         |
+|  9 | cow      | animal    |        25 |         |
++----+----------+-----------+-----------+---------+
+9 rows in set (0.00 sec)
+
+mysql> update table animals habitat='domestic' where id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table animals habitat='domestic' where id=1' at line 1
+mysql> update table animals set habitat='domestic' where id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table animals set habitat='domestic' where id=1' at line 1
+mysql> update animals set habitat='domestic' where id=1;
+Query OK, 1 row affected (0.21 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update animals set habitat='domestic' where='dog' ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '='dog'' at line 1
+mysql> update animals set habitat='domestic' where name=dog' ;
+    '> ';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' ;
+'' at line 1
+mysql> update animals set habitat='domestic' where name='dog' ;
+Query OK, 1 row affected (0.16 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update animals set habitat='animal' where life_span=26;
+Query OK, 1 row affected (0.11 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update animals set habitat='animal' where id=4;
+Query OK, 1 row affected (0.13 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update animals set habitat='wild' where id=4;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update animals set habitat='wild' where life_span=26;
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update animals set habitat='domestic' where name='dog';
+Query OK, 0 rows affected (0.01 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> update animals set habitat='domestic' where id=5;
+Query OK, 1 row affected (0.14 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update animals set habitat='domestic' where id=6;
+Query OK, 1 row affected (0.13 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update animals set habitat='domestic' where id=7;
+Query OK, 1 row affected (0.19 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update animals set habitat='domestic' where id=8;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> insert into animals(id,name,species,life_span)values(10,'horse','animal',25,'domestic');
+ERROR 1054 (42S22): Unknown column 'species' in 'field list'
+mysql> insert into animals(id,name,specifies,life_span)values(10,'horse','animal',25,'domestic');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into animals(id,name,specifies,life_span,habitat)values(10,'horse','animal',25,'domestic');
+Query OK, 1 row affected (0.20 sec)
+
+mysql> update animals set life span = life_span+5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'span = life_span+5' at line 1
+mysql> update animals set life span = life_span+5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'span = life_span+5' at line 1
+mysql> update animals set life_span = life_span+5 where habitat='domestic';
+Query OK, 7 rows affected (0.18 sec)
+Rows matched: 7  Changed: 7  Warnings: 0
+
+mysql> select * from habitat;
+ERROR 1146 (42S02): Table 'my_assignment.habitat' doesn't exist
+mysql> select * from habitat;
+ERROR 1146 (42S02): Table 'my_assignment.habitat' doesn't exist
+mysql> select * from habitat;
+ERROR 1146 (42S02): Table 'my_assignment.habitat' doesn't exist
+mysql> show tables;
++-------------------------+
+| Tables_in_my_assignment |
++-------------------------+
+| animals                 |
++-------------------------+
+1 row in set (0.38 sec)
+
+mysql> select * from animals;
++----+----------+-----------+-----------+----------+
+| id | name     | specifies | life_span | habitat  |
++----+----------+-----------+-----------+----------+
+|  1 | cat      | animal    |        25 | domestic |
+|  2 | dog      | animal    |        30 | domestic |
+|  3 | monkey   | animal    |        26 | wild     |
+|  4 | elephant | animal    |        65 | wild     |
+|  5 | canary   | bird      |        25 | domestic |
+|  6 | swift    | bird      |        10 | domestic |
+|  7 | dove     | bird      |        17 | domestic |
+|  8 | rabbit   | animal    |        15 | domestic |
+|  9 | cow      | animal    |        25 |          |
+| 10 | horse    | animal    |        30 | domestic |
++----+----------+-----------+-----------+----------+
+10 rows in set (0.07 sec)
+
+mysql> delete from animals where wild=<8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<8' at line 1
+mysql> delete from animals where wild<=8;
+ERROR 1054 (42S22): Unknown column 'wild' in 'where clause'
+mysql> delete from animals where specifies wild<=8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'wild<=8' at line 1
+mysql> delete from animals where specifies wild=<8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'wild=<8' at line 1
+mysql> delete from animals where habitat wild=<8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'wild=<8' at line 1
+mysql> delete from animals where habitat wild=<=8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'wild=<=8' at line 1
+mysql> delete from animals where habitat wild=<8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'wild=<8' at line 1
+mysql> delete from animals where habitat='wild'and life_span<8;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from animals;
++----+----------+-----------+-----------+----------+
+| id | name     | specifies | life_span | habitat  |
++----+----------+-----------+-----------+----------+
+|  1 | cat      | animal    |        25 | domestic |
+|  2 | dog      | animal    |        30 | domestic |
+|  3 | monkey   | animal    |        26 | wild     |
+|  4 | elephant | animal    |        65 | wild     |
+|  5 | canary   | bird      |        25 | domestic |
+|  6 | swift    | bird      |        10 | domestic |
+|  7 | dove     | bird      |        17 | domestic |
+|  8 | rabbit   | animal    |        15 | domestic |
+|  9 | cow      | animal    |        25 |          |
+| 10 | horse    | animal    |        30 | domestic |
++----+----------+-----------+-----------+----------+
+10 rows in set (0.00 sec)
+
+
+mysql>  insert into animals(id,name,species,life_span)values(9,'cow','animal',25,'domestic');
+ERROR 1054 (42S22): Unknown column 'species' in 'field list'
+mysql>  insert into animals(id,name,specifies,life_span)values(9,'cow','animal',25,'domestic');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql>  insert into animals(id,name,specifies,life_span,habitat)values(9,'cow','animal',25,'domestic');
+ERROR 1062 (23000): Duplicate entry '9' for key 'animals.PRIMARY'
+mysql> delete from animals where pid=9;
+ERROR 1054 (42S22): Unknown column 'pid' in 'where clause'
+mysql> delete from animals where id=9;
+Query OK, 1 row affected (0.24 sec)
+
+mysql>  insert into animals(id,name,specifies,life_span)values(9,'cow','animal',25','domestic');
+    '> ';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '','domestic');
+'' at line 1
+mysql>  insert into animals(id,name,specifies,life_span)values(9,'cow','animal',25,'domestic');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql>  insert into animals(id,name,specifies,life_span,habitat)values(9,'cow','animal',25,'domestic');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> select * from animals;
++----+----------+-----------+-----------+----------+
+| id | name     | specifies | life_span | habitat  |
++----+----------+-----------+-----------+----------+
+|  1 | cat      | animal    |        25 | domestic |
+|  2 | dog      | animal    |        30 | domestic |
+|  3 | monkey   | animal    |        26 | wild     |
+|  4 | elephant | animal    |        65 | wild     |
+|  5 | canary   | bird      |        25 | domestic |
+|  6 | swift    | bird      |        10 | domestic |
+|  7 | dove     | bird      |        17 | domestic |
+|  8 | rabbit   | animal    |        15 | domestic |
+|  9 | cow      | animal    |        25 | domestic |
+| 10 | horse    | animal    |        30 | domestic |
++----+----------+-----------+-----------+----------+
+10 rows in set (0.00 sec)
+
+mysql> drop animals;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'animals' at line 1
+mysql> delete animals;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> delete from animals;
+Query OK, 10 rows affected (0.14 sec)
+

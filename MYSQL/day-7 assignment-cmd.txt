@@ -1,0 +1,78 @@
+1.Display the total number of employees working in the company
+
+select  count(*) AS total_employes from employees;
+
+2.Display the total salary and total commission to all employees
+select name,salary,commission from employees;
+
+3. Display the maximum salary from emp table.
+
+select emp_name,salary from employees where salary=(select max(salary) from employees);
+
+4.Display the hiredate of junior most employee.
+
+select emp_name,hire_date from employees where hire_date=(Select max(hire_date)from employees);
+
+
+5.Display the average salary from emp table.
+select avg(salary) from employees;
+
+6.Display the maximum salary being paid to CLERK.
+select max(salary) from employees where job='web developer';
+
+7.Display the maximum salary being paid in dept no 20.
+
+select max(salary) from employees where job='database admin'; 
+
+8.Display the minimum salary being paid to any SALESMAN.
+
+select min(salary) from employees where job='web development';
+
+8.Display the minimum salary being paid to any SALESMAN.
+
+9.Display the average salary drawn by managers.
+
+select avg(salary) from employees where job='web development';
+
+10.Display the total salary drawn by analyst working in dept no 20
+
+select job,sum(salary) from employees where job='java development' group by job;
+
+11. Display Department numbers and total number of employees working in each Department?
+
+select dept_id,job,count(dept_id)from employees group by dept_id,job;
+
+
+12. Display the various jobs and total number of employees working in each job group?
+
+select job,count(job)from employees group by job;
+
+13.Display department numbers and Total Salary for each Department?
+
+select dept_id,job ,sum(salary)from employees group by dept_id,job;
+
+14.Display department numbers and Maximum Salary from each Department?
+ select dept_id,job,max(salary)from employees group by dept_id,job;
+
+15.Display various jobs and Total Salary for each job?
+
+select dept_id,job,sum(salary)from employees group by dept_id,job;
+
+16.Display each job along with min of salary being paid in each job group?
+
+select job,job_id,min(salary)from employee group by dept_id,job;
+
+17. Display the department Number with more than three employees in each department?
+
+
+
+select dept_id,count(dept_id) from employees group by dept_id having count(dept_id)>2;
+
+18. Display various jobs along with total salary for each of the job where total salary is greater than 2500?
+
+
+ select job,sum(salary)from employees group by job having sum(salary) >15000;
+
+ Display the various jobs along with total number of employees in each job.The output should contain only those jobs with more than three employees?
+
+select job,dept_id,count(dept_id)from employees group by dept_id,job having count(dept_id)>2

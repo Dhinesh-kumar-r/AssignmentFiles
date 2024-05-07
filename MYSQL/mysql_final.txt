@@ -1,0 +1,528 @@
+mysql> CREATE TABLE emp (
+    ->   empno decimal(4,0) NOT NULL,
+    ->   ename varchar(10) default NULL,
+    ->   job varchar(9) default NULL,
+    ->   mgr decimal(4,0) default NULL,
+    ->   hiredate date default NULL,
+    ->   sal decimal(7,2) default NULL,
+    ->   comm decimal(7,2) default NULL,
+    ->   deptno decimal(2,0) default NULL
+    -> );
+Query OK, 0 rows affected (2.89 sec)
+
+mysql> 
+mysql> CREATE TABLE dept (
+    ->   deptno decimal(2,0) default NULL,
+    ->   dname varchar(14) default NULL,
+    ->   loc varchar(13) default NULL
+    -> );
+Query OK, 0 rows affected (0.50 sec)
+
+mysql> INSERT INTO emp VALUES ('7369','SMITH','CLERK','7902','1980-12-17','800.00',NULL,'20');
+Query OK, 1 row affected (0.25 sec)
+
+mysql> INSERT INTO emp VALUES ('7499','ALLEN','SALESMAN','7698','1981-02-20','1600.00','300.00','30');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> INSERT INTO emp VALUES ('7521','WARD','SALESMAN','7698','1981-02-22','1250.00','500.00','30');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> INSERT INTO emp VALUES ('7566','JONES','MANAGER','7839','1981-04-02','2975.00',NULL,'20');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO emp VALUES ('7654','MARTIN','SALESMAN','7698','1981-09-28','1250.00','1400.00','30');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO emp VALUES ('7698','BLAKE','MANAGER','7839','1981-05-01','2850.00',NULL,'30');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> INSERT INTO emp VALUES ('7782','CLARK','MANAGER','7839','1981-06-09','2450.00',NULL,'10');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO emp VALUES ('7788','SCOTT','ANALYST','7566','1982-12-09','3000.00',NULL,'20');
+Query OK, 1 row affected (0.30 sec)
+
+mysql> INSERT INTO emp VALUES ('7839','KING','PRESIDENT',NULL,'1981-11-17','5000.00',NULL,'10');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> INSERT INTO emp VALUES ('7844','TURNER','SALESMAN','7698','1981-09-08','1500.00','0.00','30');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO emp VALUES ('7876','ADAMS','CLERK','7788','1983-01-12','1100.00',NULL,'20');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> INSERT INTO emp VALUES ('7900','JAMES','CLERK','7698','1981-12-03','950.00',NULL,'30');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> INSERT INTO emp VALUES ('7902','FORD','ANALYST','7566','1981-12-03','3000.00',NULL,'20');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> INSERT INTO emp VALUES ('7934','MILLER','CLERK','7782','1982-01-23','1300.00',NULL,'10');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> 
+mysql> INSERT INTO dept VALUES ('10','ACCOUNTING','NEW YORK');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO dept VALUES ('20','RESEARCH','DALLAS');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> INSERT INTO dept VALUES ('30','SALES','CHICAGO');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> INSERT INTO dept VALUES ('40','OPERATIONS','BOSTON');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+
+| deptno | dname      | loc      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select e.ename,e.job,e.sal,d.dname,d.deptno from emp e,dept d ;
++--------+-----------+---------+------------+--------+
+| ename  | job       | sal     | dname      | deptno |
++--------+-----------+---------+------------+--------+
+| SMITH  | CLERK     |  800.00 | OPERATIONS |     40 |
+| SMITH  | CLERK     |  800.00 | SALES      |     30 |
+| SMITH  | CLERK     |  800.00 | RESEARCH   |     20 |
+| SMITH  | CLERK     |  800.00 | ACCOUNTING |     10 |
+| ALLEN  | SALESMAN  | 1600.00 | OPERATIONS |     40 |
+| ALLEN  | SALESMAN  | 1600.00 | SALES      |     30 |
+| ALLEN  | SALESMAN  | 1600.00 | RESEARCH   |     20 |
+| ALLEN  | SALESMAN  | 1600.00 | ACCOUNTING |     10 |
+| WARD   | SALESMAN  | 1250.00 | OPERATIONS |     40 |
+| WARD   | SALESMAN  | 1250.00 | SALES      |     30 |
+| WARD   | SALESMAN  | 1250.00 | RESEARCH   |     20 |
+| WARD   | SALESMAN  | 1250.00 | ACCOUNTING |     10 |
+| JONES  | MANAGER   | 2975.00 | OPERATIONS |     40 |
+| JONES  | MANAGER   | 2975.00 | SALES      |     30 |
+| JONES  | MANAGER   | 2975.00 | RESEARCH   |     20 |
+| JONES  | MANAGER   | 2975.00 | ACCOUNTING |     10 |
+| MARTIN | SALESMAN  | 1250.00 | OPERATIONS |     40 |
+| MARTIN | SALESMAN  | 1250.00 | SALES      |     30 |
+| MARTIN | SALESMAN  | 1250.00 | RESEARCH   |     20 |
+| MARTIN | SALESMAN  | 1250.00 | ACCOUNTING |     10 |
+| BLAKE  | MANAGER   | 2850.00 | OPERATIONS |     40 |
+| BLAKE  | MANAGER   | 2850.00 | SALES      |     30 |
+| BLAKE  | MANAGER   | 2850.00 | RESEARCH   |     20 |
+| BLAKE  | MANAGER   | 2850.00 | ACCOUNTING |     10 |
+| CLARK  | MANAGER   | 2450.00 | OPERATIONS |     40 |
+| CLARK  | MANAGER   | 2450.00 | SALES      |     30 |
+| CLARK  | MANAGER   | 2450.00 | RESEARCH   |     20 |
+| CLARK  | MANAGER   | 2450.00 | ACCOUNTING |     10 |
+| SCOTT  | ANALYST   | 3000.00 | OPERATIONS |     40 |
+| SCOTT  | ANALYST   | 3000.00 | SALES      |     30 |
+| SCOTT  | ANALYST   | 3000.00 | RESEARCH   |     20 |
+| SCOTT  | ANALYST   | 3000.00 | ACCOUNTING |     10 |
+| KING   | PRESIDENT | 5000.00 | OPERATIONS |     40 |
+| KING   | PRESIDENT | 5000.00 | SALES      |     30 |
+| KING   | PRESIDENT | 5000.00 | RESEARCH   |     20 |
+| KING   | PRESIDENT | 5000.00 | ACCOUNTING |     10 |
+| TURNER | SALESMAN  | 1500.00 | OPERATIONS |     40 |
+| TURNER | SALESMAN  | 1500.00 | SALES      |     30 |
+| TURNER | SALESMAN  | 1500.00 | RESEARCH   |     20 |
+| TURNER | SALESMAN  | 1500.00 | ACCOUNTING |     10 |
+| ADAMS  | CLERK     | 1100.00 | OPERATIONS |     40 |
+| ADAMS  | CLERK     | 1100.00 | SALES      |     30 |
+| ADAMS  | CLERK     | 1100.00 | RESEARCH   |     20 |
+| ADAMS  | CLERK     | 1100.00 | ACCOUNTING |     10 |
+| JAMES  | CLERK     |  950.00 | OPERATIONS |     40 |
+| JAMES  | CLERK     |  950.00 | SALES      |     30 |
+| JAMES  | CLERK     |  950.00 | RESEARCH   |     20 |
+| JAMES  | CLERK     |  950.00 | ACCOUNTING |     10 |
+| FORD   | ANALYST   | 3000.00 | OPERATIONS |     40 |
+| FORD   | ANALYST   | 3000.00 | SALES      |     30 |
+| FORD   | ANALYST   | 3000.00 | RESEARCH   |     20 |
+| FORD   | ANALYST   | 3000.00 | ACCOUNTING |     10 |
+| MILLER | CLERK     | 1300.00 | OPERATIONS |     40 |
+| MILLER | CLERK     | 1300.00 | SALES      |     30 |
+| MILLER | CLERK     | 1300.00 | RESEARCH   |     20 |
+| MILLER | CLERK     | 1300.00 | ACCOUNTING |     10 |
++--------+-----------+---------+------------+--------+
+56 rows in set (1.69 sec)
+
+
+mysql> select (distinct e.ename,e.job,e.sal,d.dname,d.deptno) from emp e,dept d ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct e.ename,e.job,e.sal,d.dname,d.deptno) from emp e,dept d' at line 1
+mysql> select distinct e.ename,e.job,e.sal,d.dname,d.deptno from emp e,dept d ;
++--------+-----------+---------+------------+--------+
+| ename  | job       | sal     | dname      | deptno |
++--------+-----------+---------+------------+--------+
+| SMITH  | CLERK     |  800.00 | OPERATIONS |     40 |
+| SMITH  | CLERK     |  800.00 | SALES      |     30 |
+| SMITH  | CLERK     |  800.00 | RESEARCH   |     20 |
+| SMITH  | CLERK     |  800.00 | ACCOUNTING |     10 |
+| ALLEN  | SALESMAN  | 1600.00 | OPERATIONS |     40 |
+| ALLEN  | SALESMAN  | 1600.00 | SALES      |     30 |
+| ALLEN  | SALESMAN  | 1600.00 | RESEARCH   |     20 |
+| ALLEN  | SALESMAN  | 1600.00 | ACCOUNTING |     10 |
+| WARD   | SALESMAN  | 1250.00 | OPERATIONS |     40 |
+| WARD   | SALESMAN  | 1250.00 | SALES      |     30 |
+| WARD   | SALESMAN  | 1250.00 | RESEARCH   |     20 |
+| WARD   | SALESMAN  | 1250.00 | ACCOUNTING |     10 |
+| JONES  | MANAGER   | 2975.00 | OPERATIONS |     40 |
+| JONES  | MANAGER   | 2975.00 | SALES      |     30 |
+| JONES  | MANAGER   | 2975.00 | RESEARCH   |     20 |
+| JONES  | MANAGER   | 2975.00 | ACCOUNTING |     10 |
+| MARTIN | SALESMAN  | 1250.00 | OPERATIONS |     40 |
+| MARTIN | SALESMAN  | 1250.00 | SALES      |     30 |
+| MARTIN | SALESMAN  | 1250.00 | RESEARCH   |     20 |
+| MARTIN | SALESMAN  | 1250.00 | ACCOUNTING |     10 |
+| BLAKE  | MANAGER   | 2850.00 | OPERATIONS |     40 |
+| BLAKE  | MANAGER   | 2850.00 | SALES      |     30 |
+| BLAKE  | MANAGER   | 2850.00 | RESEARCH   |     20 |
+| BLAKE  | MANAGER   | 2850.00 | ACCOUNTING |     10 |
+| CLARK  | MANAGER   | 2450.00 | OPERATIONS |     40 |
+| CLARK  | MANAGER   | 2450.00 | SALES      |     30 |
+| CLARK  | MANAGER   | 2450.00 | RESEARCH   |     20 |
+| CLARK  | MANAGER   | 2450.00 | ACCOUNTING |     10 |
+| SCOTT  | ANALYST   | 3000.00 | OPERATIONS |     40 |
+| SCOTT  | ANALYST   | 3000.00 | SALES      |     30 |
+| SCOTT  | ANALYST   | 3000.00 | RESEARCH   |     20 |
+| SCOTT  | ANALYST   | 3000.00 | ACCOUNTING |     10 |
+| KING   | PRESIDENT | 5000.00 | OPERATIONS |     40 |
+| KING   | PRESIDENT | 5000.00 | SALES      |     30 |
+| KING   | PRESIDENT | 5000.00 | RESEARCH   |     20 |
+| KING   | PRESIDENT | 5000.00 | ACCOUNTING |     10 |
+| TURNER | SALESMAN  | 1500.00 | OPERATIONS |     40 |
+| TURNER | SALESMAN  | 1500.00 | SALES      |     30 |
+| TURNER | SALESMAN  | 1500.00 | RESEARCH   |     20 |
+| TURNER | SALESMAN  | 1500.00 | ACCOUNTING |     10 |
+| ADAMS  | CLERK     | 1100.00 | OPERATIONS |     40 |
+| ADAMS  | CLERK     | 1100.00 | SALES      |     30 |
+| ADAMS  | CLERK     | 1100.00 | RESEARCH   |     20 |
+| ADAMS  | CLERK     | 1100.00 | ACCOUNTING |     10 |
+| JAMES  | CLERK     |  950.00 | OPERATIONS |     40 |
+| JAMES  | CLERK     |  950.00 | SALES      |     30 |
+| JAMES  | CLERK     |  950.00 | RESEARCH   |     20 |
+| JAMES  | CLERK     |  950.00 | ACCOUNTING |     10 |
+| FORD   | ANALYST   | 3000.00 | OPERATIONS |     40 |
+| FORD   | ANALYST   | 3000.00 | SALES      |     30 |
+| FORD   | ANALYST   | 3000.00 | RESEARCH   |     20 |
+| FORD   | ANALYST   | 3000.00 | ACCOUNTING |     10 |
+| MILLER | CLERK     | 1300.00 | OPERATIONS |     40 |
+| MILLER | CLERK     | 1300.00 | SALES      |     30 |
+| MILLER | CLERK     | 1300.00 | RESEARCH   |     20 |
+| MILLER | CLERK     | 1300.00 | ACCOUNTING |     10 |
++--------+-----------+---------+------------+--------+
+56 rows in set (0.26 sec)
+
+mysql> select e.ename,e.job,e.sal,d.dname,d.deptno from emp e,dept d where  e.deptno=d.deptno ;
++--------+-----------+---------+------------+--------+
+| ename  | job       | sal     | dname      | deptno |
++--------+-----------+---------+------------+--------+
+| SMITH  | CLERK     |  800.00 | RESEARCH   |     20 |
+| ALLEN  | SALESMAN  | 1600.00 | SALES      |     30 |
+| WARD   | SALESMAN  | 1250.00 | SALES      |     30 |
+| JONES  | MANAGER   | 2975.00 | RESEARCH   |     20 |
+| MARTIN | SALESMAN  | 1250.00 | SALES      |     30 |
+| BLAKE  | MANAGER   | 2850.00 | SALES      |     30 |
+| CLARK  | MANAGER   | 2450.00 | ACCOUNTING |     10 |
+| SCOTT  | ANALYST   | 3000.00 | RESEARCH   |     20 |
+| KING   | PRESIDENT | 5000.00 | ACCOUNTING |     10 |
+| TURNER | SALESMAN  | 1500.00 | SALES      |     30 |
+| ADAMS  | CLERK     | 1100.00 | RESEARCH   |     20 |
+| JAMES  | CLERK     |  950.00 | SALES      |     30 |
+| FORD   | ANALYST   | 3000.00 | RESEARCH   |     20 |
+| MILLER | CLERK     | 1300.00 | ACCOUNTING |     10 |
++--------+-----------+---------+------------+--------+
+14 rows in set (0.06 sec)
+
+mysql> select job,d.loc from emp e,dept d where d.loc='DALLAS' e.deptno=d.deptno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'e.deptno=d.deptno' at line 1
+mysql> select e.job,d.loc from emp e,dept d where d.loc='DALLAS' e.deptno=d.deptno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'e.deptno=d.deptno' at line 1
+mysql> select e.job,d.loc from emp e,dept d where d.loc='DALLAS' e.deptno=d.deptno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'e.deptno=d.deptno' at line 1 
+mysql> select e.job,d.loc from emp e,dept d e.deptno=d.deptno where d.loc='DALLAS';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'e.deptno=d.deptno where d.loc='DALLAS'' at line 1
+mysql> select e.job,d.loc from emp e,dept d  where d.loc='DALLAS';
++-----------+--------+
+| job       | loc    |
++-----------+--------+
+| CLERK     | DALLAS |
+| SALESMAN  | DALLAS |
+| SALESMAN  | DALLAS |
+| MANAGER   | DALLAS |
+| SALESMAN  | DALLAS |
+| MANAGER   | DALLAS |
+| MANAGER   | DALLAS |
+| ANALYST   | DALLAS |
+| PRESIDENT | DALLAS |
+| SALESMAN  | DALLAS |
+| CLERK     | DALLAS |
+| CLERK     | DALLAS |
+| ANALYST   | DALLAS |
+| CLERK     | DALLAS |
++-----------+--------+
+14 rows in set (0.19 sec)
+
+mysql> select distinct e.job,d.loc from emp e,dept d  where d.loc='DALLAS';
++-----------+--------+
+| job       | loc    |
++-----------+--------+
+| CLERK     | DALLAS |
+| SALESMAN  | DALLAS |
+| MANAGER   | DALLAS |
+| ANALYST   | DALLAS |
+| PRESIDENT | DALLAS |
++-----------+--------+
+5 rows in set (0.03 sec)
+
+mysql> select e.name,e.job,e.sal,case when e.sal between 3000 and 5000 then 'grade a'  when e.sal between 2000 and 3000 then 'grade b'
+    ->  when e.sal between 1000 and 2000 then 'grade c'
+    ->  when e.sal between 100 and 1000 then 'grade d'
+    -> else
+    -> end as salary_grade
+    -> from emp e;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as salary_grade
+from emp e' at line 5
+mysql> select name,job,sal,
+    -> case 
+    -> when sal between 3000 and 5000 then 'grade a'  
+    -> when sal between 2000 and 3000 then 'grade b'
+    -> when sal between 1000 and 2000 then 'grade c'
+    -> when sal between 100 and 1000 then 'grade d'
+    -> else 'grade e'
+    -> end as salary_grade
+    -> from emp ;
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+mysql> endselect e.name,e.job,e.sal,
+    -> case when e.sal between 3000 and 5000 then 'grade a' 
+    -> when e.sal between 2000 and 3000 then 'grade b'
+    -> when e.sal between 1000 and 2000 then 'grade c'
+    -> when e.sal between 100 and 1000 then 'grade d'
+    -> else 'grade e'
+    -> end as salary_grade
+    -> from emp e;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'endselect e.name,e.job,e.sal,
+case when e.sal between 3000 and 5000 then 'grade ' at line 1
+mysql> select e.name,e.job,e.sal,
+    -> case when e.sal between 3000 and 5000 then 'grade a' 
+    -> when e.sal between 2000 and 3000 then 'grade b'
+    -> when e.sal between 1000 and 2000 then 'grade c'
+    -> when e.sal between 100 and 1000 then 'grade d'
+    -> else 'grade e'
+    -> end as salary_grade
+    -> from emp e;
+ERROR 1054 (42S22): Unknown column 'e.name' in 'field list'
+mysql> select e.ename,e.job,e.sal,
+    -> case when e.sal between 3000 and 5000 then 'grade a' 
+    -> when e.sal between 2000 and 3000 then 'grade b'
+    -> when e.sal between 1000 and 2000 then 'grade c'
+    -> when e.sal between 100 and 1000 then 'grade d'
+    -> else 'grade e'
+    -> end as salary_grade
+    -> from emp e;
++--------+-----------+---------+--------------+
+| ename  | job       | sal     | salary_grade |
++--------+-----------+---------+--------------+
+| SMITH  | CLERK     |  800.00 | grade d      |
+| ALLEN  | SALESMAN  | 1600.00 | grade c      |
+| WARD   | SALESMAN  | 1250.00 | grade c      |
+| JONES  | MANAGER   | 2975.00 | grade b      |
+| MARTIN | SALESMAN  | 1250.00 | grade c      |
+| BLAKE  | MANAGER   | 2850.00 | grade b      |
+| CLARK  | MANAGER   | 2450.00 | grade b      |
+| SCOTT  | ANALYST   | 3000.00 | grade a      |
+| KING   | PRESIDENT | 5000.00 | grade a      |
+| TURNER | SALESMAN  | 1500.00 | grade c      |
+| ADAMS  | CLERK     | 1100.00 | grade c      |
+| JAMES  | CLERK     |  950.00 | grade d      |
+| FORD   | ANALYST   | 3000.00 | grade a      |
+| MILLER | CLERK     | 1300.00 | grade c      |
++--------+-----------+---------+--------------+
+14 rows in set (0.06 sec)
+
+mysql> select d.dname,count(e.empno)as no of emp from dept d left join emp e on d.deptno=e.empno group by d.dname,d.deptno order by d.deptno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'of emp from dept d left join emp e on d.deptno=e.empno group by d.dname,d.deptno' at line 1
+mysql> select d.dname,count(e.empno)as 'no of employee' from dept d left join emp e on d.deptno=e.empno group by d.dname,d.deptno order by d.deptno;
++------------+----------------+
+| dname      | no of employee |
++------------+----------------+
+| ACCOUNTING |              0 |
+| RESEARCH   |              0 |
+| SALES      |              0 |
+| OPERATIONS |              0 |
++------------+----------------+
+4 rows in set (1.04 sec)
+
+mysql> select d.dname,count(e.empno)as 'no of employee' from dept d left join emp e on d.deptno=e.empno group by e.job,d.deptno order by d.deptno;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'my_assignment.d.dname' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select d.dname,e.job count(e.empno)as 'no of employee' from dept d left join emp e on d.deptno=e.empno group by e.job,d.deptno order by d.deptno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'count(e.empno)as 'no of employee' from dept d left join emp e on d.deptno=e.empn' at line 1
+mysql> select d.dname,count(e.empno)as 'no of emp' from dept d left join emp e on d.deptno=e.deptno group by e.job,d.deptno order by d.deptno;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'my_assignment.d.dname' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select d.dname,count(e.empno)as 'no of emp' from dept d left join emp e on d.deptno=e.deptno group by e.job,d.deptno order by d.deptno;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'my_assignment.d.dname' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql>  select d.dname,count(e.deptno)as 'no of employee' from dept d left join emp e on d.deptno=e.deptno group by d.dname,d.deptno order by d.deptno;
++------------+----------------+
+| dname      | no of employee |
++------------+----------------+
+| ACCOUNTING |              3 |
+| RESEARCH   |              5 |
+| SALES      |              6 |
+| OPERATIONS |              0 |
++------------+----------------+
+4 rows in set (0.04 sec)
+
+mysql> select e.empno,e.ename,e.sal,d.dname,d.loc,
+    -> case when e.sal between 3000 and 5000 then 'grade a' 
+    -> when e.sal between 2000 and 3000 then 'grade b'
+    -> when e.sal between 1000 and 2000 then 'grade c'
+    -> when e.sal between 100 and 1000 then 'grade d'
+    -> else 'grade e'
+    -> end as salary_grade
+    -> from emp e dept d;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dept d' at line
+
+mysql> select e.empno,e.ename,e.sal,d.dname,d.loc,
+    -> case when e.sal between 3000 and 5000 then 'grade a' 
+    -> when e.sal between 2000 and 3000 then 'grade b'
+    -> when e.sal between 1000 and 2000 then 'grade c'
+    -> when e.sal between 100 and 1000 then 'grade d'
+    -> else 'grade e'
+    -> end as salary_grade
+    -> from emp e,dept d where  e.deptno=d.deptno ;
++-------+--------+---------+------------+----------+--------------+
+| empno | ename  | sal     | dname      | loc      | salary_grade |
++-------+--------+---------+------------+----------+--------------+
+|  7369 | SMITH  |  800.00 | RESEARCH   | DALLAS   | grade d      |
+|  7499 | ALLEN  | 1600.00 | SALES      | CHICAGO  | grade c      |
+|  7521 | WARD   | 1250.00 | SALES      | CHICAGO  | grade c      |
+|  7566 | JONES  | 2975.00 | RESEARCH   | DALLAS   | grade b      |
+|  7654 | MARTIN | 1250.00 | SALES      | CHICAGO  | grade c      |
+|  7698 | BLAKE  | 2850.00 | SALES      | CHICAGO  | grade b      |
+|  7782 | CLARK  | 2450.00 | ACCOUNTING | NEW YORK | grade b      |
+|  7788 | SCOTT  | 3000.00 | RESEARCH   | DALLAS   | grade a      |
+|  7839 | KING   | 5000.00 | ACCOUNTING | NEW YORK | grade a      |
+|  7844 | TURNER | 1500.00 | SALES      | CHICAGO  | grade c      |
+|  7876 | ADAMS  | 1100.00 | RESEARCH   | DALLAS   | grade c      |
+|  7900 | JAMES  |  950.00 | SALES      | CHICAGO  | grade d      |
+|  7902 | FORD   | 3000.00 | RESEARCH   | DALLAS   | grade a      |
+|  7934 | MILLER | 1300.00 | ACCOUNTING | NEW YORK | grade c      |
++-------+--------+---------+------------+----------+--------------+
+14 rows in set (0.06 sec)
+
+mysql> select e.empno,e.ename,d.deptno,d.dname from emp e,dept d right outer join dept d on (e.deptno= d.deptno) where e.name is null;
+ERROR 1066 (42000): Not unique table/alias: 'd'
+mysql> select e.empno,e.ename,d.deptno,d.dname from emp e,right outer join dept d on (e.deptno= d.deptno) where e.name is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'right outer join dept d on (e.deptno= d.deptno) where e.name is null' at line 1
+mysql> select e.empno,e.ename,d.deptno,d.dname from emp e right outer join dept d on (e.deptno= d.deptno) where e.name is null;
+ERROR 1054 (42S22): Unknown column 'e.name' in 'where clause'
+mysql> select e.empno,e.ename,d.deptno,d.dname from emp e right outer join dept d on (e.deptno= d.deptno) where e.ename is null;
++-------+-------+--------+------------+
+| empno | ename | deptno | dname      |
++-------+-------+--------+------------+
+|  NULL | NULL  |     40 | OPERATIONS |
++-------+-------+--------+------------+
+1 row in set (0.00 sec)
+
+mysql> select e.ename,as 'emp name',e.ename as 'manager_name' from emp e left join emp e on  e.emp=e.empno order by e.empno ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as 'emp name',e.ename as 'manager_name' from emp e left join emp e on  e.emp=e.e' at line 1
+mysql> select e.ename,as 'emp name',e.ename as 'manager_name' from emp e left join emp e on  e.emp = e.empno order by e.empno ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as 'emp name',e.ename as 'manager_name' from emp e left join emp e on  e.emp = e' at line 1
+mysql> select job from emp;
++-----------+
+| job       |
++-----------+
+| CLERK     |
+| SALESMAN  |
+| SALESMAN  |
+| MANAGER   |
+| SALESMAN  |
+| MANAGER   |
+| MANAGER   |
+| ANALYST   |
+| PRESIDENT |
+| SALESMAN  |
+| CLERK     |
+| CLERK     |
+| ANALYST   |
+| CLERK     |
++-----------+
+14 rows in set (0.01 sec)
+
+mysql> select emp e,emp m where e.mgr=m.empno;
+ERROR 1054 (42S22): Unknown column 'emp' in 'field list'
+mysql> select e.ename as 'employee name',m.ename as 'manager' from emp e,emp m where e.mgr=m.empno;
++---------------+---------+
+| employee name | manager |
++---------------+---------+
+| FORD          | JONES   |
+| SCOTT         | JONES   |
+| JAMES         | BLAKE   |
+| TURNER        | BLAKE   |
+| MARTIN        | BLAKE   |
+| WARD          | BLAKE   |
+| ALLEN         | BLAKE   |
+| MILLER        | CLARK   |
+| ADAMS         | SCOTT   |
+| CLARK         | KING    |
+| BLAKE         | KING    |
+| JONES         | KING    |
+| SMITH         | FORD    |
++---------------+---------+
+13 rows in set (0.46 sec)
+
+mysql> select dname,count(e.ename) from dept d,emp e where e.deptno=d.deptno group by dname order by count(ename) desc limit 1; 
++-------+----------------+
+| dname | count(e.ename) |
++-------+----------------+
+| SALES |              6 |
++-------+----------------+
+1 row in set (0.00 sec)
+
+mysql> select e.empno,e.ename,e.job,d.deptno,d.dname,d.loc count(e.deptno)as 'no of emp' from dept d  left join emp e on d.deptno=e.deptno group by d.dname,d.deptno order by d.deptno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'count(e.deptno)as 'no of emp' from dept d  left join emp e on d.deptno=e.deptno ' at line 1
+mysql> select e.empno,e.ename,e.job,d.deptno,d.dname,d.loc count(e.deptno)as 'no of emp' from dept d  left join emp e on d.deptno=e.deptno group by d.dname,d.deptno order by d.deptno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'count(e.deptno)as 'no of emp' from dept d  left join emp e on d.deptno=e.deptno ' at line 1
+
+select e.empno,e.ename,e.job,d.deptno,d.dname,d.loc from emp e right outer join dept d on(e.deptno=d.deptno);
++-------+--------+-----------+--------+------------+----------+
+| empno | ename  | job       | deptno | dname      | loc      |
++-------+--------+-----------+--------+------------+----------+
+|  7934 | MILLER | CLERK     |     10 | ACCOUNTING | NEW YORK |
+|  7839 | KING   | PRESIDENT |     10 | ACCOUNTING | NEW YORK |
+|  7782 | CLARK  | MANAGER   |     10 | ACCOUNTING | NEW YORK |
+|  7902 | FORD   | ANALYST   |     20 | RESEARCH   | DALLAS   |
+|  7876 | ADAMS  | CLERK     |     20 | RESEARCH   | DALLAS   |
+|  7788 | SCOTT  | ANALYST   |     20 | RESEARCH   | DALLAS   |
+|  7566 | JONES  | MANAGER   |     20 | RESEARCH   | DALLAS   |
+|  7369 | SMITH  | CLERK     |     20 | RESEARCH   | DALLAS   |
+|  7900 | JAMES  | CLERK     |     30 | SALES      | CHICAGO  |
+|  7844 | TURNER | SALESMAN  |     30 | SALES      | CHICAGO  |
+|  7698 | BLAKE  | MANAGER   |     30 | SALES      | CHICAGO  |
+|  7654 | MARTIN | SALESMAN  |     30 | SALES      | CHICAGO  |
+|  7521 | WARD   | SALESMAN  |     30 | SALES      | CHICAGO  |
+|  7499 | ALLEN  | SALESMAN  |     30 | SALES      | CHICAGO  |
+|  NULL | NULL   | NULL      |     40 | OPERATIONS | BOSTON   |
++-------+--------+-----------+--------+------------+----------+
+15 rows in set (0.00 sec)

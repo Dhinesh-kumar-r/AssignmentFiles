@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text overflow</title>
+    <style>
+        #p1{
+            overflow: hidden;
+            text-wrap: nowrap;
+            width: 250px;
+            text-overflow: ellipsis;
+            
+            border: blue 1px solid;
+        }
+        #p2{
+            overflow: hidden;
+            text-wrap: nowrap;
+            width: 250px;
+            text-overflow: clip;
+            border: blue 1px solid;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <p id="p1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur ipsa accusantium adipisci tempore
+        provident accusamus, quidem libero, quaerat tenetur odit possimus doloribus expedita sequi dignissimos esse? Ad,
+        impedit cumque.</p>
+        <br>
+        <p id="p2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur ipsa accusantium adipisci tempore
+            provident accusamus, quidem libero, quaerat tenetur odit possimus doloribus expedita sequi dignissimos esse? Ad,
+            impedit cumque.</p>
+
+</body>
+
+</html>

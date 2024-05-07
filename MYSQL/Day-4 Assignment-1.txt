@@ -1,0 +1,162 @@
+mysql> use my_assignment;
+Database changed
+mysql> create table distribution_company
+    -> (cid int primary key,
+    -> company_name varchar(30) unique,
+    -> head_office varchar(20) not null);
+Query OK, 0 rows affected (7.74 sec)
+
+mysql> create table movies
+    -> (mid int primary key,
+    -> movie_title varchar(30) not null,
+    -> imdb_rating decimal(6,2),
+    -> year_released year check (year_released<2023)); 
+Query OK, 0 rows affected (1.92 sec)
+
+mysql> create table movie_distribution
+    -> (did int not null,
+    -> movie_id int,foreign key(movie_id) references movies(m_id) on delete cascade,
+    -> company_id int foriegn key(company_id) references distribution_company(cid) on delete cascade);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foriegn key(company_id) references distribution_company(cid) on delete cascade)' at line 4
+mysql> create table movie_distribution
+    -> (did int not null,
+    -> movie_id int,foreign key(movie_id) references movies(m_id) on delete cascade,
+    -> company_id int foreign key(company_id) references distribution_company(cid) on delete cascade);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreign key(company_id) references distribution_company(cid) on delete cascade)' at line 4
+mysql> create table movie_distribution
+    -> (did int not null,
+    -> movie_id int,foreign key(movie_id) references movies(m_id) on delete cascade,
+    -> company_id int foreign key(company_id) references distribution_company(cid) on delete cascade);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreign key(company_id) references distribution_company(cid) on delete cascade)' at line 4
+mysql> create table movie_distribution(
+    -> did int not null,
+    -> movie_id int,foreign key(movie_id) references movies(m_id) on delete cascade,
+    -> company_id int,foreign key(company_id) references distribution_company(cid) on delete cascade);
+ERROR 3734 (HY000): Failed to add the foreign key constraint. Missing column 'm_id' for constraint 'movie_distribution_ibfk_1' in the referenced table 'movies'
+mysql> create table movie_distribution(
+    -> did int not null,
+    -> movie_id int,foreign key(movie_id) references movies(mid) on delete cascade,
+    -> company_id int,foreign key(company_id) references distribution_company(cid) on delete cascade)
+    -> ;
+Query OK, 0 rows affected (4.06 sec)
+
+mysql> desc distribution_company;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| cid          | int         | NO   | PRI | NULL    |       |
+| company_name | varchar(30) | YES  | UNI | NULL    |       |
+| head_office  | varchar(20) | NO   |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (1.11 sec)
+
+
+
+mysql> alter table movie_distribution add primary key(did);
+Query OK, 0 rows affected (4.64 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc movie_distribution;
++------------+------+------+-----+---------+-------+
+| Field      | Type | Null | Key | Default | Extra |
++------------+------+------+-----+---------+-------+
+| did        | int  | NO   | PRI | NULL    |       |
+| movie_id   | int  | YES  | MUL | NULL    |       |
+| company_id | int  | YES  | MUL | NULL    |       |
++------------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+mysql> desc movies;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| mid           | int          | NO   | PRI | NULL    |       |
+| movie_title   | varchar(30)  | NO   |     | NULL    |       |
+| imdb_rating   | decimal(3,1) | YES  |     | NULL    |       |
+| year_released | year         | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+4 rows in set (0.06 sec)
+
+mysql> desc distribution_company;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| cid           | int         | NO   | PRI | NULL    |       |
+| company_name  | varchar(30) | YES  | UNI | NULL    |       |
+| head_office   | varchar(20) | NO   |     | NULL    |       |
+| mobile_number | bigint      | NO   |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.79 sec)
+
+mysql> insert into distribution_company values
+    -> (101,'dhi_productions','trichy',7695856553),
+    -> (102,'rd_studios','chennai',9944293257),
+    -> (103,'dhinesh_pictures','delhi',9544200525),
+    -> ((104,'sun_pictures','chennai',9644522667),
+    -> (105,'disney','covai',76554223365);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 6
+mysql> insert into distribution_company values
+    -> (101,'dhi_productions','trichy',7695856553),
+    -> (102,'rd_studios','chennai',9944293257),
+    -> (103,'dhinesh_pictures','delhi',9544200525),
+    -> (104,'sun_pictures','chennai',9644522667),
+    -> (105,'disney','covai',76554223365);
+Query OK, 5 rows affected (0.41 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> insert into movies values
+    -> (1001,'leo',9.5,2019),
+    -> (1002,'varisu',8.5,2005),
+    -> (1003,'jailer',9.7,2022),
+    -> (1004,'beast',9.0,2021),
+    -> (1005,'vikram',10.0,2020);
+Query OK, 5 rows affected (0.22 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> insert into movie_distribution values
+    -> (2001,1001,101),
+    -> (2002,1002,102),
+    -> (2003,1003,103),
+    -> (2004,1004,104),
+    -> (2005,1005,105);
+Query OK, 5 rows affected (0.23 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from movies;
++------+-------------+-------------+---------------+
+| mid  | movie_title | imdb_rating | year_released |
++------+-------------+-------------+---------------+
+| 1001 | leo         |         9.5 |          2019 |
+| 1002 | varisu      |         8.5 |          2005 |
+| 1003 | jailer      |         9.7 |          2022 |
+| 1004 | beast       |         9.0 |          2021 |
+| 1005 | vikram      |        10.0 |          2020 |
++------+-------------+-------------+---------------+
+5 rows in set (0.06 sec)
+
+mysql> select * from movie_distribution;
++------+----------+------------+
+| did  | movie_id | company_id |
++------+----------+------------+
+| 2001 |     1001 |        101 |
+| 2002 |     1002 |        102 |
+| 2003 |     1003 |        103 |
+| 2004 |     1004 |        104 |
+| 2005 |     1005 |        105 |
++------+----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from distribution_company;
++-----+------------------+-------------+---------------+
+| cid | company_name     | head_office | mobile_number |
++-----+------------------+-------------+---------------+
+| 101 | dhi_productions  | trichy      |    7695856553 |
+| 102 | rd_studios       | chennai     |    9944293257 |
+| 103 | dhinesh_pictures | delhi       |    9544200525 |
+| 104 | sun_pictures     | chennai     |    9644522667 |
+| 105 | disney           | covai       |   76554223365 |
++-----+------------------+-------------+---------------+
+5 rows in set (0.05 sec)
+
+

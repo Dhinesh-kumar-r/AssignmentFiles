@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bulb</title>
+    <style>
+        body{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <img src="lightbulb-png-819.png" height="300px" width="300px" style="padding-top: 150px;" id="bulb">
+
+    
+    </center>
+    <button type="button" onclick='on()'>Turn On</button>
+    <button type="button" onclick="off()">Turn Off</button>
+
+    <script>
+        // var bulb= document.getElementById('bulb');
+        // bulb.addEventListener('click',function(){
+        //     bulb.style.background='yellow'
+        // })
+
+     /*   function on() {
+            bulb.style.background='yellow'     
+        }function off() {
+            bulb.style.background='black'     
+        }
+        */
+
+// var bulb= document.getElementById('bulb');
+//         bulb.addEventListener('dblclick',function(){
+//             bulb.style.background="black";
+//         })
+
+
+        
+        // let img = document.getElementById('image')
+        // let on = document.getElementById('on')
+        // let off = document.getElementById('off')
+
+
+        // var onlight = new CustomEvent('onlight');
+        // var offlight = new CustomEvent('off light');
+
+        //document.getElementById('on').addEventListener('click',function())
+
+        var bulb= document.getElementById('bulb');
+        let on = new CustomEvent('onlight');
+        var off =new CustomEvent('offlight')
+
+        document.addEventListener('onlight',function on(){
+            bulb.style.background="yellow";
+        });
+
+        var bulb= document.getElementById('bulb');
+        document.addEventListener('offlight',function off(){
+            bulb.style.background="orange";
+        });
+
+       bulb.dispatchEvent(on);
+       bulb.dispatchEvent(off);
+
+    </script>
+
+
+
+
+</body>
+</html>

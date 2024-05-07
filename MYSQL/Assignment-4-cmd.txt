@@ -1,0 +1,41 @@
+create table air_ticket_info
+(ticket_id varchar(20) not null,
+profile_id int primary key,
+flight_id varchar(20) not null,
+flight_depature_date date not null,
+status varchar(10) not null);
+
+
+create table air_passenger_profile
+(profile_id int,foreign key(profile_id) references air_ticket_info(profile_id) on delete cascade,
+password varchar(20) not null,
+first_name varchar(10) not null,
+last_name varchar(10) not null,
+address varchar(40) not null,
+mobile_number bigint(10) not null,
+email_id varchar(30) not null);
+
+create table air_flight_details
+(flight_id int primary key,
+flight_depature_date date not null,
+price decimal(8,2),
+available_seat int(15));
+
+create table air_flight(
+flight_id int,foreign key(flight_id) references air_flight_details(flight_id) on delete cascade,
+air_line_id varchar(20) not null,
+air_line_name varchar(20) not null,
+from_location varchar(30) not null,
+to_location varchar(30) not null,
+depature_time time not null,
+arrival_time time not null,
+duration time not null,
+total_seats int not null);
+
+create table air_credit_card_details(
+profile_id int,foreign key(profile_id) references air_ticket_info (profile_id) on delete cascade,
+card_number bigint not null,
+card_type varchar(10) not null,
+expiering_month int not null,
+expiering_year int not null);
+

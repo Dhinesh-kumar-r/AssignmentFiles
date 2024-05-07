@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex</title>
+    <style>
+        .container{
+            border: 5px solid blue;
+            padding: 20px;
+        }
+        .box{
+            padding: 20px;
+            border: 5px solid gold;
+            font-weight: bold;
+            color: red;
+            margin :10px;
+        }
+ 
+        /* flex box */
+        .container{
+            /* display: flex;
+            flex-direction: row;
+            flex-direction: row-reverse; */
+            flex-direction: column;
+            /* flex-direction: column-reverse; */
+        }
+    </style>
+</head>
+<body>
+    <h2>flex-direction</h2>
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <h1 id="title">Hello World</h1>
+    <button onclick="change()">Change</button> -->
+    <!-- <input  id="num1">
+        <input  id="num2">
+        <h4 id="result">Result</h4>
+        <button onclick="ans()">answer</button> -->
+    <input type="number" id="cap">
+    <button onclick="sub()">submit</button>
+    <script>
+        // title=document.getElementById('title')
+
+        // console.log(title);
+
+        // function change(){
+        //     title.textContent='Bye world';
+        // 
+
+
+        // function ans(){
+        //     num1=document.getElementById('num1').value
+        //     num2=document.getElementById('num2').value
+        //     result=document.getElementById('result')
+
+        //     total=Number(num1)+Number(num2);
+
+
+        //     result.textContent  +=  total;
+        // }
+
+        let captcha = document.getElementById('captcha')
+
+        let random1 = Math.floor(Math.random() * 10000)
+        document.write(random1)
+        function sub() {
+
+            var captcha = captcha.value;
+            if (parseInt(random1) === parseInt(captcha)) {
+                document.write('correct')
+            }
+
+            else {
+                document.write('wrong')
+            }
+
+        }
+    </script>
+</body>
+
+</html>

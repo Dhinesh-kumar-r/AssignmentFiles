@@ -1,0 +1,597 @@
+test> use my_assignment;
+switched to db my_assignment
+my_assignment> db.createCollection('customer_details');
+{ ok: 1 }
+
+
+... {_id:1,name:'dhinesh',age:22,address:['trichy','chennai','covai']},
+... {_id:2,name:'raja',age:23,address:['chennai','salem','karur']},
+... {_id:3,name:'arun',age:25,address:['karur','vilupuram','velore']},
+... {_id:4,name:'kumar',age:25,address:['madurai','covai','trichy']},
+... {_id:5,name:'priya',age:24,address:['trichy','ariyalur','bangalore']}
+my_assignment>
+{
+  acknowledged: true,
+  insertedIds: { '0': 1, '1': 2, '2': 3, '3': 4, '4': 5 }
+my_assignment> db.customer_details.find();
+[
+  {
+    _id: 1,
+    name: 'dhinesh',
+    age: 22,
+    address: [ 'trichy', 'chennai', 'covai' ]
+  },
+  {
+    _id: 2,
+    name: 'raja',
+    age: 23,
+    address: [ 'chennai', 'salem', 'karur' ]
+  },
+  {
+    _id: 3,
+    name: 'arun',
+    age: 25,
+    address: [ 'karur', 'vilupuram', 'velore' ]
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    age: 25,
+    address: [ 'madurai', 'covai', 'trichy' ]
+  },
+  {
+    _id: 5,
+    name: 'priya',
+    age: 24,
+    address: [ 'trichy', 'ariyalur', 'bangalore' ]
+  }
+]
+my_assignment>
+
+my_assignment> db.customer_details.updateMany({name:'dhinesh'},{$push:{address:'kerala','andhra'}}});
+...
+... ;
+Uncaught:
+SyntaxError: Unexpected token, expected "," (3:0)
+
+  1 | db.customer_details.updateMany({name:'dhinesh'},{$push:{addr
+  2 |
+> 3 | ;
+    | ^
+  4 |
+
+my_assignment> db.customer_details.updateMany({name:'dhinesh'},{$push:{address:'kerala','andhra'}}});
+Uncaught:
+SyntaxError: Unexpected token (1:81)
+
+> 1 | db.customer_details.updateMany({name:'dhinesh'},{$push:{address:'kerala','andhra'}}});
+    |                                                                                  ^
+  2 |
+
+my_assignment> db.customer_details.updateMany({name:'dhinesh'},{$push:{address:'kerala','andhra'}});
+Uncaught:
+SyntaxError: Unexpected token (1:81)
+
+> 1 | db.customer_details.updateMany({name:'dhinesh'},{$push:{address:'kerala','andhra'}});
+    |                                                                                  ^
+  2 |
+
+my_assignment> db.customer_details.updateOne({name:'dhinesh'},{$push:{address:['kerala','andhra']}}});
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:84)
+
+> 1 | db.customer_details.updateOne({name:'dhinesh'},{$push:{address:['kerala','andhra']}}});
+    |                                                                                     ^
+  2 |
+
+my_assignment> db.customer_details.updateOne({name:'dhinesh'},{$push:{address:['kerala','andhra']}}});
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:84)
+
+> 1 | db.customer_details.updateOne({name:'dhinesh'},{$push:{address:['kerala','andhra']}}});
+    |                                                                                     ^
+  2 |
+
+my_assignment> db.customer_details.updateOne({name:'dhinesh'},{$push:{address:['kerala','andhra']}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_assignment> db.customer_details.updateOne({name:'priya'},{$push:{address:['trichy','hydrabad']}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_assignment> db.customer_details.find();
+[
+  {
+    _id: 1,
+    name: 'dhinesh',
+    age: 22,
+    address: [ 'trichy', 'chennai', 'covai', [ 'kerala', 'andhra' ] ]
+  },
+  {
+    _id: 2,
+    name: 'raja',
+    age: 23,
+    address: [ 'chennai', 'salem', 'karur' ]
+  },
+  {
+    _id: 3,
+    name: 'arun',
+    age: 25,
+    address: [ 'karur', 'vilupuram', 'velore' ]
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    age: 25,
+    address: [ 'madurai', 'covai', 'trichy' ]
+  },
+  {
+    _id: 5,
+    name: 'priya',
+    age: 24,
+    address: [ 'trichy', 'ariyalur', 'bangalore', [ 'trichy', 'hydrabad' ] ]
+  }
+]
+my_assignment> db.customer_details.updateOne({name:'dhinesh'},{$push:{address:{$each:['kerala','andhra']}}})
+{ncaught:
+  acknowledged: true,ed token, expected "," (1:92)
+  insertedId: null,
+  matchedCount: 1,details.updateOne({name:'dhinesh'},{$push:{address:{$each:['kerala','andhra']}}}})
+  modifiedCount: 1,                                                                               ^
+  upsertedCount: 0
+}
+my_assignment> db.customer_details.updateOne({name:'dhinesh'},{$push:{address:{$each:['kerala','andhra']}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_assignment> db.customer_details.find();
+[
+  {
+    _id: 1,
+    name: 'dhinesh',
+    age: 22,
+    address: [
+      'trichy',
+      'chennai',
+      'covai',
+      [ 'kerala', 'andhra' ],
+      'kerala',
+      'andhra',
+      'kerala',
+      'andhra'
+    ]
+  },
+  {
+    _id: 2,
+    name: 'raja',
+    age: 23,
+    address: [ 'chennai', 'salem', 'karur' ]
+  },
+  {
+    _id: 3,
+    name: 'arun',
+    age: 25,
+    address: [ 'karur', 'vilupuram', 'velore' ]
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    age: 25,
+    address: [ 'madurai', 'covai', 'trichy' ]
+  },
+  {
+    _id: 5,
+    name: 'priya',
+    age: 24,
+    address: [ 'trichy', 'ariyalur', 'bangalore', [ 'trichy', 'hydrabad' ] ]
+  }
+]
+my_assignment> db.customer_details.updateOne({name:'dhinesh'},{$pop;{address:1}});
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:52)
+
+> 1 | db.customer_details.updateOne({name:'dhinesh'},{$pop;{address:1}});
+    |                                                     ^
+  2 |
+
+my_assignment> db.customer_details.updateOne({name:'dhinesh'},{$pop:{address:1}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_assignment> db.customer_details.find();
+[
+  {
+    _id: 1,
+    name: 'dhinesh',
+    age: 22,
+    address: [
+      'trichy',
+      'chennai',
+      'covai',
+      [ 'kerala', 'andhra' ],
+      'kerala',
+      'andhra',
+      'kerala'
+    ]
+  },
+  {
+    _id: 2,
+    name: 'raja',
+    age: 23,
+    address: [ 'chennai', 'salem', 'karur' ]
+  },
+  {
+    _id: 3,
+    name: 'arun',
+    age: 25,
+    address: [ 'karur', 'vilupuram', 'velore' ]
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    age: 25,
+    address: [ 'madurai', 'covai', 'trichy' ]
+  },
+  {
+    _id: 5,
+    name: 'priya',
+    age: 24,
+    address: [ 'trichy', 'ariyalur', 'bangalore', [ 'trichy', 'hydrabad' ] ]
+  }
+]
+my_assignment> db.customer_details.updateOne({name:'dhinesh'},{$pop:{address:-1}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_assignment> db.customer_details.find();
+[
+  {
+    _id: 1,
+    name: 'dhinesh',
+    age: 22,
+    address: [
+      'chennai',
+      'covai',
+      [ 'kerala', 'andhra' ],
+      'kerala',
+      'andhra',
+      'kerala'
+    ]
+  },
+  {
+    _id: 2,
+    name: 'raja',
+    age: 23,
+    address: [ 'chennai', 'salem', 'karur' ]
+  },
+  {
+    _id: 3,
+    name: 'arun',
+    age: 25,
+    address: [ 'karur', 'vilupuram', 'velore' ]
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    age: 25,
+    address: [ 'madurai', 'covai', 'trichy' ]
+  },
+  {
+    _id: 5,
+    name: 'priya',
+    age: 24,
+    address: [ 'trichy', 'ariyalur', 'bangalore', [ 'trichy', 'hydrabad' ] ]
+  }
+]
+my_assignment> db.customer_details.updateOne({name:'priya'},{$pop:{address:1}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_assignment> db.customer_details.find();
+[
+  {
+    _id: 1,
+    name: 'dhinesh',
+    age: 22,
+    address: [
+      'chennai',
+      'covai',
+      [ 'kerala', 'andhra' ],
+      'kerala',
+      'andhra',
+      'kerala'
+    ]
+  },
+  {
+    _id: 2,
+    name: 'raja',
+    age: 23,
+    address: [ 'chennai', 'salem', 'karur' ]
+  },
+  {
+    _id: 3,
+    name: 'arun',
+    age: 25,
+    address: [ 'karur', 'vilupuram', 'velore' ]
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    age: 25,
+    address: [ 'madurai', 'covai', 'trichy' ]
+  },
+  {
+    _id: 5,
+    name: 'priya',
+    age: 24,
+    address: [ 'trichy', 'ariyalur', 'bangalore' ]
+  }
+]
+my_assignment> db.customer_details.updateOne({name:'dhinesh'},{$pull:{address:'kerala','andhra'}}});
+Uncaught:
+SyntaxError: Unexpected token (1:80)
+
+> 1 | db.customer_details.updateOne({name:'dhinesh'},{$pull:{address:'kerala','andhra'}}});
+    |                                                                                 ^
+  2 |
+
+my_assignment> db.customer_details.updateOne({name:'dhinesh'},{$pull:{address:'kerala'}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_assignment> db.customer_details.updateMany({name:'dhinesh'},{$pull:{address:'kerala','andhra'}});
+Uncaught:
+SyntaxError: Unexpected token (1:81)
+
+> 1 | db.customer_details.updateMany({name:'dhinesh'},{$pull:{address:'kerala','andhra'}});
+    |                                                                                  ^
+  2 |
+
+my_assignment> db.customer_details.find();
+[
+  {
+    _id: 1,
+    name: 'dhinesh',
+    age: 22,
+    address: [ 'chennai', 'covai', [ 'kerala', 'andhra' ], 'andhra' ]
+  },
+  {
+    _id: 2,
+    name: 'raja',
+    age: 23,
+    address: [ 'chennai', 'salem', 'karur' ]
+  },
+  {
+    _id: 3,
+    name: 'arun',
+    age: 25,
+    address: [ 'karur', 'vilupuram', 'velore' ]
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    age: 25,
+    address: [ 'madurai', 'covai', 'trichy' ]
+  },
+  {
+    _id: 5,
+    name: 'priya',
+    age: 24,
+    address: [ 'trichy', 'ariyalur', 'bangalore' ]
+  }
+]
+my_assignment> db.customer_details.updateMany({name:'dhinesh'},{$pull:{address:'andhra'}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_assignment> db.customer_details.find();
+[
+  {
+    _id: 1,
+    name: 'dhinesh',
+    age: 22,
+    address: [ 'chennai', 'covai', [ 'kerala', 'andhra' ] ]
+  },
+  {
+    _id: 2,
+    name: 'raja',
+    age: 23,
+    address: [ 'chennai', 'salem', 'karur' ]
+  },
+  {
+    _id: 3,
+    name: 'arun',
+    age: 25,
+    address: [ 'karur', 'vilupuram', 'velore' ]
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    age: 25,
+    address: [ 'madurai', 'covai', 'trichy' ]
+  },
+  {
+    _id: 5,
+    name: 'priya',
+    age: 24,
+    address: [ 'trichy', 'ariyalur', 'bangalore' ]
+  }
+]
+my_assignment>
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+my_assignment> db.customer_details.find();
+[
+  {
+    _id: 1,
+    name: 'dhinesh',
+    age: 22,
+    address: [ 'chennai', 'covai', [ 'kerala', 'andhra' ] ],
+    discount: 'aadi sales'
+  },
+  {
+    _id: 2,
+    name: 'raja',
+    age: 23,
+    address: [ 'chennai', 'salem', 'karur' ],
+    discount: 'aadi sales'
+  },
+  {
+    _id: 3,
+    name: 'arun',
+    age: 25,
+    address: [ 'karur', 'vilupuram', 'velore' ],
+    discount: 'aadi sales'
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    age: 25,
+    address: [ 'madurai', 'covai', 'trichy' ],
+    discount: 'aadi sales'
+  },
+  {
+    _id: 5,
+    name: 'priya',
+    age: 24,
+    address: [ 'trichy', 'ariyalur', 'bangalore' ],
+    discount: 'aadi sales'
+  }
+]
+my_assignment> db.customer_details.deleteOne({name:'dhinesh'});
+{ acknowledged: true, deletedCount: 1 }
+my_assignment> db.customer_details.find();
+[
+  { | db.customer_details.deleteOne({name:'dhinesh});
+    _id: 2,                               ^
+    name: 'raja',
+    age: 23,
+    address: [ 'chennai', 'salem', 'karur' ],
+    discount: 'aadi sales'
+  },
+  {
+    _id: 3,
+    name: 'arun',
+    age: 25,
+    address: [ 'karur', 'vilupuram', 'velore' ],
+    discount: 'aadi sales'
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    age: 25,
+    address: [ 'madurai', 'covai', 'trichy' ],
+    discount: 'aadi sales'
+  },
+  {
+    _id: 5,
+    name: 'priya',
+    age: 24,
+    address: [ 'trichy', 'ariyalur', 'bangalore' ],
+    discount: 'aadi sales'
+  }
+]
+my_assignment> db.customer_details.distinct(address:'trichy');
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:36)
+
+> 1 | db.customer_details.distinct(address:'trichy');
+    |                                     ^
+  2 |
+
+my_assignment> db.customer_details.distinct('trichy');
+[]
+my_assignment> db.customer_details.distinct('trichy');
+[]
+my_assignment> db.customer_details.find();
+[
+  {
+    _id: 2,
+    name: 'raja',
+    age: 23,
+    address: [ 'chennai', 'salem', 'karur' ],
+    discount: 'aadi sales'
+  },
+  {
+    _id: 3,
+    name: 'arun',
+    age: 25,
+    address: [ 'karur', 'vilupuram', 'velore' ],
+    discount: 'aadi sales'
+  },
+  {
+    _id: 4,
+    name: 'kumar',
+    age: 25,
+    address: [ 'madurai', 'covai', 'trichy' ],
+    discount: 'aadi sales'
+  },
+  {
+    _id: 5,
+    name: 'priya',
+    age: 24,
+    address: [ 'trichy', 'ariyalur', 'bangalore' ],
+    discount: 'aadi sales'
+  }
+]
+my_assignment> db.customer_details.distinct('address');
+[
+  'ariyalur', 'bangalore',
+  'chennai',  'covai',
+  'karur',    'madurai',
+  'salem',    'trichy',
+  'velore',   'vilupuram'
+]
+my_assignment> db.customer_details.drop();
+true
+my_assignment> show dbs;
+admin           40.00 KiB
+brand           72.00 KiB
+brands          40.00 KiB
+config         108.00 KiB
+local           72.00 KiB
+my_assignment  208.00 KiB
+my_db            8.00 KiB
+mystore          8.00 KiB
+users           40.00 KiB
+my_assignment> use my_mongodb;
+switched to db my_mongodb
+my_mongodb> db.dropDatabase();
+{ ok: 1, dropped: 'my_mongodb' }

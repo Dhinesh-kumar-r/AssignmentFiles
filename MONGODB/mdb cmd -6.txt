@@ -1,0 +1,72 @@
+ {
+    _id: 1,
+    name: 'kishore',
+    course: 'BE-EEE',
+    m1: 76,
+    m2: 85,
+    m3: 76,
+    subjects: [ 'Mongo', 'HTML', 'CSS' ],
+    personal: {
+      age: 21,
+      dob: 'Sun Dec 24 2023 12:43:29 GMT+0530 (India Standard Time)',
+      father_name: 'baskar',
+      mobile_number: '97865783257',
+      email_id: 'kishore@gmail.com',
+      address: 'covai'
+    }
+  }
+]
+
+
+
+db.my_student.updateOne({name:"bala"},{$set:{course:"BE-ECE",m1:55,m2:45,m3:74,subjects:['mongodb','css','html'],personal:{age:22,dob:Date('2004-02-10'),father_name:'ravi',mobile_number:'9564565524',email_id:'dhia@gmail.com',address:"chennai"}}},{upsert:true});
+
+db.createCollection('products');
+db.products.insertMany([
+{id:101,name:"keyboard",price:1000},
+{id:102,name:"mouse",price:500},
+{id:103,name:"speaker",price:1520},
+{id:104,name:"charger",price:2500},
+{id:105,name:"bt keyboard",price:1540},
+{id:106,name:"bt mouse",price:1020},
+{id:107,name:"speaker",price:5251},
+{id:108,name:"mouse",price:525},
+{id:109,name:"laptop",price:45000},
+{id:110,name:"home theatre",price:10250}]);
+
+2.To create a collections for product_details and update the price:32999.99 whose productid:103.
+
+db.products.updateOne({id:103},{$set:{price:32999.99}});
+
+
+3. To increment the price rate by 1500 for all the products .
+
+db.products.updateMany({},{$inc:{price:1500}});
+
+4.To update the min price among all the products to the productid:105
+
+db.products.updateOne({id:105},{$min:{price:150}});
+
+5.To update the max price among all the products to the productid:107.
+
+db.products.updateOne({id:107},{$max:{price:10000}});
+
+6. To multiply the price rate by 3 for all the productid:105.
+
+db.products.updateMany({},{$mul:{price:3}})
+
+7. To unset the price field from the productid:105.
+
+db.products.updateOne({id:105},{unset:{price:1}});
+
+8.To upsert the price to the productid: 105 and fix the price as 25789.60 (insert).
+
+db.products.updateOne({id:105},{$set:{price:25789.60}});
+
+9. To upsert the price to the productid:107 as 78000.23 (update).
+
+db.products.updateOne({id:107},{$set:{price:78000.23},{upsert:true}})
+
+10. To rename the field productid to proid.
+
+db.products.updateMany({},{$rename:{"id":"pid"}});

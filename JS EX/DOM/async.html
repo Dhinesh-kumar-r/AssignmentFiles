@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+   let second =  function(datafromfirst){
+            return new Promise(
+                function(resolve,reject){
+                    resolve(datafromfirst+' Dhinesh');
+                    reject('name error')
+                }
+            )
+        }
+
+        let First = function(){
+            return new Promise(
+                function(resolve,reject){
+                    resolve('My Name is')
+                    reject('name issue')
+                }
+            )
+        }
+
+        //using async wait
+        async function fetch(){
+            try{
+                const datafromfirst=await First(); //await for the promises to resolve
+                const finalData=await second(datafromfirst);
+                console.log(finalData);
+
+            }catch(error){
+                console.error('Error:',error)
+            }
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+mysql> create table employees(
+    -> emp_id int primary key,
+    -> emp_name varchar(20) not null,
+    -> date_of_birth date,
+    -> salary decimal(6,2) not null,
+    -> commission decimal (6,2),
+    -> hire_date date,
+    -> job varchar(20)not null,
+    -> job_id int not null); 
+Query OK, 0 rows affected (2.88 sec)
+
+mysql> alter tab;e employee modify salary decimal(8,2) not null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tab' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'e employee modify salary decimal(8,2) not null' at line 1
+mysql> alter table employee modify salary decimal(8,2) not null;
+ERROR 1146 (42S02): Table 'my_assignment.employee' doesn't exist
+mysql> alter table employees modify salary decimal(8,2) not null;
+Query OK, 0 rows affected (6.71 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into employees values
+    -> (101,'dhinesh kumar','2001-08-11-',55000,2000,'2023-11-21','full stack developer',1001),
+    -> (102,'arun','2003-10-05',30000,1000,'2022-08-01','web developer',1002),
+    -> (103,'sasi','2000-01-22',45000,2000,'2022-10-08','java developer',1003),
+    -> (104,'akash','1995-07-16-',85000,10000,'2016-12-06','database admin',1004),
+    -> (105,'siva','1998-07-06-',95000,12000,'2018-10-23','database admin',1005),
+    -> (106,'john','2000-09-05',6000,2000,'2020-11-04','python developer',1006),
+    -> (107,'jai','1999-06-11',65000,6000,'2017-07-02','web developer',1007),
+    -> (108,'joshep','1999-11-06',15000,2000,'2022-05-12','full stack developer',1008),
+    -> (109,'sathish','2000-12-06',18000,1500,'2022-01-19','java developer',1009),
+    -> (110,'raj','2001-09-11',18000,1500,'2021-04-11','web developer',1010);
+Query OK, 10 rows affected, 3 warnings (0.13 sec)
+Records: 10  Duplicates: 0  Warnings: 3
+
+mysql> select * from employees;
++--------+---------------+---------------+----------+------------+------------+----------------------+--------+
+| emp_id | emp_name      | date_of_birth | salary   | commission | hire_date  | job                  | job_id |
++--------+---------------+---------------+----------+------------+------------+----------------------+--------+
+|    101 | dhinesh kumar | 2001-08-11    | 55000.00 |    2000.00 | 2023-11-21 | full stack developer |   1001 |
+|    102 | arun          | 2003-10-05    | 30000.00 |    1000.00 | 2022-08-01 | web developer        |   1002 |
+|    103 | sasi          | 2000-01-22    | 45000.00 |    2000.00 | 2022-10-08 | java developer       |   1003 |
+|    104 | akash         | 1995-07-16    | 85000.00 |   10000.00 | 2016-12-06 | database admin       |   1004 |
+|    105 | siva          | 1998-07-06    | 95000.00 |   12000.00 | 2018-10-23 | database admin       |   1005 |
+|    106 | john          | 2000-09-05    |  6000.00 |    2000.00 | 2020-11-04 | python developer     |   1006 |
+|    107 | jai           | 1999-06-11    | 65000.00 |    6000.00 | 2017-07-02 | web developer        |   1007 |
+|    108 | joshep        | 1999-11-06    | 15000.00 |    2000.00 | 2022-05-12 | full stack developer |   1008 |
+|    109 | sathish       | 2000-12-06    | 18000.00 |    1500.00 | 2022-01-19 | java developer       |   1009 |
+|    110 | raj           | 2001-09-11    | 18000.00 |    1500.00 | 2021-04-11 | web developer        |   1010 |
++--------+---------------+---------------+----------+------------+------------+----------------------+--------+
+10 rows in set (0.21 sec)
+
+mysql> select dayname(date_of_birth)where emp_id=1;
+ERROR 1054 (42S22): Unknown column 'date_of_birth' in 'field list'
+mysql> 
+mysql> select dayname(date_of_birth)from employees where emp_id=1;
+Empty set (0.13 sec)
+
+mysql> select dayname(date_of_birth)from employees where emp_id=101;
++------------------------+
+| dayname(date_of_birth) |
++------------------------+
+| Saturday               |
++------------------------+
+1 row in set (0.16 sec)
+
+mysql> select str_to_date(hire_date)from employees;
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'str_to_date'
+mysql> select date_format(hire_date)'%W' the %D of %M %Y) from employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'the %D of %M %Y) from employees' at line 1
+mysql> select date_format(hire_date)'%W the %D of %M %Y') from employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') from employees' at line 1
+mysql> select date_format(hire_date,'%W the %D of %M %Y') from employees;
++---------------------------------------------+
+| date_format(hire_date,'%W the %D of %M %Y') |
++---------------------------------------------+
+| Tuesday the 21st of November 2023           |
+| Monday the 1st of August 2022               |
+| Saturday the 8th of October 2022            |
+| Tuesday the 6th of December 2016            |
+| Tuesday the 23rd of October 2018            |
+| Wednesday the 4th of November 2020          |
+| Sunday the 2nd of July 2017                 |
+| Thursday the 12th of May 2022               |
+| Wednesday the 19th of January 2022          |
+| Sunday the 11th of April 2021               |
++---------------------------------------------+
+10 rows in set (0.52 sec)
+
+mysql> select date_add('date_of_birth ,interval 25year')from employees where id=101;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')from employees where id=101' at line 1
+mysql> select date_add(date_of_birth,interval 25 year)from employees where id=101;
+ERROR 1054 (42S22): Unknown column 'id' in 'where clause'
+mysql> select date_add(date_of_birth,interval 25 year)from employees where emp_id=101;
++------------------------------------------+
+| date_add(date_of_birth,interval 25 year) |
++------------------------------------------+
+| 2026-08-11                               |
++------------------------------------------+
+1 row in set (0.09 sec)
+
+mysql> select datediff(curryear(),'1950-01-26);
+
+mysql> select datediff(curr_date,'1950-01-26');
+ERROR 1054 (42S22): Unknown column 'curr_date' in 'field list'
+mysql> select date diff(curr_date,'1950-01-26');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(curr_date,'1950-01-26')' at line 1
+mysql> select datediff(sysdate,'1950-01-26');
+ERROR 1054 (42S22): Unknown column 'sysdate' in 'field list'
+mysql> select datediff(sysdate(),'1950-01-26');
++----------------------------------+
+| datediff(sysdate(),'1950-01-26') |
++----------------------------------+
+|                            27001 |
++----------------------------------+
+1 row in set (0.08 sec)
+
+mysql> select datediff(sysyear(),'1950-01-26');
+ERROR 1305 (42000): FUNCTION my_assignment.sysyear does not exist
+mysql> select datediff(currdate(),'1950-01-26');
+ERROR 1305 (42000): FUNCTION my_assignment.currdate does not exist
+mysql> select datediff(curdate(),'1950-01-26');
++----------------------------------+
+| datediff(curdate(),'1950-01-26') |
++----------------------------------+
+|                            27001 |
++----------------------------------+
+1 row in set (0.05 sec)
+
+mysql> select round (datediff(curdate(),'1950-01-26')/365);
++----------------------------------------------+
+| round (datediff(curdate(),'1950-01-26')/365) |
++----------------------------------------------+
+|                                           74 |
++----------------------------------------------+
+1 row in set (0.09 sec)
+
+mysql> select name,hire_date from employees like hire_date='monday';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like hire_date='monday'' at line 1
+mysql> select name,hire_date from employees  hire_date like ('monday');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like ('monday')' at line 1
+mysql> select name,hire_date from employees where dayofweek(hire_date)=2;
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+mysql> select emp_name,hire_date from employees where dayofweek(hire_date)=2;
++----------+------------+
+| emp_name | hire_date  |
++----------+------------+
+| arun     | 2022-08-01 |
++----------+------------+
+1 row in set (0.07 sec)
+
+mysql> select name,hire_date from employees where year(hire_date)=1981;
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+mysql> select emp_name,hire_date from employees where year(hire_date)=2022;
++----------+------------+
+| emp_name | hire_date  |
++----------+------------+
+| arun     | 2022-08-01 |
+| sasi     | 2022-10-08 |
+| joshep   | 2022-05-12 |
+| sathish  | 2022-01-19 |
++----------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select name,commission,salary as dreamsal,salary*3 as dreamsal from employees;
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+mysql> select emp_name,commission,salary as dreamsal,salary*3 as dreamsal from employees;
++---------------+------------+----------+-----------+
+| emp_name      | commission | dreamsal | dreamsal  |
++---------------+------------+----------+-----------+
+| dhinesh kumar |    2000.00 | 55000.00 | 165000.00 |
+| arun          |    1000.00 | 30000.00 |  90000.00 |
+| sasi          |    2000.00 | 45000.00 | 135000.00 |
+| akash         |   10000.00 | 85000.00 | 255000.00 |
+| siva          |   12000.00 | 95000.00 | 285000.00 |
+| john          |    2000.00 |  6000.00 |  18000.00 |
+| jai           |    6000.00 | 65000.00 | 195000.00 |
+| joshep        |    2000.00 | 15000.00 |  45000.00 |
+| sathish       |    1500.00 | 18000.00 |  54000.00 |
+| raj           |    1500.00 | 18000.00 |  54000.00 |
++---------------+------------+----------+-----------+
+10 rows in set (0.24 sec)
+
+mysql> select emp_name,commission,salary,salary*3 as dreamsal from employees;
++---------------+------------+----------+-----------+
+| emp_name      | commission | salary   | dreamsal  |
++---------------+------------+----------+-----------+
+| dhinesh kumar |    2000.00 | 55000.00 | 165000.00 |
+| arun          |    1000.00 | 30000.00 |  90000.00 |
+| sasi          |    2000.00 | 45000.00 | 135000.00 |
+| akash         |   10000.00 | 85000.00 | 255000.00 |
+| siva          |   12000.00 | 95000.00 | 285000.00 |
+| john          |    2000.00 |  6000.00 |  18000.00 |
+| jai           |    6000.00 | 65000.00 | 195000.00 |
+| joshep        |    2000.00 | 15000.00 |  45000.00 |
+| sathish       |    1500.00 | 18000.00 |  54000.00 |
+| raj           |    1500.00 | 18000.00 |  54000.00 |
++---------------+------------+----------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> select emp_name,case when commission is not null then commisssion else 'no commission' end as commission from employees where emp_id =101;
+ERROR 1054 (42S22): Unknown column 'commisssion' in 'field list'
+mysql> select emp_name,case when commission is not null then commission else 'no commission' end as commission from employees where emp_id =101;
++---------------+------------+
+| emp_name      | commission |
++---------------+------------+
+| dhinesh kumar | 2000.00    |
++---------------+------------+
+1 row in set (0.21 sec)
+
+mysql> select emp_name,case when commission is not null then commission else 'no commission' end as commission from employees;
++---------------+------------+
+| emp_name      | commission |
++---------------+------------+
+| dhinesh kumar | 2000.00    |
+| arun          | 1000.00    |
+| sasi          | 2000.00    |
+| akash         | 10000.00   |
+| siva          | 12000.00   |
+| john          | 2000.00    |
+| jai           | 6000.00    |
+| joshep        | 2000.00    |
+| sathish       | 1500.00    |
+| raj           | 1500.00    |
++---------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select job case job
+    -> when 'full stack developer' then 'a',
+    -> when 'web developer' then 'b',
+    -> when 'java developer' then 'c',
+    -> when 'database admin' then 'd',
+    -> when 'python developer' then 'e',
+    -> else '0'
+    -> end as grade from employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'case job
+when 'full stack developer' then 'a',
+when 'web developer' then 'b',
+wh' at line 1
+mysql>
+mysql> select job case job
+    -> when 'full stack developer' then 'a',
+    -> when 'web developer' then 'b',
+    -> when 'java developer' then 'c',
+    -> when 'database admin' then 'd',
+    -> when 'python developer' then 'e',
+    -> else '0'
+    -> end as grade from employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'case job
+when 'full stack developer' then 'a',
+when 'web developer' then 'b',
+wh' at line 1
+mysql> select job case job
+    -> when 'full stack developer' then'a'
+    -> when 'web developer' then'b'
+    -> when 'java developer' then'c'
+    -> when 'database admin' then'd'
+    -> when 'python developer' then'e'
+    -> else'o'
+    -> end as grade from employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'case job
+when 'full stack developer' then'a'
+when 'web developer' then'b'
+when '' at line 1
+mysql> select job case job
+    -> when 'fullstackdeveloper' then'a'
+    -> when 'webdeveloper' then'b'
+    -> when 'javadeveloper' then'c'
+    -> when 'databaseadmin' then'd'
+    -> when 'pythondeveloper' then'e'
+    -> else'o'
+    -> end as grade from employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'case job
+when 'fullstackdeveloper' then'a'
+when 'webdeveloper' then'b'
+when 'jav' at line 1
+mysql> select job case job
+    -> when 'fullstackdeveloper' then'a'
+    -> when 'webdeveloper' then'b'
+    -> when 'java developer' then'c'
+    -> when 'databaseadmin' then'd'
+    -> when 'pythondeveloper' then'e'
+    -> else'o'
+    -> end as grade from employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'case job
+when 'fullstackdeveloper' then'a'
+when 'webdeveloper' then'b'
+when 'jav' at line 1
+mysql>
+mysql>
+mysql> select job case job,
+    -> when 'full stack developer' then'a'
+    -> when 'web developer' then'b'
+    -> when 'java developer' then'c'
+    -> when 'database admin' then'd'
+    -> when 'python developer' then'e'
+    -> else'o'
+    -> end as grade from employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'case job,
+when 'full stack developer' then'a'
+when 'web developer' then'b'
+when ' at line 1
+mysql> select job,case job
+    -> when 'full stack developer' then'a'
+    -> when 'web developer' then'b'
+    -> when 'java developer' then'c'
+    -> when 'database admin' then'd'
+    -> when 'python developer' then'e'
+    -> else'o'
+    -> end as grade from employees;
++----------------------+-------+
+| job                  | grade |
++----------------------+-------+
+| full stack developer | a     |
+| web developer        | b     |
+| java developer       | c     |
+| database admin       | d     |
+| database admin       | d     |
+| python developer     | e     |
+| web developer        | b     |
+| full stack developer | a     |
+| java developer       | c     |
+| web developer        | b     |
++----------------------+-------+
+10 rows in set (0.02 sec)
+
+mysql>
+mysql> commit;
+Query OK, 0 rows affected (0.06 sec)

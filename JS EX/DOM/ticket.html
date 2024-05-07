@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket</title>
+</head>
+<body>
+    <script>
+
+
+    let passenger1 = new Promise((resolve,reject) =>{
+        let book = false;
+        if (book){
+            setTimeout(resolve,1000,'passenger-1 Ticket booked');
+        }
+        else{
+            reject('Ticket cancelled')
+        }
+    });
+
+    let passenger2 = new Promise((resolve,reject)=>{
+        let book = true;
+        if(book){
+            setTimeout(resolve,2000,'passenger-2 - ticket booked');
+        }
+        else{
+            reject('ticket canclled')
+        }
+    });
+
+    let passenger3 = new Promise((resolve,reject)=>{
+        let book = true;
+        if(book){
+            setTimeout(resolve,4000,' passenge-3 ticket booked');
+        }
+        else{
+            reject('ticket canclled')
+        }
+    });
+
+
+
+    Promise.any([passenger2,passenger1,passenger3])
+    .then((print) => console.log(print))
+    .catch((error)=>console.log(error))
+
+    </script>
+</body>
+</html>

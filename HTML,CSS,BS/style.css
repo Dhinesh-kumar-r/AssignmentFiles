@@ -1,0 +1,17 @@
+label{
+    color: blue;
+}
+
+input[type=submit]{
+    color: wheat;
+    background-color: grey;
+}
+
+input[type=text]{
+    background-color:whitesmoke;
+}
+
+input[type=date] {
+    background-color: whitesmoke;
+}
+

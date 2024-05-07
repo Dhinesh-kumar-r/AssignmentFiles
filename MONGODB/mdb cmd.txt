@@ -1,0 +1,20 @@
+db.customer_details.insertMany ([
+{_id:1,name:'dhinesh',age:22,address:['trichy','chennai','covai']},
+{_id:2,name:'raja',age:23,address:['chennai','salem','karur']},
+{_id:3,name:'arun',age:25,address:['karur','vilupuram','velore']},
+{_id:4,name:'kumar',age:25,address:['madurai','covai','trichy']},
+{_id:5,name:'priya',age:24,address:['trichy','ariyalur','bangalore']}
+]);
+
+
+2. To insert two new address to the person "Arvind" and "Karthik" in the address field using push method.
+
+db.customer_details.updateOne({name:'dhinesh'},{$push:{address:{$each:['kerala','andhra']}}})
+
+db.customer_details.updateOne({name:'dhinesh'},{$pop;{address:1}});
+
+db.customer_details.updateOne({name:'dhinesh'},{$pull:{address:'kerala','andhra'}});
+
+db.customer_details.updateMany({},{$set:{discount:'aadi sales'}});
+
+db.customer_details.deleteOne({name:'dhinesh});

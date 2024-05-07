@@ -1,0 +1,592 @@
+
+test> use my_assignment;
+switched to db my_assignment
+my_assignment> db.createCollection('student');
+{ ok: 1 }
+
+
+my_assignment> db.student.insertMany([
+... {name:"dhinesh",age:21,score:9.5},
+... {name:"raja",age:25,score:5.5},
+... {name:"arun",age:30,score:8.5},
+... {name:"priya",age:21,score:8.0}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("658040b8821a001ceddd80e2"),
+    '1': ObjectId("658040b8821a001ceddd80e3"),
+    '2': ObjectId("658040b8821a001ceddd80e4"),
+    '3': ObjectId("658040b8821a001ceddd80e5")
+  }
+}
+my_assignment> db.student.find()
+[
+  {
+    _id: ObjectId("658040b8821a001ceddd80e2"),
+    name: 'dhinesh',
+    age: 21,
+    score: 9.5
+  },
+  {
+    _id: ObjectId("658040b8821a001ceddd80e3"),
+    name: 'raja',
+    age: 25,
+    score: 5.5
+  },
+  {
+    _id: ObjectId("658040b8821a001ceddd80e4"),
+    name: 'arun',
+    age: 30,
+    score: 8.5
+  },
+  {
+    _id: ObjectId("658040b8821a001ceddd80e5"),
+    name: 'priya',
+    age: 21,
+    score: 8
+  }
+]
+my_assignment> db.createCollection("customer");
+{ ok: 1 }
+my_assignment> db.customer.insertMany([
+... {_cid:1,first_name:"dhinesh",last_name:"kumar",dob:"2001-11-08",address:"trichy",phone_number:7695856553},
+... {_cid:2,first_name:"john",last_name:"jose",dob:"2000-09-21",address:"chennai",phone_number:9944293257},
+... {_cid:3,first_name:"karthik",last_name:"raja",dob:"2009-10-01",address:"karur",phone_number:9985529457},
+... {_cid:4,first_name:"arun",last_name:"kumar",dob:"1997-02-15",address:"chennai",phone_number:74524293257}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6580442b821a001ceddd80e6"),
+    '1': ObjectId("6580442b821a001ceddd80e7"),
+    '2': ObjectId("6580442b821a001ceddd80e8"),
+    '3': ObjectId("6580442b821a001ceddd80e9")
+  }
+}
+my_assignment> db.customer.find();
+[
+  {
+    _id: ObjectId("6580442b821a001ceddd80e6"),
+    _cid: 1,
+    first_name: 'dhinesh',
+    last_name: 'kumar',
+    dob: '2001-11-08',
+    address: 'trichy',
+    phone_number: 7695856553
+  },
+  {
+    _id: ObjectId("6580442b821a001ceddd80e7"),
+    _cid: 2,
+    first_name: 'john',
+    last_name: 'jose',
+    dob: '2000-09-21',
+    address: 'chennai',
+    phone_number: 9944293257
+  },
+  {
+    _id: ObjectId("6580442b821a001ceddd80e8"),
+    _cid: 3,
+    first_name: 'karthik',
+    last_name: 'raja',
+    dob: '2009-10-01',
+    address: 'karur',
+    phone_number: 9985529457
+  },
+  {
+    _id: ObjectId("6580442b821a001ceddd80e9"),
+    _cid: 4,
+    first_name: 'arun',
+    last_name: 'kumar',
+    dob: '1997-02-15',
+    address: 'chennai',
+    phone_number: 74524293257
+  }
+]
+my_assignment> db.createCollection("order_det);
+Uncaught:
+SyntaxError: Unterminated string constant. (1:20)
+
+> 1 | db.createCollection("order_det);
+    |                     ^
+  2 |
+
+my_assignment> db.createCollection("order_det");
+{ ok: 1 }
+my_assignment> db.order_det.insertMany([
+... {_orderid:101,customer_id:1001,order_date_time:"2023-11-01 T 10:50:00",shipped_date_time:"2023-11-10 T 20:10:00",total_Amount:10500.00},
+... {_orderid:102,customer_id:1002,order_date_time:"2023-12-01 T 11:10:00",shipped_date_time:"2023-12-25 T 12:10:00",total_Amount:70500.00},
+... {_orderid:103,customer_id:1003,order_date_time:"2022-01-21 T 08:50:00",shipped_date_time:"2022-01-29 T 18:40:00",total_Amount:85500.00},
+... {_orderid:104,customer_id:1004,order_date_time:"2022-05-10 T 08:50:00",shipped_date_time:"2022-05-15 T 07:56:00",total_Amount:87500.00}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6580493a821a001ceddd80ea"),
+    '1': ObjectId("6580493a821a001ceddd80eb"),
+    '2': ObjectId("6580493a821a001ceddd80ec"),
+    '3': ObjectId("6580493a821a001ceddd80ed")
+  }
+}
+my_assignment> db.order_det.find();
+[
+  {
+    _id: ObjectId("6580493a821a001ceddd80ea"),
+    _orderid: 101,
+    customer_id: 1001,
+    order_date_time: '2023-11-01 T 10:50:00',
+    shipped_date_time: '2023-11-10 T 20:10:00',
+    total_Amount: 10500
+  },
+  {
+    _id: ObjectId("6580493a821a001ceddd80eb"),
+    _orderid: 102,
+    customer_id: 1002,
+    order_date_time: '2023-12-01 T 11:10:00',
+    shipped_date_time: '2023-12-25 T 12:10:00',
+    total_Amount: 70500
+  },
+  {
+    _id: ObjectId("6580493a821a001ceddd80ec"),
+    _orderid: 103,
+    customer_id: 1003,
+    order_date_time: '2022-01-21 T 08:50:00',
+    shipped_date_time: '2022-01-29 T 18:40:00',
+    total_Amount: 85500
+  },
+  {
+    _id: ObjectId("6580493a821a001ceddd80ed"),
+    _orderid: 104,
+    customer_id: 1004,
+    order_date_time: '2022-05-10 T 08:50:00',
+    shipped_date_time: '2022-05-15 T 07:56:00',
+    total_Amount: 87500
+  }
+]
+my_assignment> db.student.insertMany([{name:"divya",age:28,score:8.5}
+... {name:"siva",age:25,score:8.0}]);
+Uncaught:
+SyntaxError: Unexpected token, expected "," (2:0)
+
+  1 | db.student.insertMany([{name:"divya",age:28,score:8.5}
+> 2 | {name:"siva",age:25,score:8.0}]);
+    | ^
+  3 |
+my_assignment> db.student.insertMany([{name:"divya",age:28,score:8.5}, {name:"siva",age:25,score:8.0}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("65804a33821a001ceddd80ee"),
+    '1': ObjectId("65804a33821a001ceddd80ef")
+  }
+}
+my_assignment> db.student.find()
+[
+  {
+    _id: ObjectId("658040b8821a001ceddd80e2"),
+    name: 'dhinesh',
+    age: 21,
+    score: 9.5
+  },
+  {
+    _id: ObjectId("658040b8821a001ceddd80e3"),
+    name: 'raja',
+    age: 25,
+    score: 5.5
+  },
+  {
+    _id: ObjectId("658040b8821a001ceddd80e4"),
+    name: 'arun',
+    age: 30,
+    score: 8.5
+  },
+  {
+    _id: ObjectId("658040b8821a001ceddd80e5"),
+    name: 'priya',
+    age: 21,
+    score: 8
+  },
+  {
+    _id: ObjectId("65804a33821a001ceddd80ee"),
+    name: 'divya',
+    age: 28,
+    score: 8.5
+  },
+  {
+    _id: ObjectId("65804a33821a001ceddd80ef"),
+    name: 'siva',
+    age: 25,
+    score: 8
+  }
+]
+my_assignment> db.customer.insertMany([{_cid:5,first_name:"arul",last_name:"ravi",ddob:"1999-03-25",address:"covai",phone_number:7544293257},
+... {_cid:6,first_name:"sathish",last_name:"kumar",dob:"2003-07-29",address:"trichy",phone_number:74593257}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("65804b95821a001ceddd80f0"),
+    '1': ObjectId("65804b95821a001ceddd80f1")
+  }
+}
+my_assignment> db.customer.find()
+[
+  {
+    _id: ObjectId("6580442b821a001ceddd80e6"),
+    _cid: 1,
+    first_name: 'dhinesh',
+    last_name: 'kumar',
+    dob: '2001-11-08',
+    address: 'trichy',
+    phone_number: 7695856553
+  },
+  {
+    _id: ObjectId("6580442b821a001ceddd80e7"),
+    _cid: 2,
+    first_name: 'john',
+    last_name: 'jose',
+    dob: '2000-09-21',
+    address: 'chennai',
+    phone_number: 9944293257
+  },
+  {
+    _id: ObjectId("6580442b821a001ceddd80e8"),
+    _cid: 3,
+    first_name: 'karthik',
+    last_name: 'raja',
+    dob: '2009-10-01',
+    address: 'karur',
+    phone_number: 9985529457
+  },
+  {
+    _id: ObjectId("6580442b821a001ceddd80e9"),
+    _cid: 4,
+    first_name: 'arun',
+    last_name: 'kumar',
+    dob: '1997-02-15',
+    address: 'chennai',
+    phone_number: 74524293257
+  },
+  {
+    _id: ObjectId("65804b95821a001ceddd80f0"),
+    _cid: 5,
+    first_name: 'arul',
+    last_name: 'ravi',
+    dob: '1999-03-25',
+    address: 'covai',
+    phone_number: 7544293257
+  },
+  {
+    _id: ObjectId("65804b95821a001ceddd80f1"),
+    _cid: 6,
+    first_name: 'sathish',
+    last_name: 'kumar',
+    dob: '2003-07-29',
+    address: 'trichy',
+    phone_number: 74593257
+  }
+]
+my_assignment> db.order_det.insertMany([{_orderid:105,customer_id:1005,order_date_tmy_assignment> db.order_det.insertMany([{_orderid:105,customer_id:1005,order_date_time:"2021-09-25 T 18:40:00",shipped_date_time:"2021-09-29 T  20:56:00",total_Amount:7500.00},
+... {_orderid:106,customer_id:1006,order_date_time:"2021-12-21 T 19:30:00",shipped_my_assignment>
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("65804cb5821a001ceddd80f2"),
+    '1': ObjectId("65804cb5821a001ceddd80f3")
+  }
+my_assignment> db.order_det.find()
+[
+  {
+    _id: ObjectId("6580493a821a001ceddd80ea"),
+    _orderid: 101,
+    customer_id: 1001,
+    order_date_time: '2023-11-01 T 10:50:00',
+    shipped_date_time: '2023-11-10 T 20:10:00',
+    total_Amount: 10500
+  },
+  {
+    _id: ObjectId("6580493a821a001ceddd80eb"),
+    _orderid: 102,
+    customer_id: 1002,
+    order_date_time: '2023-12-01 T 11:10:00',
+    shipped_date_time: '2023-12-25 T 12:10:00',
+    total_Amount: 70500
+  },
+  {
+    _id: ObjectId("6580493a821a001ceddd80ec"),
+    _orderid: 103,
+    customer_id: 1003,
+    order_date_time: '2022-01-21 T 08:50:00',
+    shipped_date_time: '2022-01-29 T 18:40:00',
+    total_Amount: 85500
+  },
+  {
+    _id: ObjectId("6580493a821a001ceddd80ed"),
+    _orderid: 104,
+    customer_id: 1004,
+    order_date_time: '2022-05-10 T 08:50:00',
+    shipped_date_time: '2022-05-15 T 07:56:00',
+    total_Amount: 87500
+  },
+  {
+    _id: ObjectId("65804cb5821a001ceddd80f2"),
+    _orderid: 105,
+    customer_id: 1005,
+    order_date_time: '2021-09-25 T 18:40:00',
+    shipped_date_time: '2021-09-29 T  20:56:00',
+    total_Amount: 7500
+  },
+  {
+    _id: ObjectId("65804cb5821a001ceddd80f3"),
+    _orderid: 106,
+    customer_id: 1006,
+    order_date_time: '2021-12-21 T 19:30:00',
+    shipped_date_time: '2021-12-22 T 03:56:00',
+    total_Amount: 67500
+  }
+]
+my_assignment> db.student.find().pretty();
+[
+  {
+    _id: ObjectId("658040b8821a001ceddd80e2"),
+    name: 'dhinesh',
+    age: 21,
+    score: 9.5
+  },
+  {
+    _id: ObjectId("658040b8821a001ceddd80e3"),
+    name: 'raja',
+    age: 25,
+    score: 5.5
+  },
+  {
+    _id: ObjectId("658040b8821a001ceddd80e4"),
+    name: 'arun',
+    age: 30,
+    score: 8.5
+  },
+  {
+    _id: ObjectId("658040b8821a001ceddd80e5"),
+    name: 'priya',
+    age: 21,
+    score: 8
+  },
+  {
+    _id: ObjectId("65804a33821a001ceddd80ee"),
+    name: 'divya',
+    age: 28,
+    score: 8.5
+  },
+  {
+    _id: ObjectId("65804a33821a001ceddd80ef"),
+    name: 'siva',
+    age: 25,
+    score: 8
+  }
+]
+my_assignment> db.customer.find().pretty();
+[
+  {
+    _id: ObjectId("6580442b821a001ceddd80e6"),
+    _cid: 1,
+    first_name: 'dhinesh',
+    last_name: 'kumar',
+    dob: '2001-11-08',
+    address: 'trichy',
+    phone_number: 7695856553
+  },
+  {
+    _id: ObjectId("6580442b821a001ceddd80e7"),
+    _cid: 2,
+    first_name: 'john',
+    last_name: 'jose',
+    dob: '2000-09-21',
+    address: 'chennai',
+    phone_number: 9944293257
+  },
+  {
+    _id: ObjectId("6580442b821a001ceddd80e8"),
+    _cid: 3,
+    first_name: 'karthik',
+    last_name: 'raja',
+    dob: '2009-10-01',
+    address: 'karur',
+    phone_number: 9985529457
+  },
+  {
+    _id: ObjectId("6580442b821a001ceddd80e9"),
+    _cid: 4,
+    first_name: 'arun',
+    last_name: 'kumar',
+    dob: '1997-02-15',
+    address: 'chennai',
+    phone_number: 74524293257
+  },
+  {
+    _id: ObjectId("65804b95821a001ceddd80f0"),
+    _cid: 5,
+    first_name: 'arul',
+    last_name: 'ravi',
+    dob: '1999-03-25',
+    address: 'covai',
+    phone_number: 7544293257
+  },
+  {
+    _id: ObjectId("65804b95821a001ceddd80f1"),
+    _cid: 6,
+    first_name: 'sathish',
+    last_name: 'kumar',
+    dob: '2003-07-29',
+    address: 'trichy',
+    phone_number: 74593257
+  }
+]
+my_assignment> db.order_det.find().pretty();
+[
+  {
+    _id: ObjectId("6580493a821a001ceddd80ea"),
+    _orderid: 101,
+    customer_id: 1001,
+    order_date_time: '2023-11-01 T 10:50:00',
+    shipped_date_time: '2023-11-10 T 20:10:00',
+    total_Amount: 10500
+  },
+  {
+    _id: ObjectId("6580493a821a001ceddd80eb"),
+    _orderid: 102,
+    customer_id: 1002,
+    order_date_time: '2023-12-01 T 11:10:00',
+    shipped_date_time: '2023-12-25 T 12:10:00',
+    total_Amount: 70500
+  },
+  {
+    _id: ObjectId("6580493a821a001ceddd80ec"),
+    _orderid: 103,
+    customer_id: 1003,
+    order_date_time: '2022-01-21 T 08:50:00',
+    shipped_date_time: '2022-01-29 T 18:40:00',
+    total_Amount: 85500
+  },
+  {
+    _id: ObjectId("6580493a821a001ceddd80ed"),
+    _orderid: 104,
+    customer_id: 1004,
+    order_date_time: '2022-05-10 T 08:50:00',
+    shipped_date_time: '2022-05-15 T 07:56:00',
+    total_Amount: 87500
+  },
+  {
+    _id: ObjectId("65804cb5821a001ceddd80f2"),
+    _orderid: 105,
+    customer_id: 1005,
+    order_date_time: '2021-09-25 T 18:40:00',
+    shipped_date_time: '2021-09-29 T  20:56:00',
+    total_Amount: 7500
+  },
+  {
+    _id: ObjectId("65804cb5821a001ceddd80f3"),
+    _orderid: 106,
+    customer_id: 1006,
+    order_date_time: '2021-12-21 T 19:30:00',
+    shipped_date_time: '2021-12-22 T 03:56:00',
+    total_Amount: 67500
+  }
+]
+my_assignment> use emp_det;
+switched to db emp_det
+emp_det> db.dropDatabase;
+[Function: dropDatabase] AsyncFunction {
+  apiVersions: [ 1, Infinity ],
+  returnsPromise: true,
+  serverVersions: [ '0.0.0', '999.999.999' ],
+  topologies: [ 'ReplSet', 'Sharded', 'LoadBalanced', 'Standalone' ],
+  returnType: { type: 'unknown', attributes: {} },
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+emp_det> db.dropDatabase(emp_det);
+ReferenceError: emp_det is not defined
+emp_det> db.dropDatabase();
+{ ok: 1, dropped: 'emp_det' }
+emp_det> use employee;
+switched to db employee
+employee>
+
+employee> db.createCollection("emp_det");
+{ ok: 1 }
+... {name:"dhinesh",age:21,city:"trichy"},
+... {name:"sathish",age:25,city:"madurai"},
+... {name:"ramesh",age:27,city:"karur"},
+... {name:"sankar",age:24,city:"chennai"},{name:"divya",age:19,city:"bangalore"}]);employee>
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("65805116821a001ceddd80f4"),
+    '1': ObjectId("65805116821a001ceddd80f5"),
+    '2': ObjectId("65805116821a001ceddd80f6"),
+    '3': ObjectId("65805116821a001ceddd80f7"),
+    '4': ObjectId("65805116821a001ceddd80f8")
+  }
+employee> db.emp_det.find().pretty();
+[
+  {
+    _id: ObjectId("65805116821a001ceddd80f4"),
+    name: 'dhinesh',
+    age: 21,
+    city: 'trichy'
+  },
+  {
+    _id: ObjectId("65805116821a001ceddd80f5"),
+    name: 'sathish',
+    age: 25,
+    city: 'madurai'
+  },
+  {
+    _id: ObjectId("65805116821a001ceddd80f6"),
+    name: 'ramesh',
+    age: 27,
+    city: 'karur'
+  },
+  {
+    _id: ObjectId("65805116821a001ceddd80f7"),
+    name: 'sankar',
+    age: 24,
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId("65805116821a001ceddd80f8"),
+    name: 'divya',
+    age: 19,
+    city: 'bangalore'
+  }
+]
+employee> drop.emp_det.drop();                                          :
+ReferenceError: drop is not defined
+employee> db.emp_det.drop();
+true
+employee>
+employee> db.dropDatabase();
+{ ok: 1, dropped: 'employee' }
+employee> show dbs
+admin           40.00 KiB
+brand           72.00 KiB
+brands          40.00 KiB
+config         108.00 KiB
+local           72.00 KiB
+my_assignment  216.00 KiB
+my_db            8.00 KiB
+mystore          8.00 KiB
+users           40.00 KiB
+employee> use my_assignment;
+switched to db my_assignment
+my_assignment> show dbs
+admin           40.00 KiB
+brand           72.00 KiB
+brands          40.00 KiB
+config         108.00 KiB
+local           72.00 KiB
+my_assignment  216.00 KiB
+my_db            8.00 KiB
+mystore          8.00 KiB
+users           40.00 KiB
+my_assignment>

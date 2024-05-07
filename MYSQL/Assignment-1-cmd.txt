@@ -1,0 +1,95 @@
+create table hotel(
+hotel_id int primary key,
+hotel_name varchar(20)not null,
+location varchar(50)not null);
+
+
+create table rooms(
+room_id int primary key,
+hotel_id int,foreign key(hotel_id) references hotel(hotel_id) on delete cascade,
+room_type varchar(30)not null);
+
+create table guest(
+guest_id int primary key,
+guest_name varchar(30)not null,
+city varchar(30)not null);
+
+create table reservations(
+room_id int,foreign key(room_id) references rooms(room_id) on delete cascade,
+guest_id int,foreign key(guest_id) references guest(guest_id) on delete cascade,
+date_checkin date,
+date_checkout date);
+
+insert:
+
+insert into hotel values
+(01,'taj','trichy'),
+(02,'paradise','chennai'),
+(03,'Queen','bangalore'),
+(04,'plaza','mumbai'),
+(05,'iconic','kerala');
+
+insert into rooms values
+(1001,01,'single_room'),
+(1002,02,'double_room'),
+(1003,03,'single_room'),
+(1004,04,'family_suit'),
+(1005,05,'double_room');
+
+insert into guest values
+(101,'Dhinesh','trichy'),
+(102,'hari','chennai'),
+(103,'priya','salem'),
+(104,'sathish','bangalore'),
+(105,'jackson','kerala');
+
+insert into reservations values
+(1001,101,'2023-11-08','2023-11-15'),
+(1002,102,'2023-01-10','2023-01-12'),
+(1003,103,'2023-06-05','2023-06-10'),
+(1004,104,'2023-06-25','2023-06-30'),
+(1005,105,'2023-12-01','2023-12-05');
+
+---alter a table like add a column---
+
+alter table guest add mobile_number bigint not null;
+
+-----modify the size of columns-----
+
+alter table hotel modify location varchar(50);
+
+-----modify the column name----
+
+alter table reservations rename column date_checkin to check_in_date;
+
+
+--add a column-----
+alter table rooms add price decimal(8,2)not null ;
+
+-----how to  update a specific column in value-----
+
+ update rooms set price = 1500 where room_type ='single_room';
+
+ update rooms set price = 3000 where room_type ='double_room';
+
+update rooms set price = 10000 where room_type ='family_suit';
+
+
+----delete a record  by specific------
+
+delete from reservations where date_checkout = '2023-06-10';
+
+------structure of a table--------
+
+desc hotel;
+
+
+
+
+
+
+
+
+
+
+

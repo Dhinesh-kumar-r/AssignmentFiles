@@ -1,0 +1,108 @@
+mysql> use my_assignment;
+Database changed
+mysql> create table city(
+    -> id int primary ket,
+    -> name varchar(20) not null,
+    -> country_code varchar(10) not null,
+    -> district varchar(20) not null,
+    -> population bigint not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ket,
+name varchar(20) not null,
+country_code varchar(10) not null,
+district varc' at line 2
+mysql> create table city(
+    -> id int primary key,
+    -> name varchar(20) not null,
+    -> country_code varchar(10) not null,
+    -> district varchar(20) not null,
+    -> population bigint not null);
+Query OK, 0 rows affected (3.09 sec)
+
+
+mysql> insert into city values
+    -> (101,'india','ind','tamilnadu',75000000),
+    -> (102,'america','usa','washington',33000000),
+    -> (103,'japan','jpn','tokyo',450000),
+    -> (104,'russia','usr','moskow',7396254),
+    -> (105,'china','chn','hongkong',70005052);
+Query OK, 5 rows affected (0.48 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select name district population from city;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'population from city' at line 1
+mysql> select name,district,population from city;
++---------+------------+------------+
+| name    | district   | population |
++---------+------------+------------+
+| india   | tamilnadu  |   75000000 |
+| america | washington |   33000000 |
+| japan   | tokyo      |     450000 |
+| russia  | moskow     |    7396254 |
+| china   | hongkong   |   70005052 |
++---------+------------+------------+
+5 rows in set (0.07 sec)
+
+mysql> insert into city values
+    -> (106,'america','usa','newyork',33565000),
+    -> (107,'america','usa','sandiago',1556000),
+    -> (108,'america','usa','los_angels',33000);
+Query OK, 3 rows affected (0.21 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select name,district,population from city;
++---------+------------+------------+
+| name    | district   | population |
++---------+------------+------------+
+| india   | tamilnadu  |   75000000 |
+| america | washington |   33000000 |
+| japan   | tokyo      |     450000 |
+| russia  | moskow     |    7396254 |
+| china   | hongkong   |   70005052 |
+| america | newyork    |   33565000 |
+| america | sandiago   |    1556000 |
+| america | los_angels |      33000 |
++---------+------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select district,population from city where population > 100000 and country_code='usa'; 
++------------+------------+
+| district   | population |
++------------+------------+
+| washington |   33000000 |
+| newyork    |   33565000 |
+| sandiago   |    1556000 |
++------------+------------+
+3 rows in set (0.24 sec)
+
+mysql> select * from city where id=103;
++-----+-------+--------------+----------+------------+
+| id  | name  | country_code | district | population |
++-----+-------+--------------+----------+------------+
+| 103 | japan | jpn          | tokyo    |     450000 |
++-----+-------+--------------+----------+------------+
+1 row in set (0.08 sec)
+
+mysql> select * from city where country_code ='jpn';
++-----+-------+--------------+----------+------------+
+| id  | name  | country_code | district | population |
++-----+-------+--------------+----------+------------+
+| 103 | japan | jpn          | tokyo    |     450000 |
++-----+-------+--------------+----------+------------+
+1 row in set (0.00 sec)
+
+mysql> select name,population from city where district='newyork' and name='america'; 
++---------+------------+
+| name    | population |
++---------+------------+
+| america |   33565000 |
++---------+------------+
+1 row in set (0.00 sec)
+
+mysql> select name,district,population from city where district='newyork' and name='america'; 
++---------+----------+------------+
+| name    | district | population |
++---------+----------+------------+
+| america | newyork  |   33565000 |
++---------+----------+------------+
+1 row in set (0.00 sec)
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="email">gmail</label>
+        <input type="text" id="email">
+
+       
+    </form>
+    <script>
+          let name= 'dhineh'
+        let set=/s/g //gi  ignore casesensitive
+
+        console.log(name.match(set));
+        console.log(set.test(name));
+        console.log(name.search(set))
+
+        let caps = /s/g  //g is global // i is ignore casesensitive
+        let magic = 'welcome to show'
+        console.log(magic.search(caps));
+
+
+        let ninja = 'top most \npower full bike'   //  /n is started to next line
+        console.log(ninja)
+
+        let more = /m/mgi;
+
+
+        //bracket
+
+        let vowels = /[^aeiou]/g;   //^ print without a vowels
+        let alpha = 'abcdefghijklmnopqrstuvwxyz';;
+        console.log(alpha.match(vowels))
+
+        let words = 'hai i am dhinesh kumar from trichy';
+        let only = /\S/g;    
+        // s is only print how many we are used   // S is print with out space   
+        // W take space and special character      //w take without space special char
+        console.log(words);
+        console.log(words.match(only));
+
+
+        let words1 = 'hai i am dhinesh kumar from trichy';
+        let only1= /h\b/gi;   //the letter has  startig is what are given true or flase 
+        let only2= /h\b/gi;
+
+        console.log(words1);
+        console.log(only1.test(words1)); 
+        console.log(only2.test(words1)); 
+
+
+
+
+        let names = 'dhinesh';
+        let check = /^[a-z]/      ///the letter or there are not  //[^ a-z]
+        console.log(check.test(names));
+
+
+        //to find the letter  finished or not
+        let mail = '.coms'
+        let check1 = /(.com)$/
+        console.log(check1.test(mail));
+
+        //to find how many time letter had there
+        let star = 'hai how are  you i am dhinesh i i i i is'        
+        let is = /i+s?/g;    // ? is print only i+s and only i
+        console.log(star.match(is));
+
+        let price = '1 20 100 500 200000'
+
+        let no = /\d{1,5}/g
+        console.log(price.match(no)) 
+
+
+
+       let  input='DHi923@gmail.com'         
+        let email= /^[A-Z]{2}[a-z 0-9]{5,10}{@}(gmail|email)\.(com)$/
+        console.log(email.test(input))
+
+     
+
+    
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

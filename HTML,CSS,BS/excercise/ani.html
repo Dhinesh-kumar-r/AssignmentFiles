@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color:blue;
+            animation-name: dhinesh;
+            animation-duration: 5s;
+        }
+
+        img{
+            animation-name: imagy;
+            animation-duration: 2s;
+            animation-duration: 3s;
+            animation: name duration timing-function delay iteration-count direction fill-mode;
+        }
+        @keyframes dhinesh {
+            from{background-color: blue;}
+            to{background-color: yellow;}
+        }
+        @keyframes imagy {
+            from{
+                transform: rotate(180deg);
+                transform: skew(-80deg,-100deg);
+                
+            }
+            to{
+                transform: rotate(360deg);
+                transform:translate(100px,200px);
+                
+                
+            }
+        }
+        
+
+    </style>
+</head>
+<body>
+    <img src="C:\Users\dhine\Downloads\ani.jpg" height="200px" width="100px">
+</body>
+</html>

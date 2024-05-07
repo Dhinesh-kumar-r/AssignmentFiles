@@ -1,0 +1,199 @@
+mysql> use my_assignment;
+Database changed
+mysql> create table customer(
+    -> customer_id int primary key,
+    -> cust_name varchar(30) not null
+    -> city varchar(20) not null,
+    -> grade int not null,
+    -> salesman_id id not null);,
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'city varchar(20) not null,
+grade int not null,
+salesman_id id not null)' at line 4
+    -> ,
+    -> ;;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+,' at line 1
+ERROR: 
+No query specified
+
+mysql> create table customer(
+    -> customer_id int primary key,
+    -> cust_name varchar(30) not null
+    -> city varchar(20) not null,
+    -> grade int not null,
+    -> salesman_id id not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'city varchar(20) not null,
+grade int not null,
+salesman_id id not null)' at line 4
+mysql> create table customer(
+    -> customer_id int primary key,
+    -> cust_name varchar(30) not null
+    -> city varchar(20) not null,
+    -> grade int not null,
+    -> salesman_id int not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'city varchar(20) not null,
+grade int not null,
+salesman_id int not null)' at line 4
+mysql> create table customer(
+    -> customer_id int primary key,
+    -> cust_name varchar(30)not null
+    -> city varchar(20)not null,
+    -> grade int not null,
+    -> salesman_id int not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'city varchar(20)not null,
+grade int not null,
+salesman_id int not null)' at line 4
+mysql> create table customer(
+    -> customer_id int primary key,
+    -> cust_name varchar(30)not null,
+    -> city varchar(20)not null,
+    -> grade int not null,
+    -> salesman_id int not null);
+Query OK, 0 rows affected (6.32 sec)
+
+mysql> insert into customer values
+    -> (3002,'Nick Rimando','New York',100,5001),
+    -> (3007,'Brad Davis','New York',200,5001),
+    -> (3008,'Julian Green','London','300',5002),
+    -> (3004,'Fabian Johnson','Paris','300',5006),
+    -> (3009,'Geoff Cameron','Berlin','100',5007),
+    -> (3003,'Jozy Altidor','Moscow','200','5007'),
+    -> (3001,'Brad Guzan','London','null',5005);
+ERROR 1366 (HY000): Incorrect integer value: 'null' for column 'grade' at row 7
+mysql> alter table customer modify grade int;
+Query OK, 0 rows affected (2.98 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into customer values
+    -> (3002,'Nick Rimando','New York',100,5001),
+    -> (3007,'Brad Davis','New York',200,5001),
+    -> (3008,'Julian Green','London','300',5002),
+    -> (3004,'Fabian Johnson','Paris','300',5006),
+    -> (3009,'Geoff Cameron','Berlin','100',5007),
+    -> (3003,'Jozy Altidor','Moscow','200','5007'),
+    -> (3001,'Brad Guzan','London','null',5005);
+ERROR 1366 (HY000): Incorrect integer value: 'null' for column 'grade' at row 7
+mysql> insert into customer values
+    -> (3002,'Nick Rimando','New York',100,5001),
+    -> (3007,'Brad Davis','New York',200,5001),
+    -> (3008,'Julian Green','London','300',5002),
+    -> (3004,'Fabian Johnson','Paris','300',5006),
+    -> (3009,'Geoff Cameron','Berlin','100',5007),
+    -> (3003,'Jozy Altidor','Moscow','200','5007'),
+    -> (3001,'Brad Guzan','London',null,5005);
+Query OK, 7 rows affected (0.26 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> select * from customer where cust_name like '&o_';
+Empty set (0.19 sec)
+
+mysql> select * from customer where cust_name like '&o';
+Empty set (0.00 sec)
+
+mysql> select * from customer where cust_name like '%o_';
++-------------+----------------+--------+-------+-------------+
+| customer_id | cust_name      | city   | grade | salesman_id |
++-------------+----------------+--------+-------+-------------+
+|        3003 | Jozy Altidor   | Moscow |   200 |        5007 |
+|        3004 | Fabian Johnson | Paris  |   300 |        5006 |
+|        3009 | Geoff Cameron  | Berlin |   100 |        5007 |
++-------------+----------------+--------+-------+-------------+
+3 rows in set (0.07 sec)
+
+ that corresponds to your MySQL server version for the right syntax to use near 'notin 'new york' and grade >=100' at line 1
+mysql> 
+mysql> select * from customer where city not in 'new york' and grade >='100';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''new york' and grade >='100'' at line 1
+mysql> select * from customer where city notin 'new york' and grade >='100';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'notin 'new york' and grade >='100'' at line 1
+mysql> select name,grade from customer where city not in 'new york' and grade >='100';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''new york' and grade >='100'' at line 1
+mysql> select * from customer where city not in ('new york') and grade >='100';
++-------------+----------------+--------+-------+-------------+
+| customer_id | cust_name      | city   | grade | salesman_id |
++-------------+----------------+--------+-------+-------------+
+|        3003 | Jozy Altidor   | Moscow |   200 |        5007 |
+|        3004 | Fabian Johnson | Paris  |   300 |        5006 |
+|        3008 | Julian Green   | London |   300 |        5002 |
+|        3009 | Geoff Cameron  | Berlin |   100 |        5007 |
++-------------+----------------+--------+-------+-------------+
+4 rows in set (0.15 sec)
+
+mysql> select * from customer where city in ('california','london') and rating between 200 and 300;
+ERROR 1054 (42S22): Unknown column 'rating' in 'where clause'
+mysql> select * from customer where city in ('california','london') and grade between 200 and 300;
++-------------+--------------+--------+-------+-------------+
+| customer_id | cust_name    | city   | grade | salesman_id |
++-------------+--------------+--------+-------+-------------+
+|        3008 | Julian Green | London |   300 |        5002 |
++-------------+--------------+--------+-------+-------------+
+1 row in set (0.05 sec)
+
+mysql> select * from customer where grade='';
+Empty set (0.08 sec)
+
+mysql> select * from customer where grade='null';
+Empty set, 1 warning (0.09 sec)
+
+mysql> select * from customer where grade=null;
+Empty set (0.00 sec)
+
+mysql> select * from customer where grade is null or grade=' ' ;
++-------------+------------+--------+-------+-------------+
+| customer_id | cust_name  | city   | grade | salesman_id |
++-------------+------------+--------+-------+-------------+
+|        3001 | Brad Guzan | London |  NULL |        5005 |
++-------------+------------+--------+-------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select * from customer where salesman_id=5002;
++-------------+--------------+--------+-------+-------------+
+| customer_id | cust_name    | city   | grade | salesman_id |
++-------------+--------------+--------+-------+-------------+
+|        3008 | Julian Green | London |   300 |        5002 |
++-------------+--------------+--------+-------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select city,reverse(cust_name)from customer order by city asc;
++----------+--------------------+
+| city     | reverse(cust_name) |
++----------+--------------------+
+| Berlin   | noremaC ffoeG      |
+| London   | nazuG darB         |
+| London   | neerG nailuJ       |
+| Moscow   | roditlA yzoJ       |
+| New York | odnamiR kciN       |
+| New York | sivaD darB         |
+| Paris    | nosnhoJ naibaF     |
++----------+--------------------+
+7 rows in set (0.10 sec)
+
+
+mysql> select distinct city from customer;
++----------+
+| city     |
++----------+
+| London   |
+| New York |
+| Moscow   |
+| Paris    |
+| Berlin   |
++----------+
+5 rows in set (0.00 sec)
+
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''london' salesman_id='5002'' at line 1
+mysql> select * from customer where city in 'london' salesman_id=5002;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''london' salesman_id=5002' at line 1
+mysql> select * from customer where city='london'and salesman_id in(5002,5005);
++-------------+--------------+--------+-------+-------------+
+| customer_id | cust_name    | city   | grade | salesman_id |
++-------------+--------------+--------+-------+-------------+
+|        3001 | Brad Guzan   | London |  NULL |        5005 |
+|        3008 | Julian Green | London |   300 |        5002 |
++-------------+--------------+--------+-------+-------------+
+2 rows in set (0.14 sec)
+
+
+
+

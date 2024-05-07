@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+    <script>
+
+        let second =  function(datafromfirst){
+            return new Promise(
+                function(resolve,reject){
+                    resolve(datafromfirst+' Dhinesh');
+                    reject('name error')
+                }
+            )
+        }
+
+        let First = function(){
+            return new Promise(
+                function(resolve,reject){
+                    resolve('My Name is')
+                    reject('name issue')
+                }
+            )
+        }
+
+
+        First().then(function(data){
+            return second(data);
+        }).then(function(print){
+            document.write(print)
+        });
+    </script>
+</body>
+</html>
